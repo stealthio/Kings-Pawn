@@ -2,7 +2,8 @@ extends Node2D
 
 export var movement = Vector2(0,1)
 export var inversion = true # Allow the axis to be exchanged?
-export var addition = false # Allow the Axis to be added to each other
+export var addition = false # Allow the axis to be added to each other
+export var endless = false # Allow the axis to be endless
 var selected = false setget setSelected
 var _mouse_inside = false
 var _tpos = null
@@ -24,7 +25,7 @@ func setSelected(value):
 		$AnimationPlayer.play("PickedUp")
 	$Sprite.self_modulate = Color.aqua if selected else Color.white
 	if selected:
-		Helper.show_available_cells(global_position, movement, inversion, addition, self)
+		Helper.show_available_cells(global_position, movement, inversion, addition, endless, self)
 	elif _mouse_inside:
 		$AnimationPlayer.play("PutDown")
 		Helper.clear_available_cells()
