@@ -2,8 +2,15 @@ extends Node2D
 
 var grid_size = 64
 var figures = []
+var enemies = []
 
 var _temporary_cells = []
+
+enum cell_content {
+	FREE,
+	ALLY,
+	ENEMY
+}
 
 func clear_available_cells():
 	for cell in _temporary_cells:
@@ -41,8 +48,19 @@ func show_available_cells(origin_pos : Vector2, movement_vector : Vector2, inver
 		s.check_position()
 
 # check if a position is free
-func check_position(position):
+# returns 0 if free
+# 1 if ally
+# 2 if enemy
+func check_position(position) -> int:
 	for figure in figures:
 		if figure.global_position == position:
-			return false
-	return true
+			return cell_content.ALLY
+	for enemy in enemies:
+		if enemy.global_position == position:
+			return cell_content.ENEMY
+	return cell_content.FREE
+
+func get_enemy_at_position(position):
+	for enemy in enemies:
+		if enemy.global_position == position:
+			return enemy

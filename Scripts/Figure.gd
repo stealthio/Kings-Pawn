@@ -11,7 +11,12 @@ func _ready():
 	Helper.figures.append(self)
 	$AnimationPlayer.play("Idle")
 
+func _exit_tree():
+	Helper.figures.erase(self)
+
 func setSelected(value):
+	if _tpos != null:
+		return
 	selected = value
 	if selected:
 		$AnimationPlayer.play("PickedUp")
@@ -24,6 +29,9 @@ func setSelected(value):
 
 func move_to_position(pos):
 	_tpos = pos
+
+func kill_at_position(pos):
+	move_to_position(pos)
 
 func _process(delta):
 	if Input.is_action_just_pressed("select"):
