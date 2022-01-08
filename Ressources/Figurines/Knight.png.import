@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Tower.png-7cb0b2cbabe421fa97f03e960a2375f9.stex"
+path="res://.import/Knight.png-75841e4d8bd0f453eed9156af3fec1e7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/Figurines/Tower.png"
-dest_files=[ "res://.import/Tower.png-7cb0b2cbabe421fa97f03e960a2375f9.stex" ]
+source_file="res://Ressources/Figurines/Knight.png"
+dest_files=[ "res://.import/Knight.png-75841e4d8bd0f453eed9156af3fec1e7.stex" ]
 
 [params]
 

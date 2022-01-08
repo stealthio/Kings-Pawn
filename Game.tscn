@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/Figurine.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Ressources/Figurines/Horse.png" type="Texture" id=3]
+[ext_resource path="res://Ressources/Figurines/Knight.png" type="Texture" id=3]
 [ext_resource path="res://Ressources/Enemies/Pawn.png" type="Texture" id=4]
 [ext_resource path="res://Ressources/Figurines/King.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=6]
@@ -349,11 +349,11 @@ offset = Vector2( 0, 0 )
 position = Vector2( 128, 192 )
 inversion = false
 
-[node name="Horse" parent="YSort" instance=ExtResource( 1 )]
+[node name="Knight" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 320, 192 )
 movement = Vector2( 1, 2 )
 
-[node name="Sprite" parent="YSort/Horse" index="0"]
+[node name="Sprite" parent="YSort/Knight" index="0"]
 texture = ExtResource( 3 )
 
 [node name="King" parent="YSort" instance=ExtResource( 1 )]
@@ -430,5 +430,5 @@ process_material = SubResource( 7 )
 [connection signal="animation_finished" from="YSort/Enemy2/AnimationPlayer" to="YSort/Enemy2" method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="YSort/Pawn"]
-[editable path="YSort/Horse"]
+[editable path="YSort/Knight"]
 [editable path="YSort/King"]
