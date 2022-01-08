@@ -339,6 +339,7 @@ tracks/2/keys = {
 script = ExtResource( 7 )
 
 [node name="Board" parent="." instance=ExtResource( 2 )]
+z_index = -100
 game_size = Vector2( 10, 5 )
 offset = Vector2( 0, 0 )
 
