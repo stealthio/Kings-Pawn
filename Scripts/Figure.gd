@@ -62,3 +62,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$AnimationPlayer.play("FloatingIdle")
 	if anim_name == "PutDown":
 		$AnimationPlayer.play("RESET")
+	if anim_name == "RESET":
+		$AnimationPlayer.play("Idle")
