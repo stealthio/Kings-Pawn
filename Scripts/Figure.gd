@@ -8,7 +8,7 @@ func setSelected(value):
 	selected = value
 	self_modulate = Color.aqua if selected else Color.white
 	if selected:
-		Helper.show_available_cells(global_position, movement)
+		Helper.show_available_cells(global_position, movement, self)
 
 func _process(delta):
 	if Input.is_action_just_pressed("select"):
