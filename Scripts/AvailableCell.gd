@@ -21,7 +21,7 @@ func _process(delta):
 					Helper.clear_available_cells()
 				Helper.cell_content.ENEMY:
 					var enemy = Helper.get_enemy_at_position(global_position)
-					enemy.call_deferred("free")
+					enemy.die()
 					connected_figure.kill_at_position(global_position)
 					Helper.clear_available_cells()
 
