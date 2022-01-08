@@ -39,9 +39,10 @@ func show_available_cells(origin_pos : Vector2, movement_vector : Vector2, inver
 		possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector, grid_size))
 	
 	if addition:
-		movement_vector = Vector2(movement_vector.x, 0)
+		var _tmp_movement = movement_vector
+		movement_vector = Vector2(_tmp_movement.x, 0)
 		possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector, grid_size))
-		movement_vector = Vector2(0,movement_vector.y)
+		movement_vector = Vector2(0,_tmp_movement.y)
 		possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector, grid_size))
 	
 	for pos in possible_positions:
