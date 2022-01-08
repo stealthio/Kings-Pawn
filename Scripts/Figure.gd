@@ -23,10 +23,8 @@ func _process(delta):
 		else:
 			setSelected(false)
 
-
 func _on_Area2D_mouse_entered():
 	_mouse_inside = true
-
 
 func _on_Area2D_mouse_exited():
 	_mouse_inside = false

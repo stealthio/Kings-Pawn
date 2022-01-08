@@ -15,7 +15,6 @@ func _process(delta):
 			connected_figure.global_position = global_position
 			Helper.clear_available_cells()
 
-
 func _on_Area2D_mouse_entered():
 	texture = preload("res://Ressources/Board/Available1.png")
 	_mouse_inside = true

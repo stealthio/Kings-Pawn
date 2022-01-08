@@ -24,6 +24,7 @@ func _get_positions_from_vec(pos, vec, grid):
 # It will display a blue overlay at all the possible positions the player may move
 func show_available_cells(origin_pos : Vector2, movement_vector : Vector2, inversion: bool, object_reference):
 	clear_available_cells()
+	
 	# Calculate all normal possible positions
 	var possible_positions = _get_positions_from_vec(origin_pos, movement_vector, grid_size)
 	
