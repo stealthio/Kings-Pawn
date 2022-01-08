@@ -10,9 +10,10 @@ extents = Vector2( 32, 32 )
 [node name="Game" type="Node2D"]
 
 [node name="Pawn" type="Sprite" parent="."]
-position = Vector2( 465, 240 )
+position = Vector2( 192, 192 )
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
+inversion = false
 
 [node name="Area2D" type="Area2D" parent="Pawn"]
 
@@ -20,7 +21,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Horse" type="Sprite" parent="."]
-position = Vector2( 670, 240 )
+position = Vector2( 320, 128 )
 texture = ExtResource( 3 )
 script = ExtResource( 1 )
 movement = Vector2( 1, 2 )

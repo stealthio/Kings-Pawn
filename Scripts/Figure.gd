@@ -1,14 +1,20 @@
 extends Sprite
 
 export var movement = Vector2(0,1)
+export var inversion = true # Allow the axis to be exchanged?
 var selected = false setget setSelected
 var _mouse_inside = false
+
+func _ready():
+	Helper.figures.append(self)
 
 func setSelected(value):
 	selected = value
 	self_modulate = Color.aqua if selected else Color.white
 	if selected:
-		Helper.show_available_cells(global_position, movement, self)
+		Helper.show_available_cells(global_position, movement, inversion, self)
+	elif _mouse_inside:
+		Helper.clear_available_cells()
 
 func _process(delta):
 	if Input.is_action_just_pressed("select"):
