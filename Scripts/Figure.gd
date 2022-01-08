@@ -8,11 +8,11 @@ var _tpos = null
 var _ppos = null
 
 func _ready():
-	Helper.figures.append(self)
+	Helper.game_manager.figures.append(self)
 	$AnimationPlayer.play("Idle")
 
 func _exit_tree():
-	Helper.figures.erase(self)
+	Helper.game_manager.figures.erase(self)
 
 func setSelected(value):
 	if _tpos != null:
@@ -29,12 +29,13 @@ func setSelected(value):
 
 func move_to_position(pos):
 	_tpos = pos
+	Helper.game_manager.end_turn()
 
 func kill_at_position(pos):
 	move_to_position(pos)
 
 func _process(delta):
-	if Input.is_action_just_pressed("select"):
+	if Input.is_action_just_pressed("select") and Helper.game_manager.is_player_turn:
 		if _mouse_inside:
 			setSelected(!selected)
 		else:

@@ -1,14 +1,21 @@
 extends Node2D
 
+var turn_done = false
+
 func _ready():
-	Helper.enemies.append(self)
+	Helper.game_manager.enemies.append(self)
 
 func _exit_tree():
-	Helper.enemies.erase(self)
+	Helper.game_manager.enemies.erase(self)
 
 func die():
 	$AnimationPlayer.play("Death")
 
+func execute():
+	modulate = Color.blue
+	yield(get_tree().create_timer(2), "timeout")
+	modulate = Color.white
+	turn_done = true
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Death":

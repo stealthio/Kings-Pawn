@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Figurine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/GameManager.gd" type="Script" id=2]
 [ext_resource path="res://Ressources/Figurines/Horse.png" type="Texture" id=3]
 [ext_resource path="res://Ressources/Enemies/Pawn.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=5]
@@ -121,7 +122,103 @@ scale = 15.0
 scale_curve = SubResource( 6 )
 color = Color( 0.517647, 0, 0, 1 )
 
+[sub_resource type="Animation" id=8]
+resource_name = "Death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.1 ), Vector2( 1, 0.25 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.98, 0.95 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Game" type="Node2D"]
+script = ExtResource( 2 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -163,7 +260,35 @@ one_shot = true
 explosiveness = 0.88
 process_material = SubResource( 7 )
 
+[node name="Enemy2" type="Node2D" parent="YSort"]
+position = Vector2( 320, 64 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Enemy2"]
+position = Vector2( 0, 25 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, -25 )
+
+[node name="Area2D" type="Area2D" parent="YSort/Enemy2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Enemy2/Area2D"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YSort/Enemy2"]
+anims/Death = SubResource( 8 )
+anims/Idle = SubResource( 9 )
+anims/RESET = SubResource( 10 )
+
+[node name="Particles2D" type="Particles2D" parent="YSort/Enemy2"]
+position = Vector2( 0, 18 )
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.88
+process_material = SubResource( 7 )
+
 [connection signal="animation_finished" from="YSort/Enemy/AnimationPlayer" to="YSort/Enemy" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="YSort/Enemy2/AnimationPlayer" to="YSort/Enemy2" method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="YSort/Pawn"]
 [editable path="YSort/Horse"]

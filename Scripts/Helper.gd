@@ -1,8 +1,8 @@
 extends Node2D
 
 var grid_size = 64
-var figures = []
-var enemies = []
+
+var game_manager = null
 
 var _temporary_cells = []
 
@@ -11,6 +11,9 @@ enum cell_content {
 	ALLY,
 	ENEMY
 }
+
+func _ready():
+	game_manager = get_tree().root.get_node("Game")
 
 func clear_available_cells():
 	for cell in _temporary_cells:
@@ -43,7 +46,7 @@ func show_available_cells(origin_pos : Vector2, movement_vector : Vector2, inver
 		var s = preload("res://Scenes/AvailableCell.tscn").instance()
 		_temporary_cells.append(s)
 		s.connected_figure = object_reference
-		get_tree().root.get_node("Game").add_child(s)
+		Helper.game_manager.add_child(s)
 		s.global_position = pos
 		s.check_position()
 
@@ -52,15 +55,15 @@ func show_available_cells(origin_pos : Vector2, movement_vector : Vector2, inver
 # 1 if ally
 # 2 if enemy
 func check_position(position) -> int:
-	for figure in figures:
+	for figure in Helper.game_manager.figures:
 		if figure.global_position == position:
 			return cell_content.ALLY
-	for enemy in enemies:
+	for enemy in Helper.game_manager.enemies:
 		if enemy.global_position == position:
 			return cell_content.ENEMY
 	return cell_content.FREE
 
 func get_enemy_at_position(position):
-	for enemy in enemies:
+	for enemy in Helper.game_manager.enemies:
 		if enemy.global_position == position:
 			return enemy
