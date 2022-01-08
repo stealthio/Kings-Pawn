@@ -16,7 +16,7 @@ func _process(delta):
 		if !current_enemy and enemies.size() > 0:
 			current_enemy = enemies[0]
 			current_enemy.execute()
-		elif !current_enemy:
+		elif !is_instance_valid(current_enemy):
 			pass # Alle gegner tot
 		elif current_enemy.turn_done:
 			for enemy in enemies:

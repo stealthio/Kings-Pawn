@@ -5,10 +5,8 @@ var turn_done = false
 func _ready():
 	Helper.game_manager.enemies.append(self)
 
-func _exit_tree():
-	Helper.game_manager.enemies.erase(self)
-
 func die():
+	Helper.game_manager.enemies.erase(self)
 	$AnimationPlayer.play("Death")
 
 func execute():
