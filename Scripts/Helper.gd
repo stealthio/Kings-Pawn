@@ -32,14 +32,20 @@ func _get_positions_from_vec(pos, vec, grid):
 
 # Expects an actual position (e.g. 420, 69) and a relative movement vector (e.g. 1, 2) for the movable cells
 # It will display a blue overlay at all the possible positions the player may move
-func show_available_cells(origin_pos : Vector2, movement_vector : Vector2, inversion: bool, object_reference):
-	clear_available_cells()	
+func show_available_cells(origin_pos : Vector2, movement_vector : Vector2, inversion: bool, addition: bool, object_reference):	
 	# Calculate all normal possible positions
 	var possible_positions = _get_positions_from_vec(origin_pos, movement_vector, grid_size)
 	
 	# Calculate all inverted possible positions
 	if inversion:
 		movement_vector = Vector2(movement_vector.y, movement_vector.x)
+		possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector, grid_size))
+	
+	if addition:
+		var _tmp_movement = movement_vector
+		movement_vector = Vector2(_tmp_movement.x, 0)
+		possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector, grid_size))
+		movement_vector = Vector2(0,_tmp_movement.y)
 		possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector, grid_size))
 	
 	for pos in possible_positions:
@@ -49,7 +55,6 @@ func show_available_cells(origin_pos : Vector2, movement_vector : Vector2, inver
 		Helper.game_manager.add_child(s)
 		s.global_position = pos
 		s.check_position()
-
 # check if a position is free
 # returns 0 if free
 # 1 if ally
