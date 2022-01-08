@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Board.gd" type="Script" id=1]
+
+[node name="Board" type="Node2D"]
+position = Vector2( -1, 1 )
+script = ExtResource( 1 )
+game_size = Vector2( 15, 15 )
+offset = Vector2( -32, -32 )
