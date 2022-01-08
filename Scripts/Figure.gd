@@ -1,4 +1,4 @@
-extends Sprite
+extends Node2D
 
 export var movement = Vector2(0,1)
 export var inversion = true # Allow the axis to be exchanged?
@@ -10,7 +10,7 @@ func _ready():
 
 func setSelected(value):
 	selected = value
-	self_modulate = Color.aqua if selected else Color.white
+	$Sprite.self_modulate = Color.aqua if selected else Color.white
 	if selected:
 		Helper.show_available_cells(global_position, movement, inversion, self)
 	elif _mouse_inside:
