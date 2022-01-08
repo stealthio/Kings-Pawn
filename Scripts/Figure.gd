@@ -20,6 +20,7 @@ func setSelected(value):
 		return
 	selected = value
 	if selected:
+		Helper.clear_available_cells()
 		$AnimationPlayer.play("PickedUp")
 	$Sprite.self_modulate = Color.aqua if selected else Color.white
 	if selected:
