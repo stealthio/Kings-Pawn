@@ -13,6 +13,10 @@ config_version=4
 config/name="Queens Protection"
 config/icon="res://icon.png"
 
+[autoload]
+
+Helper="*res://Scenes/Helper.tscn"
+
 [importer_defaults]
 
 texture={
@@ -35,6 +39,14 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+
+[input]
+
+select={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
 }
 
 [physics]
