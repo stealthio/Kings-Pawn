@@ -41,13 +41,14 @@ func setSelected(value):
 		$AnimationPlayer.play("PutDown")
 		Helper.clear_available_cells()
 
-func move_to_position(pos):
+func move_to_position(pos, end_turn = true):
 	_tpos = pos
 	_opener_used = true
-	Helper.game_manager.end_turn()
+	if end_turn:
+		Helper.game_manager.end_turn()
 
 func kill_at_position(pos):
-	move_to_position(pos)
+	move_to_position(pos, false)
 
 func _process(delta):
 	if Input.is_action_just_pressed("select") and Helper.game_manager.is_player_turn:

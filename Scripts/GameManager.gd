@@ -6,10 +6,15 @@ var figures = []
 var enemies = []
 var current_enemy
 
+signal on_turn_end
+signal on_turn_begin
+signal on_enemy_pre_execute
+
 func end_turn():
 	is_player_turn = false
 	for enemy in enemies:
 		enemy.turn_done = false
+	emit_signal("on_turn_end")
 
 func _process(delta):
 	if !is_player_turn:
@@ -22,8 +27,10 @@ func _process(delta):
 			for enemy in enemies:
 				if !enemy.turn_done:
 					current_enemy = enemy
+					emit_signal("on_enemy_pre_execute")
 					current_enemy.execute()
 					break
 			if current_enemy.turn_done:
+				emit_signal("on_turn_begin")
 				is_player_turn = true
 				current_enemy = null
