@@ -81,18 +81,19 @@ func show_available_cells(origin_pos : Vector2, movement_array : Array, inversio
 			movement_vector = Vector2(0,tmp_movement.y)
 			possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector, grid_size))
 		# adds infinite movement in the given directions
+		# @TODO endless needs to be broken down into the directions to be able to break in all directions on enemy/friendly contact
 		if endless:
 			var counter = 2
+			var pos_check
 			while counter <= 8:
 				possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector*counter, grid_size))
 				if inversion:
 					movement_vector =Vector2(movement_vector.y, movement_vector.x)
 					possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector*counter, grid_size))
 				counter += 1
-		
+				#if check_position(origin_pos+(movement_vector*counter)*grid_size) != cell_content.FREE:
+				#	break
 		possible_positions= _remove_duplicates_from_array(possible_positions)
-
-
 		for pos in possible_positions:
 			var s = preload("res://Scenes/AvailableCell.tscn").instance()
 			temporary_cells.append(s)
@@ -100,7 +101,6 @@ func show_available_cells(origin_pos : Vector2, movement_array : Array, inversio
 			get_gamemanager().add_child(s)
 			s.global_position = pos
 			s.check_position(only_on_enemy)
-	
 # check if a position is free
 # returns 0 if free
 # 1 if ally

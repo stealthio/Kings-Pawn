@@ -1900,12 +1900,12 @@ anims/PutDown = SubResource( 29 )
 anims/RESET = SubResource( 30 )
 
 [node name="Background" type="Sprite" parent="Board"]
-position = Vector2( 224, 250 )
+position = Vector2( 256, 250 )
 z_index = -1
 texture = ExtResource( 13 )
 
 [node name="BackgroundOverlay" type="Sprite" parent="Board"]
-position = Vector2( 224, 250 )
+position = Vector2( 256, 250 )
 z_index = 10
 texture = ExtResource( 6 )
 
@@ -1915,7 +1915,7 @@ start_pos = Vector2( 320, 82 )
 spawn_count = Vector2( 1, 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 512, 301 )
+position = Vector2( 544, 296 )
 current = true
 zoom = Vector2( 0.95, 0.95 )
 script = ExtResource( 15 )
