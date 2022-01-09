@@ -7,6 +7,8 @@ export var chance_to_spawn_per_round = 100
 
 func _ready():
 	Helper.game_manager.connect("on_turn_begin", self, "spawn_logic")
+	yield(get_tree(), "idle_frame")
+	spawn()
 
 func spawn():
 	var enemy = preload("res://Scenes/Enemy.tscn").instance()

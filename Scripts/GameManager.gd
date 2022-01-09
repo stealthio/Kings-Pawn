@@ -9,9 +9,15 @@ var current_enemy
 signal on_turn_end
 signal on_turn_begin
 signal on_enemy_pre_execute
+signal on_enemy_added
+
 
 func _init():
 	randomize()
+	
+func append_enemy(enemy):
+	enemies.append(enemy)
+	emit_signal("on_enemy_added", enemy)
 
 func end_turn():
 	is_player_turn = false

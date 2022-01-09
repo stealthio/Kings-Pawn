@@ -8,7 +8,7 @@ signal on_kill
 signal on_death
 
 func _ready():
-	Helper.game_manager.enemies.append(self)
+	Helper.game_manager.append_enemy(self)
 	$AnimationPlayer.play("Appear")
 	
 func die(without_animation = false):
