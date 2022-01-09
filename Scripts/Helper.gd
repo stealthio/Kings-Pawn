@@ -12,6 +12,27 @@ enum cell_content {
 	ENEMY
 }
 
+var figure_setup = {
+	0 : "Pawn",
+	1 : "Pawn",
+	2 : "Pawn",
+	3 : "Pawn",
+	4 : "Pawn",
+	5 : "Pawn",
+	6 : "Pawn",
+	7 : "Pawn",
+	8 : "Pawn",
+	9 : "Rook",
+	10 : "Knight",
+	11 : "Bishop",
+	12 : "King",
+	13 : "Queen",
+	14 : "Bishop",
+	15 : "Knight",
+	16 : "Rook",
+}
+
+
 func set_gamemanager(value):
 	game_manager = value
 
@@ -21,7 +42,7 @@ func get_gamemanager():
 	return game_manager
 
 func _ready():
-	game_manager = get_tree().root.get_node("Game")
+	game_manager = get_tree().root.get_node_or_null("Game")
 	
 func _remove_duplicates_from_array (array_with_dupes : Array):
 	var array_no_dupes = []
@@ -144,3 +165,37 @@ func get_random_from_array(array):
 
 func shake_screen(intensity : float, duration : float = 1, dir : Vector2 = Vector2(0,0)):
 	get_gamemanager().get_node("Camera2D").shake_screen(intensity, duration, dir)
+
+func get_figurine_sprite(figurine):
+	match(figurine):
+		"Pawn":
+			return preload("res://Ressources/Figurines/Pawn.png")
+		"Knight":
+			return preload("res://Ressources/Figurines/Knight.png")
+		"Bishop":
+			return preload("res://Ressources/Figurines/Bishop.png")
+		"Rook":
+			return preload("res://Ressources/Figurines/Rook.png")
+		"Queen":
+			return preload("res://Ressources/Figurines/Queen.png")
+		"King":
+			return preload("res://Ressources/Figurines/King.png")
+		"":
+			return null
+
+func get_figurine_value(figurine):
+	match(figurine):
+		"Pawn":
+			return 1
+		"Knight":
+			return 3
+		"Bishop":
+			return 3
+		"Rook":
+			return 5
+		"Queen":
+			return 10
+		"King":
+			return 0
+		"":
+			return 0

@@ -1,0 +1,533 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Scripts/PurchaseFigureButton.gd" type="Script" id=1]
+[ext_resource path="res://Ressources/Board/BackgroundOverlay.png" type="Texture" id=2]
+[ext_resource path="res://Ressources/Board/Background.png" type="Texture" id=3]
+[ext_resource path="res://Ressources/Figurines/Pawn.png" type="Texture" id=4]
+[ext_resource path="res://Ressources/Board/Available0.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/TeamSetup.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Cell.gd" type="Script" id=7]
+[ext_resource path="res://Ressources/Figurines/Rook.png" type="Texture" id=8]
+[ext_resource path="res://Ressources/Figurines/Bishop.png" type="Texture" id=9]
+[ext_resource path="res://Ressources/Figurines/Queen.png" type="Texture" id=10]
+[ext_resource path="res://Ressources/Figurines/Knight.png" type="Texture" id=11]
+[ext_resource path="res://Ressources/Fonts/PixelFont.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Scripts/InfoPanel.gd" type="Script" id=13]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.419608, 0.333333, 0.333333, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.156863, 0.156863, 0.156863, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.494118, 0.494118, 1 )
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.701961, 0.615686, 0.615686, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 1
+shadow_offset = Vector2( 3, 3 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.701961, 0.615686, 0.615686, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.247059, 0.164706, 0.164706, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 1
+shadow_offset = Vector2( 3, 3 )
+
+[node name="TeamSetup" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 512, 296 )
+texture = ExtResource( 3 )
+
+[node name="BackgroundOverlay" type="Sprite" parent="."]
+position = Vector2( 512, 296 )
+texture = ExtResource( 2 )
+
+[node name="Slots" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Available" type="TextureButton" parent="Slots"]
+margin_left = 232.0
+margin_top = 480.0
+margin_right = 296.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Rook"
+number = 8
+
+[node name="Available2" type="TextureButton" parent="Slots"]
+margin_left = 304.0
+margin_top = 480.0
+margin_right = 368.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Knight"
+number = 9
+
+[node name="Available3" type="TextureButton" parent="Slots"]
+margin_left = 376.0
+margin_top = 480.0
+margin_right = 440.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Bishop"
+number = 10
+
+[node name="Available4" type="TextureButton" parent="Slots"]
+margin_left = 232.0
+margin_top = 408.0
+margin_right = 296.0
+margin_bottom = 472.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Pawn"
+
+[node name="Available5" type="TextureButton" parent="Slots"]
+margin_left = 304.0
+margin_top = 408.0
+margin_right = 368.0
+margin_bottom = 472.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Pawn"
+number = 1
+
+[node name="Available6" type="TextureButton" parent="Slots"]
+margin_left = 376.0
+margin_top = 408.0
+margin_right = 440.0
+margin_bottom = 472.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Pawn"
+number = 2
+
+[node name="Available7" type="TextureButton" parent="Slots"]
+margin_left = 448.0
+margin_top = 408.0
+margin_right = 512.0
+margin_bottom = 472.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Pawn"
+number = 3
+
+[node name="Available8" type="TextureButton" parent="Slots"]
+margin_left = 448.0
+margin_top = 480.0
+margin_right = 512.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "King"
+editable = false
+number = 11
+
+[node name="Available9" type="TextureButton" parent="Slots"]
+margin_left = 520.0
+margin_top = 408.0
+margin_right = 584.0
+margin_bottom = 472.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Pawn"
+number = 4
+
+[node name="Available10" type="TextureButton" parent="Slots"]
+margin_left = 520.0
+margin_top = 480.0
+margin_right = 584.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Queen"
+number = 12
+
+[node name="Available11" type="TextureButton" parent="Slots"]
+margin_left = 592.0
+margin_top = 408.0
+margin_right = 656.0
+margin_bottom = 472.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Pawn"
+number = 5
+
+[node name="Available12" type="TextureButton" parent="Slots"]
+margin_left = 592.0
+margin_top = 480.0
+margin_right = 656.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Bishop"
+number = 13
+
+[node name="Available13" type="TextureButton" parent="Slots"]
+margin_left = 664.0
+margin_top = 408.0
+margin_right = 728.0
+margin_bottom = 472.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Pawn"
+number = 6
+
+[node name="Available14" type="TextureButton" parent="Slots"]
+margin_left = 664.0
+margin_top = 480.0
+margin_right = 728.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Knight"
+number = 14
+
+[node name="Available15" type="TextureButton" parent="Slots"]
+margin_left = 736.0
+margin_top = 480.0
+margin_right = 800.0
+margin_bottom = 544.0
+rect_min_size = Vector2( 64, 64 )
+rect_pivot_offset = Vector2( 0, 56 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Rook"
+number = 15
+
+[node name="Available16" type="TextureButton" parent="Slots"]
+margin_left = 736.0
+margin_top = 408.0
+margin_right = 800.0
+margin_bottom = 472.0
+rect_min_size = Vector2( 64, 64 )
+rect_pivot_offset = Vector2( 0, 56 )
+texture_normal = ExtResource( 5 )
+expand = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+figure = "Pawn"
+number = 7
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 168.0
+margin_top = 64.0
+margin_right = 848.0
+margin_bottom = 384.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 711.0
+margin_bottom = 315.0
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/HBoxContainer"]
+margin_right = 596.0
+margin_bottom = 310.0
+rect_min_size = Vector2( 500, 250 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 6
+
+[node name="Pawn" type="TextureButton" parent="PanelContainer/HBoxContainer/GridContainer"]
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+expand = true
+script = ExtResource( 1 )
+cost = 0
+unit_name = ""
+
+[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/GridContainer/Pawn"]
+margin_left = 27.0
+margin_top = 107.0
+margin_right = 67.0
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pawn2" type="TextureButton" parent="PanelContainer/HBoxContainer/GridContainer"]
+margin_left = 100.0
+margin_right = 196.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+texture_normal = ExtResource( 4 )
+expand = true
+script = ExtResource( 1 )
+
+[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/GridContainer/Pawn2"]
+margin_left = 27.0
+margin_top = 107.0
+margin_right = 67.0
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knight" type="TextureButton" parent="PanelContainer/HBoxContainer/GridContainer"]
+margin_left = 200.0
+margin_right = 296.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+texture_normal = ExtResource( 11 )
+expand = true
+script = ExtResource( 1 )
+cost = 3
+unit_name = "Knight"
+
+[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/GridContainer/Knight"]
+margin_left = 27.0
+margin_top = 107.0
+margin_right = 67.0
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bishop" type="TextureButton" parent="PanelContainer/HBoxContainer/GridContainer"]
+margin_left = 300.0
+margin_right = 396.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+texture_normal = ExtResource( 9 )
+expand = true
+script = ExtResource( 1 )
+cost = 3
+unit_name = "Bishop"
+
+[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/GridContainer/Bishop"]
+margin_left = 27.0
+margin_top = 107.0
+margin_right = 67.0
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rook" type="TextureButton" parent="PanelContainer/HBoxContainer/GridContainer"]
+margin_left = 400.0
+margin_right = 496.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+texture_normal = ExtResource( 8 )
+expand = true
+script = ExtResource( 1 )
+cost = 5
+unit_name = "Rook"
+
+[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/GridContainer/Rook"]
+margin_left = 27.0
+margin_top = 107.0
+margin_right = 67.0
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Queen" type="TextureButton" parent="PanelContainer/HBoxContainer/GridContainer"]
+margin_left = 500.0
+margin_right = 596.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 96 )
+texture_normal = ExtResource( 10 )
+expand = true
+script = ExtResource( 1 )
+cost = 10
+unit_name = "Queen"
+
+[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/GridContainer/Queen"]
+margin_left = 27.0
+margin_top = 107.0
+margin_right = 67.0
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoPanel" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
+margin_left = 600.0
+margin_right = 706.0
+margin_bottom = 310.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 13 )
+
+[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/InfoPanel"]
+margin_top = 145.0
+margin_right = 106.0
+margin_bottom = 165.0
+custom_fonts/font = ExtResource( 12 )
+text = "Total: 0/40"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Accept" type="Button" parent="."]
+margin_left = 448.0
+margin_top = 328.0
+margin_right = 573.0
+margin_bottom = 370.0
+custom_fonts/font = ExtResource( 12 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "ACCEPT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Slots/Available" to="Slots/Available" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available2" to="Slots/Available2" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available3" to="Slots/Available3" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available4" to="Slots/Available4" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available5" to="Slots/Available5" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available6" to="Slots/Available6" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available7" to="Slots/Available7" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available8" to="Slots/Available8" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available9" to="Slots/Available9" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available10" to="Slots/Available10" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available11" to="Slots/Available11" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available12" to="Slots/Available12" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available13" to="Slots/Available13" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available14" to="Slots/Available14" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available15" to="Slots/Available15" method="_on_Available_pressed"]
+[connection signal="pressed" from="Slots/Available16" to="Slots/Available16" method="_on_Available_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Pawn" to="PanelContainer/HBoxContainer/GridContainer/Pawn" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Pawn2" to="PanelContainer/HBoxContainer/GridContainer/Pawn2" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Knight" to="PanelContainer/HBoxContainer/GridContainer/Knight" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Bishop" to="PanelContainer/HBoxContainer/GridContainer/Bishop" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Rook" to="PanelContainer/HBoxContainer/GridContainer/Rook" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Queen" to="PanelContainer/HBoxContainer/GridContainer/Queen" method="_on_pressed"]
+[connection signal="pressed" from="Accept" to="." method="_on_Accept_pressed"]
