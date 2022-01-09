@@ -1,6 +1,8 @@
 extends Node2D
 
+export var movement = Vector2(0,1)
 var turn_done = false
+var _tpos
 
 func _ready():
 	Helper.game_manager.enemies.append(self)
@@ -9,9 +11,23 @@ func die():
 	Helper.game_manager.enemies.erase(self)
 	$AnimationPlayer.play("Death")
 
+func move_to_position(pos):
+	_tpos = pos
+	if Helper.check_position(pos) == Helper.cell_content.ALLY:
+		Helper.get_figure_at_position(pos).die()
+
+func _process(delta):
+	if _tpos:
+		if global_position.distance_to(_tpos) > .1:
+			global_position = lerp(global_position, _tpos, .1)
+		else:
+			global_position = _tpos
+			_tpos = null
+
 func execute():
-	modulate = Color.blue
-	yield(get_tree().create_timer(2), "timeout")
+	modulate = Color.aqua
+	yield(get_tree().create_timer(1), "timeout")
+	move_to_position(global_position + movement * Helper.grid_size)
 	modulate = Color.white
 	turn_done = true
 

@@ -58,6 +58,8 @@ func _on_Area2D_mouse_entered():
 func _on_Area2D_mouse_exited():
 	_mouse_inside = false
 
+func die():
+	call_deferred("free")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "PickedUp":

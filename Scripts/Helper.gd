@@ -79,6 +79,11 @@ func check_position(position) -> int:
 			return cell_content.ENEMY
 	return cell_content.FREE
 
+func get_figure_at_position(position):
+	for figure in Helper.game_manager.figures:
+		if figure.global_position == position:
+			return figure
+
 func get_enemy_at_position(position):
 	for enemy in Helper.game_manager.enemies:
 		if enemy.global_position == position:
