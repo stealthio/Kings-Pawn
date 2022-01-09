@@ -1,6 +1,4 @@
-tool
 extends Node2D
-
 
 var _grid_size = 64
 export var _game_size = Vector2(1,1) setget set_gamesize
@@ -17,7 +15,6 @@ func build():
 	var counter = Vector2(1,1)
 	while counter.y <= _game_size.y :
 		counter.x = 1
-		
 		while counter.x <= _game_size.x :
 			var s = Sprite.new()
 			
@@ -26,7 +23,7 @@ func build():
 			else : s.texture = preload("res://Ressources/Board/White0.png")
 			
 			add_child(s)
-			s.global_position = Vector2((counter.x*_grid_size) + offset.x ,(counter.y*_grid_size) + offset.y)
+			s.global_position = global_position + Vector2((counter.x*_grid_size) + offset.x ,(counter.y*_grid_size) + offset.y)
 				
 			counter.x += 1
 			
