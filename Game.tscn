@@ -1651,12 +1651,14 @@ z_index = 1
 
 [node name="Pawn" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 32, 416 )
+movement = [ Vector2( 0, 1 ) ]
 opener_movement = Vector2( 0, 2 )
 killer_movement = Vector2( 1, 1 )
 inversion = false
 
 [node name="Pawn2" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 96, 416 )
+movement = [ Vector2( 0, 1 ) ]
 opener_movement = Vector2( 0, 2 )
 killer_movement = Vector2( 1, 1 )
 inversion = false
@@ -1670,6 +1672,7 @@ anims/RESET = SubResource( 35 )
 
 [node name="Pawn3" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 160, 416 )
+movement = [ Vector2( 0, 1 ) ]
 opener_movement = Vector2( 0, 2 )
 killer_movement = Vector2( 1, 1 )
 inversion = false
@@ -1683,6 +1686,7 @@ anims/RESET = SubResource( 40 )
 
 [node name="Pawn4" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 224, 416 )
+movement = [ Vector2( 0, 1 ) ]
 opener_movement = Vector2( 0, 2 )
 killer_movement = Vector2( 1, 1 )
 inversion = false
@@ -1696,6 +1700,7 @@ anims/RESET = SubResource( 45 )
 
 [node name="Pawn5" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 288, 416 )
+movement = [ Vector2( 0, 1 ) ]
 opener_movement = Vector2( 0, 2 )
 killer_movement = Vector2( 1, 1 )
 inversion = false
@@ -1709,6 +1714,7 @@ anims/RESET = SubResource( 50 )
 
 [node name="Pawn6" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 352, 416 )
+movement = [ Vector2( 0, 1 ) ]
 opener_movement = Vector2( 0, 2 )
 killer_movement = Vector2( 1, 1 )
 inversion = false
@@ -1722,6 +1728,7 @@ anims/RESET = SubResource( 55 )
 
 [node name="Pawn7" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 416, 416 )
+movement = [ Vector2( 0, 1 ) ]
 opener_movement = Vector2( 0, 2 )
 killer_movement = Vector2( 1, 1 )
 inversion = false
@@ -1735,6 +1742,7 @@ anims/RESET = SubResource( 60 )
 
 [node name="Pawn8" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 480, 416 )
+movement = [ Vector2( 0, 1 ) ]
 opener_movement = Vector2( 0, 2 )
 killer_movement = Vector2( 1, 1 )
 inversion = false
@@ -1748,14 +1756,14 @@ anims/RESET = SubResource( 65 )
 
 [node name="Knight" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 96, 480 )
-movement = Vector2( 1, 2 )
+movement = [ Vector2( 1, 2 ) ]
 
 [node name="Sprite" parent="Board/YSort/Knight" index="0"]
 texture = ExtResource( 3 )
 
 [node name="Knight2" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 416, 480 )
-movement = Vector2( 1, 2 )
+movement = [ Vector2( 1, 2 ) ]
 
 [node name="Sprite" parent="Board/YSort/Knight2" index="0"]
 texture = ExtResource( 3 )
@@ -1769,7 +1777,8 @@ anims/RESET = SubResource( 70 )
 
 [node name="King" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 224, 480 )
-movement = Vector2( 1, 1 )
+movement = [ Vector2( 1, 1 ) ]
+opener_movement = Vector2( 1, 1 )
 inversion = false
 addition = true
 
@@ -1785,6 +1794,8 @@ anims/RESET = SubResource( 12 )
 
 [node name="Rook" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 32, 480 )
+movement = [ Vector2( 1, 0 ) ]
+opener_movement = Vector2( 1, 0 )
 endless = true
 
 [node name="Sprite" parent="Board/YSort/Rook" index="0"]
@@ -1799,6 +1810,8 @@ anims/RESET = SubResource( 20 )
 
 [node name="Rook2" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 480, 480 )
+movement = [ Vector2( 1, 0 ) ]
+opener_movement = Vector2( 1, 0 )
 endless = true
 
 [node name="Sprite" parent="Board/YSort/Rook2" index="0"]
@@ -1813,7 +1826,8 @@ anims/RESET = SubResource( 75 )
 
 [node name="Bishop" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 160, 480 )
-movement = Vector2( 1, 1 )
+movement = [ Vector2( 1, 1 ) ]
+opener_movement = Vector2( 1, 1 )
 inversion = false
 endless = true
 
@@ -1829,7 +1843,8 @@ anims/RESET = SubResource( 25 )
 
 [node name="Bishop2" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 352, 480 )
-movement = Vector2( 1, 1 )
+movement = [ Vector2( 1, 1 ) ]
+opener_movement = Vector2( 1, 1 )
 inversion = false
 endless = true
 
@@ -1845,8 +1860,8 @@ anims/RESET = SubResource( 80 )
 
 [node name="Queen" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 288, 480 )
-movement = Vector2( 1, 1 )
-inversion = false
+movement = [ Vector2( 1, 1 ), Vector2( 1, 0 ) ]
+endless = true
 
 [node name="Sprite" parent="Board/YSort/Queen" index="0"]
 texture = ExtResource( 10 )
