@@ -15,7 +15,7 @@ func spawn():
 	if Helper.check_position(tpos) == Helper.cell_content.FREE:
 		enemy.global_position = tpos
 	else:
-		enemy.call_deferred("free")
+		enemy.die(true)
 
 func spawn_logic():
 	if rand_range(0, 100) < chance_to_spawn_per_round:

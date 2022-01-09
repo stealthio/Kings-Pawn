@@ -7,9 +7,12 @@ var _tpos
 func _ready():
 	Helper.game_manager.enemies.append(self)
 
-func die():
+func die(without_animation = false):
 	Helper.game_manager.enemies.erase(self)
-	$AnimationPlayer.play("Death")
+	if without_animation:
+		queue_free()
+	else:
+		$AnimationPlayer.play("Death")
 
 func move_to_position(pos):
 	_tpos = pos
@@ -26,7 +29,7 @@ func _process(delta):
 
 func execute():
 	modulate = Color.aqua
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(.5), "timeout")
 	move_to_position(global_position + movement * Helper.grid_size)
 	modulate = Color.white
 	turn_done = true
