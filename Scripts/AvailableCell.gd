@@ -4,8 +4,13 @@ var connected_figure
 var _mouse_inside = false
 var type = Helper.cell_content.FREE
 
-func check_position():
+# parameter only_on_enemy erases the cell if its not put onto an enemy
+func check_position(only_on_enemy = false):
 	type = Helper.check_position(global_position)
+	if only_on_enemy and type != Helper.cell_content.ENEMY:
+		Helper.temporary_cells.erase(self)
+		queue_free()
+		return
 	match(type):
 		Helper.cell_content.ALLY:
 			self_modulate = Color.red
