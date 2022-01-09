@@ -10,6 +10,9 @@ signal on_turn_end
 signal on_turn_begin
 signal on_enemy_pre_execute
 
+func _init():
+	randomize()
+
 func end_turn():
 	is_player_turn = false
 	for enemy in enemies:

@@ -115,3 +115,20 @@ func get_enemy_at_position(position):
 	for enemy in Helper.game_manager.enemies:
 		if enemy.global_position == position:
 			return enemy
+
+func show_text_at_position(text, pos, duration = 3.0):
+	var label = Label.new()
+	label.align = Label.ALIGN_CENTER
+	label.set_script(preload("res://Scripts/DialogueLabel.gd"))
+	label.add_font_override("font", preload("res://Ressources/Fonts/PixelFont.tres"))
+	game_manager.get_node("UI").add_child(label)
+	label.rect_position = pos
+	var timer = Timer.new()
+	label.add_child(timer)
+	timer.connect("timeout", label, "fade")
+	timer.start(duration)
+	label.show_text(text)
+	return label
+
+func get_random_from_array(array):
+	return array[randi() % array.size()]

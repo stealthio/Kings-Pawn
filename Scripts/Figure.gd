@@ -13,6 +13,9 @@ var _tpos = null
 var _ppos = null
 var _opener_used = false
 
+signal on_kill
+signal on_death
+
 func _ready():
 	Helper.game_manager.figures.append(self)
 	$AnimationPlayer.play("Idle")
@@ -49,6 +52,7 @@ func move_to_position(pos, end_turn = true):
 
 func kill_at_position(pos):
 	move_to_position(pos, false)
+	emit_signal("on_kill", pos)
 
 func _process(delta):
 	if Input.is_action_just_pressed("select") and Helper.game_manager.is_player_turn:
@@ -72,6 +76,7 @@ func _on_Area2D_mouse_exited():
 	_mouse_inside = false
 
 func die():
+	emit_signal("on_death")
 	call_deferred("free")
 
 func _on_AnimationPlayer_animation_finished(anim_name):

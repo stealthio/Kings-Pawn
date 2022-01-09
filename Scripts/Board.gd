@@ -21,13 +21,12 @@ func build():
 			if int(counter.x) %2 == 0 and int(counter.y) %2 == 1: s.texture = preload("res://Ressources/Board/Black0.png")
 			elif int(counter.x) %2 == 1 and int(counter.y) %2 == 0: s.texture = preload("res://Ressources/Board/Black0.png")
 			else : s.texture = preload("res://Ressources/Board/White0.png")
-			
 			add_child(s)
 			s.global_position = global_position + Vector2((counter.x*_grid_size) + offset.x ,(counter.y*_grid_size) + offset.y)
 				
 			counter.x += 1
 			
 		counter.y += 1
-# Called when the node enters the scene tree for the first time.
+		
 func _ready() -> void:
 	build()
