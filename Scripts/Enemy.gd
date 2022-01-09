@@ -9,13 +9,14 @@ signal on_death
 
 func _ready():
 	Helper.game_manager.enemies.append(self)
+	$AnimationPlayer.play("Appear")
 	
 func die(without_animation = false):
 	Helper.game_manager.enemies.erase(self)
-	emit_signal("on_death")
 	if without_animation:
 		queue_free()
 	else:
+		emit_signal("on_death")
 		$AnimationPlayer.play("Death")
 
 func move_to_position(pos):
@@ -40,5 +41,7 @@ func execute():
 	turn_done = true
 
 func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Appear":
+		$AnimationPlayer.play("Idle")
 	if anim_name == "Death":
 		queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Ressources/Enemies/Pawn.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
@@ -6,6 +6,46 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "Appear"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 1.2 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Death"
@@ -101,6 +141,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 25 ) ]
+}
 
 [sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -134,6 +186,7 @@ offset = Vector2( 0, -25 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Appear = SubResource( 8 )
 anims/Death = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/RESET = SubResource( 4 )
@@ -148,7 +201,7 @@ process_material = SubResource( 7 )
 
 [node name="Dialogue" type="Node2D" parent="."]
 script = ExtResource( 3 )
-position_offset = Vector2( -40, -60 )
+position_offset = Vector2( -40, -50 )
 color = Color( 0.94902, 0.0784314, 0.0784314, 1 )
 opening_dialogue_chance = 5
 opening_dialogues = PoolStringArray( "Get their treasure!", "Spare no one!", "Hit them in the meow meow!", "1 v 1 me!", "Pillage time!" )
