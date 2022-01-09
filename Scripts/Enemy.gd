@@ -3,6 +3,8 @@ extends Node2D
 export var movement = Vector2(0,1)
 var turn_done = false
 var _tpos
+var _dangerzone = []
+
 
 signal on_kill
 signal on_death
@@ -10,6 +12,7 @@ signal on_death
 func _ready():
 	Helper.game_manager.append_enemy(self)
 	$AnimationPlayer.play("Appear")
+	draw_dangerzone()
 	
 func die(without_animation = false):
 	Helper.game_manager.enemies.erase(self)
@@ -23,6 +26,7 @@ func move_to_position(pos):
 	_tpos = pos
 	if Helper.check_position(pos) == Helper.cell_content.ALLY:
 		Helper.get_figure_at_position(pos).die()
+		$KillParticles.emitting = true
 		emit_signal("on_kill", pos)
 
 func _process(delta):
@@ -38,7 +42,22 @@ func execute():
 	yield(get_tree().create_timer(.5), "timeout")
 	move_to_position(global_position + movement * Helper.grid_size)
 	modulate = Color.white
+	draw_dangerzone()
 	turn_done = true
+
+func clear_dangerzone():
+	for d in _dangerzone:
+		d.call_deferred("free")
+	_dangerzone.clear()
+
+func draw_dangerzone():
+	clear_dangerzone()
+	var t = global_position + movement * Helper.grid_size
+	var dz = Sprite.new()
+	dz.texture = preload("res://Ressources/Board/Targeted.png")
+	add_child(dz)
+	_dangerzone.append(dz)
+	dz.global_position = t
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Appear":
@@ -47,4 +66,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		queue_free()
 
 func on_squish():
+	clear_dangerzone()
 	Helper.shake_screen(10, 0.25, Vector2(1,1))

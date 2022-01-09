@@ -21,6 +21,7 @@ func append_enemy(enemy):
 	emit_signal("on_enemy_added", enemy)
 
 func end_turn():
+	yield(get_tree().create_timer(.25), "timeout")
 	is_player_turn = false
 	for enemy in enemies:
 		enemy.turn_done = false
@@ -42,6 +43,7 @@ func _process(delta):
 					break
 			if current_enemy.turn_done:
 				emit_signal("on_turn_begin")
+				yield(get_tree().create_timer(.25), "timeout")
 				is_player_turn = true
 				current_enemy = null
 
