@@ -58,6 +58,7 @@ func draw_dangerzone():
 	add_child(dz)
 	_dangerzone.append(dz)
 	dz.global_position = t
+	dz.visible = false
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Appear":
@@ -68,3 +69,13 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func on_squish():
 	clear_dangerzone()
 	Helper.shake_screen(10, 0.25, Vector2(1,1))
+
+
+func _on_Area2D_mouse_entered():
+	for dz in _dangerzone:
+		dz.visible = true
+
+
+func _on_Area2D_mouse_exited():
+	for dz in _dangerzone:
+		dz.visible = false

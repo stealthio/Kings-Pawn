@@ -251,4 +251,6 @@ opening_dialogues = PoolStringArray( "Get their treasure!", "Spare no one!", "Hi
 kill_dialogues = PoolStringArray( "Easy peasy!", "HAHAHA!", "Rekt!", "Ezy", "ff" )
 death_dialogues = PoolStringArray( "Cheater...", "You... can\'t stop us...", "Unfair...", "Help me...", "Spare me..." )
 
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
