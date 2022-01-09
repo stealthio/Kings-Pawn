@@ -725,7 +725,6 @@ anims/RESET = SubResource( 12 )
 
 [node name="Rook" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 288, 288 )
-movement = Vector2( 1, 0 )
 endless = true
 
 [node name="Sprite" parent="YSort/Rook" index="0"]

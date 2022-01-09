@@ -37,39 +37,26 @@ func show_available_cells(origin_pos : Vector2, movement_vector : Vector2, inver
 	var possible_positions = _get_positions_from_vec(origin_pos, movement_vector, grid_size)
 	
 	# Calculate all inverted possible positions
-	if inversion and not endless:
+	if inversion:
 		movement_vector = Vector2(movement_vector.y, movement_vector.x)
 		possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector, grid_size))
-	
+
+	# adds the different movement options with the given X and Y movement's together
 	if addition:
 		var tmp_movement = movement_vector
 		movement_vector = Vector2(tmp_movement.x, 0)
 		possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector, grid_size))
 		movement_vector = Vector2(0,tmp_movement.y)
 		possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector, grid_size))
-	
-	if endless and not inversion:
-		var tmp_movement = Vector2(movement_vector.x, movement_vector.y)
-		var counter = 0
-		while counter <= 50:
-			possible_positions.append_array(_get_positions_from_vec(origin_pos, tmp_movement, grid_size))
-			if tmp_movement.x !=0:
-				tmp_movement.x +=1
-			if tmp_movement.y !=0:
-				tmp_movement.y +=1
-			counter += 1
-	
-	if endless and inversion:
-		var tmp_movement = movement_vector
-		var counter = 1
+
+	# adds infinite movement in the given directions
+	if endless:
+		var counter = 2
 		while counter <= 100:
-			possible_positions.append_array(_get_positions_from_vec(origin_pos, tmp_movement, grid_size))
-			tmp_movement =Vector2(tmp_movement.y, tmp_movement.x)
-			possible_positions.append_array(_get_positions_from_vec(origin_pos, tmp_movement, grid_size))
-			if tmp_movement.x !=0:
-				tmp_movement.x +=1
-			if tmp_movement.y !=0:
-				tmp_movement.y +=1
+			possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector*counter, grid_size))
+			if inversion:
+				movement_vector =Vector2(movement_vector.y, movement_vector.x)
+				possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector*counter, grid_size))
 			counter += 1
 	
 	for pos in possible_positions:
