@@ -17,6 +17,7 @@ func _init():
 	
 func append_enemy(enemy):
 	enemies.append(enemy)
+	enemy.connect("on_death", self, "check_victory")
 	emit_signal("on_enemy_added", enemy)
 
 func end_turn():
@@ -43,3 +44,10 @@ func _process(delta):
 				emit_signal("on_turn_begin")
 				is_player_turn = true
 				current_enemy = null
+
+func restart():
+	get_tree().reload_current_scene()
+
+func check_victory():
+	if enemies.empty():
+		$UI/Victory.visible = true

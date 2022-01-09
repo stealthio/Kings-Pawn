@@ -2,7 +2,7 @@ extends Node2D
 
 var grid_size = 64
 
-var game_manager = null
+var game_manager = null setget set_gamemanager, get_gamemanager
 
 var temporary_cells = []
 
@@ -11,6 +11,14 @@ enum cell_content {
 	ALLY,
 	ENEMY
 }
+
+func set_gamemanager(value):
+	game_manager = value
+
+func get_gamemanager():
+	if !game_manager or !is_instance_valid(game_manager):
+		game_manager = get_tree().root.get_node("Game")
+	return game_manager
 
 func _ready():
 	game_manager = get_tree().root.get_node("Game")
@@ -89,7 +97,7 @@ func show_available_cells(origin_pos : Vector2, movement_array : Array, inversio
 			var s = preload("res://Scenes/AvailableCell.tscn").instance()
 			temporary_cells.append(s)
 			s.connected_figure = object_reference
-			Helper.game_manager.add_child(s)
+			get_gamemanager().add_child(s)
 			s.global_position = pos
 			s.check_position(only_on_enemy)
 	
@@ -98,21 +106,21 @@ func show_available_cells(origin_pos : Vector2, movement_array : Array, inversio
 # 1 if ally
 # 2 if enemy
 func check_position(position) -> int:
-	for figure in Helper.game_manager.figures:
+	for figure in get_gamemanager().figures:
 		if figure.global_position == position:
 			return cell_content.ALLY
-	for enemy in Helper.game_manager.enemies:
+	for enemy in get_gamemanager().enemies:
 		if enemy.global_position == position:
 			return cell_content.ENEMY
 	return cell_content.FREE
 
 func get_figure_at_position(position):
-	for figure in Helper.game_manager.figures:
+	for figure in get_gamemanager().figures:
 		if figure.global_position == position:
 			return figure
 
 func get_enemy_at_position(position):
-	for enemy in Helper.game_manager.enemies:
+	for enemy in get_gamemanager().enemies:
 		if enemy.global_position == position:
 			return enemy
 
@@ -121,7 +129,7 @@ func show_text_at_position(text, pos, duration = 3.0, color = Color.white):
 	label.align = Label.ALIGN_CENTER
 	label.set_script(preload("res://Scripts/DialogueLabel.gd"))
 	label.add_font_override("font", preload("res://Ressources/Fonts/PixelFont.tres"))
-	game_manager.get_node("UI").add_child(label)
+	get_gamemanager().get_node("UI").add_child(label)
 	label.rect_position = pos
 	label.modulate = color
 	var timer = Timer.new()
@@ -133,3 +141,6 @@ func show_text_at_position(text, pos, duration = 3.0, color = Color.white):
 
 func get_random_from_array(array):
 	return array[randi() % array.size()]
+
+func shake_screen(intensity : float, duration : float = 1, dir : Vector2 = Vector2(0,0)):
+	get_gamemanager().get_node("Camera2D").shake_screen(intensity, duration, dir)

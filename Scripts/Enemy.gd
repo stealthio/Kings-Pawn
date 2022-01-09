@@ -45,3 +45,6 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$AnimationPlayer.play("Idle")
 	if anim_name == "Death":
 		queue_free()
+
+func on_squish():
+	Helper.shake_screen(10, 0.25, Vector2(1,1))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://Scenes/Figurine.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Ressources/Fonts/PixelFont.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Ressources/Board/Background.png" type="Texture" id=13]
 [ext_resource path="res://Scripts/KilledEnemiesDisplay.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=15]
 
 [sub_resource type="Animation" id=31]
 resource_name = "FloatingIdle"
@@ -1639,6 +1640,30 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
+[sub_resource type="StyleBoxFlat" id=82]
+bg_color = Color( 0.737255, 0.737255, 0.737255, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_top = 4.0
+
+[sub_resource type="StyleBoxFlat" id=83]
+bg_color = Color( 0.580392, 0.580392, 0.580392, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_top = 4.0
+
+[sub_resource type="StyleBoxFlat" id=81]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_top = 4.0
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 7 )
 
@@ -1889,6 +1914,14 @@ script = ExtResource( 11 )
 start_pos = Vector2( 320, 82 )
 spawn_count = Vector2( 1, 3 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 512, 301 )
+current = true
+zoom = Vector2( 0.95, 0.95 )
+script = ExtResource( 15 )
+
+[node name="Timer" type="Timer" parent="Camera2D"]
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="UI"]
@@ -1906,6 +1939,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Victory" type="Label" parent="UI"]
+visible = false
+margin_left = 460.0
+margin_top = 223.0
+margin_right = 588.0
+margin_bottom = 266.0
+rect_pivot_offset = Vector2( 34, 10 )
+custom_fonts/font = ExtResource( 12 )
+text = "Victory!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="UI/Victory"]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 112.0
+margin_bottom = 58.0
+custom_fonts/font = ExtResource( 12 )
+custom_styles/hover = SubResource( 82 )
+custom_styles/pressed = SubResource( 83 )
+custom_styles/normal = SubResource( 81 )
+text = "Restart"
+
 [node name="KilledEnemies" type="GridContainer" parent="UI"]
 margin_left = 800.0
 margin_right = 953.0
@@ -1915,6 +1973,8 @@ script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="pressed" from="UI/Victory/Button" to="." method="restart"]
 
 [editable path="Board/YSort/Pawn"]
 [editable path="Board/YSort/Pawn2"]

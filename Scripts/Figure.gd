@@ -77,6 +77,7 @@ func _on_Area2D_mouse_exited():
 
 func die():
 	emit_signal("on_death")
+	Helper.shake_screen(10, 0.25, Vector2(1,1))
 	call_deferred("free")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
