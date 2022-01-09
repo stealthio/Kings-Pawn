@@ -1,6 +1,8 @@
 extends Node2D
 
 export var movement = Vector2(0,1)
+export var opener = Vector2(0,0)
+
 export var inversion = true # Allow the axis to be exchanged?
 export var addition = false # Allow the axis to be added to each other
 export var endless = false # Allow the axis to be endless
@@ -8,6 +10,7 @@ var selected = false setget setSelected
 var _mouse_inside = false
 var _tpos = null
 var _ppos = null
+var _opener_used = false
 
 func _ready():
 	Helper.game_manager.figures.append(self)
@@ -25,13 +28,17 @@ func setSelected(value):
 		$AnimationPlayer.play("PickedUp")
 	$Sprite.self_modulate = Color.aqua if selected else Color.white
 	if selected:
-		Helper.show_available_cells(global_position, movement, inversion, addition, endless, self)
+		if !_opener_used and opener != Vector2(0,0):
+			Helper.show_available_cells(global_position, opener, inversion, addition, endless, self)
+		else:
+			Helper.show_available_cells(global_position, movement, inversion, addition, endless, self)
 	elif _mouse_inside:
 		$AnimationPlayer.play("PutDown")
 		Helper.clear_available_cells()
 
 func move_to_position(pos):
 	_tpos = pos
+	_opener_used = true
 	Helper.game_manager.end_turn()
 
 func kill_at_position(pos):

@@ -1954,10 +1954,12 @@ z_index = 1
 
 [node name="Pawn" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 32, 416 )
+opener = Vector2( 0, 2 )
 inversion = false
 
 [node name="Pawn2" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 96, 416 )
+opener = Vector2( 0, 2 )
 inversion = false
 
 [node name="AnimationPlayer" parent="Board/YSort/Pawn2" index="2"]
@@ -1969,6 +1971,7 @@ anims/RESET = SubResource( 35 )
 
 [node name="Pawn3" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 160, 416 )
+opener = Vector2( 0, 2 )
 inversion = false
 
 [node name="AnimationPlayer" parent="Board/YSort/Pawn3" index="2"]
@@ -1980,6 +1983,7 @@ anims/RESET = SubResource( 40 )
 
 [node name="Pawn4" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 224, 416 )
+opener = Vector2( 0, 2 )
 inversion = false
 
 [node name="AnimationPlayer" parent="Board/YSort/Pawn4" index="2"]
@@ -1991,6 +1995,7 @@ anims/RESET = SubResource( 45 )
 
 [node name="Pawn5" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 288, 416 )
+opener = Vector2( 0, 2 )
 inversion = false
 
 [node name="AnimationPlayer" parent="Board/YSort/Pawn5" index="2"]
@@ -2002,6 +2007,7 @@ anims/RESET = SubResource( 50 )
 
 [node name="Pawn6" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 352, 416 )
+opener = Vector2( 0, 2 )
 inversion = false
 
 [node name="AnimationPlayer" parent="Board/YSort/Pawn6" index="2"]
@@ -2013,6 +2019,7 @@ anims/RESET = SubResource( 55 )
 
 [node name="Pawn7" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 416, 416 )
+opener = Vector2( 0, 2 )
 inversion = false
 
 [node name="AnimationPlayer" parent="Board/YSort/Pawn7" index="2"]
@@ -2024,6 +2031,7 @@ anims/RESET = SubResource( 60 )
 
 [node name="Pawn8" parent="Board/YSort" instance=ExtResource( 1 )]
 position = Vector2( 480, 416 )
+opener = Vector2( 0, 2 )
 inversion = false
 
 [node name="AnimationPlayer" parent="Board/YSort/Pawn8" index="2"]
