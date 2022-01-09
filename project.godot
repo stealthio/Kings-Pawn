@@ -18,6 +18,10 @@ config/icon="res://icon.png"
 
 Helper="*res://Scenes/Helper.tscn"
 
+[display]
+
+window/stretch/mode="2d"
+
 [importer_defaults]
 
 texture={

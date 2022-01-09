@@ -1889,6 +1889,7 @@ texture = ExtResource( 6 )
 [node name="SpawnManager" type="Node2D" parent="."]
 script = ExtResource( 11 )
 start_pos = Vector2( 320, 82 )
+spawn_count = Vector2( 1, 4 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
