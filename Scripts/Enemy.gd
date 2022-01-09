@@ -4,11 +4,15 @@ export var movement = Vector2(0,1)
 var turn_done = false
 var _tpos
 
+signal on_kill
+signal on_death
+
 func _ready():
 	Helper.game_manager.enemies.append(self)
-
+	
 func die(without_animation = false):
 	Helper.game_manager.enemies.erase(self)
+	emit_signal("on_death")
 	if without_animation:
 		queue_free()
 	else:
@@ -18,6 +22,7 @@ func move_to_position(pos):
 	_tpos = pos
 	if Helper.check_position(pos) == Helper.cell_content.ALLY:
 		Helper.get_figure_at_position(pos).die()
+		emit_signal("on_kill", pos)
 
 func _process(delta):
 	if _tpos:

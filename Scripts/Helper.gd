@@ -116,13 +116,14 @@ func get_enemy_at_position(position):
 		if enemy.global_position == position:
 			return enemy
 
-func show_text_at_position(text, pos, duration = 3.0):
+func show_text_at_position(text, pos, duration = 3.0, color = Color.white):
 	var label = Label.new()
 	label.align = Label.ALIGN_CENTER
 	label.set_script(preload("res://Scripts/DialogueLabel.gd"))
 	label.add_font_override("font", preload("res://Ressources/Fonts/PixelFont.tres"))
 	game_manager.get_node("UI").add_child(label)
 	label.rect_position = pos
+	label.modulate = color
 	var timer = Timer.new()
 	label.add_child(timer)
 	timer.connect("timeout", label, "fade")

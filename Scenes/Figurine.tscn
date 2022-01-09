@@ -144,6 +144,7 @@ anims/RESET = SubResource( 3 )
 
 [node name="Dialogue" type="Node2D" parent="."]
 script = ExtResource( 3 )
+position_offset = Vector2( -40, -40 )
 opening_dialogues = PoolStringArray( "Let\'s do this!", "For the king!", "Kill those bandits!", "Protect the queen!", "RNGesus be with us!" )
 kill_dialogues = PoolStringArray( "Take that!", "Got you!", "For Narnia!", "Rock and Stone!", "Filthy Landlubber!" )
 death_dialogues = PoolStringArray( "Argh!", "For... the... king...", "It\'s just a fleshwound", "Tis\' but a scratch", "Delete my browser history..." )

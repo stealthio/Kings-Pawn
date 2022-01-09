@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Ressources/Enemies/Pawn.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Dialogue.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -144,5 +145,14 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 0.88
 process_material = SubResource( 7 )
+
+[node name="Dialogue" type="Node2D" parent="."]
+script = ExtResource( 3 )
+position_offset = Vector2( -40, -60 )
+color = Color( 0.94902, 0.0784314, 0.0784314, 1 )
+opening_dialogue_chance = 5
+opening_dialogues = PoolStringArray( "Get their treasure!", "Spare no one!", "Hit them in the meow meow!", "1 v 1 me!", "Pillage time!" )
+kill_dialogues = PoolStringArray( "Easy peasy!", "HAHAHA!", "Rekt!", "Ezy", "ff" )
+death_dialogues = PoolStringArray( "Cheater...", "You... can\'t stop us...", "Unfair...", "Help me...", "Spare me..." )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
