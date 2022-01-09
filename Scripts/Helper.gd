@@ -13,7 +13,6 @@ enum cell_content {
 }
 
 var figure_setup = {
-	0 : "Pawn",
 	1 : "Pawn",
 	2 : "Pawn",
 	3 : "Pawn",

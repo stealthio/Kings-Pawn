@@ -110,6 +110,18 @@ custom_styles/pressed = SubResource( 83 )
 custom_styles/normal = SubResource( 81 )
 text = "Restart"
 
+[node name="Button2" type="Button" parent="UI/Victory"]
+margin_left = -4.0
+margin_top = 73.0
+margin_right = 136.0
+margin_bottom = 103.0
+rect_min_size = Vector2( 140, 30 )
+custom_fonts/font = ExtResource( 12 )
+custom_styles/hover = SubResource( 82 )
+custom_styles/pressed = SubResource( 83 )
+custom_styles/normal = SubResource( 81 )
+text = "Figure Setup"
+
 [node name="KilledEnemies" type="GridContainer" parent="UI"]
 margin_left = 800.0
 margin_right = 953.0
@@ -121,3 +133,4 @@ __meta__ = {
 }
 
 [connection signal="pressed" from="UI/Victory/Button" to="." method="restart"]
+[connection signal="pressed" from="UI/Victory/Button2" to="." method="figure_setup"]

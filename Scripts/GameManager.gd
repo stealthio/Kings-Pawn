@@ -114,3 +114,7 @@ func restart():
 func check_victory():
 	if enemies.empty():
 		$UI/Victory.visible = true
+
+
+func figure_setup():
+	get_tree().change_scene("res://Scenes/TeamSetup.tscn")
