@@ -65,7 +65,10 @@ func execute():
 	for vec in attack:
 		if attack_pos(global_position + vec * Helper.grid_size):
 			return
-	if !attack_pos(global_position + movement * Helper.grid_size):
+	if move_can_kill:
+		if !attack_pos(global_position + movement * Helper.grid_size):
+			move_to_position(global_position + movement * Helper.grid_size)
+	else:
 		move_to_position(global_position + movement * Helper.grid_size)
 	draw_dangerzone()
 
