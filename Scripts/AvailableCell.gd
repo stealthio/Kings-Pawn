@@ -20,6 +20,7 @@ func check_position(only_on_enemy = false):
 func _process(delta):
 	if Input.is_action_just_pressed("select"):
 		if _mouse_inside:
+			check_position()
 			match(type):
 				Helper.cell_content.FREE:
 					connected_figure.move_to_position(global_position)

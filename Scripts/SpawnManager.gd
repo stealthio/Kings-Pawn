@@ -10,7 +10,8 @@ func _ready():
 	difficulty = Helper.current_difficulty
 	Helper.game_manager.connect("on_turn_begin", self, "spawn_logic")
 	yield(get_tree(), "idle_frame")
-	spawn()
+	for i in spawn_count[difficulty].y:
+		spawn()
 
 func spawn():
 	var enemy = preload("res://Scenes/Enemy.tscn").instance()

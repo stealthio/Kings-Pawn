@@ -12,16 +12,22 @@ var _mouse_inside = false
 var _tpos = null
 var _ppos = null
 var _opener_used = false
+var used = false
 
 signal on_kill
 signal on_death
 
 func _ready():
 	Helper.game_manager.figures.append(self)
+	Helper.game_manager.connect("on_turn_end", self, "on_turn_end")
 	$AnimationPlayer.play("Idle")
 
 func _exit_tree():
 	Helper.game_manager.figures.erase(self)
+
+func on_turn_end():
+	used = false
+	modulate = Color.white
 
 func setSelected(value):
 	if _tpos != null:
@@ -52,6 +58,8 @@ func move_to_position(pos, end_turn = true):
 
 func kill_at_position(pos):
 	move_to_position(pos, false)
+	used = true
+	modulate = Color.darkgray
 	emit_signal("on_kill", pos)
 
 func _process(delta):
@@ -63,20 +71,23 @@ func _process(delta):
 				$AnimationPlayer.play("PutDown")
 			setSelected(false)
 	if _tpos:
-		if global_position.distance_to(_tpos) > .1:
-			global_position = lerp(global_position, _tpos, .1)
+		if global_position.distance_to(_tpos) > 1:
+			global_position = lerp(global_position, _tpos, .2)
 		else:
 			global_position = _tpos
 			_tpos = null
 
 func _on_Area2D_mouse_entered():
-	_mouse_inside = true
+	if !used:
+		_mouse_inside = true
 
 func _on_Area2D_mouse_exited():
 	_mouse_inside = false
 
 func die():
 	emit_signal("on_death")
+	if $Sprite.texture == preload("res://Ressources/Figurines/King.png"):
+		Helper.game_manager.lose("The king died!")
 	Helper.shake_screen(10, 0.25, Vector2(1,1))
 	call_deferred("free")
 

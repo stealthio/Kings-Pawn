@@ -23,6 +23,9 @@ func die(without_animation = false):
 		$AnimationPlayer.play("Death")
 
 func move_to_position(pos):
+	# check for lose
+	if pos.y > Helper.bottom_of_board:
+		Helper.game_manager.lose("An enemy reached the castle!")
 	_tpos = pos
 	if Helper.check_position(pos) == Helper.cell_content.ALLY:
 		Helper.get_figure_at_position(pos).die()
@@ -31,8 +34,8 @@ func move_to_position(pos):
 
 func _process(delta):
 	if _tpos:
-		if global_position.distance_to(_tpos) > .1:
-			global_position = lerp(global_position, _tpos, .1)
+		if global_position.distance_to(_tpos) > 1:
+			global_position = lerp(global_position, _tpos, .2)
 		else:
 			global_position = _tpos
 			_tpos = null

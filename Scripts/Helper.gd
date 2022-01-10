@@ -1,6 +1,7 @@
 extends Node2D
 
 var grid_size = 64
+var bottom_of_board = 560
 var current_difficulty = difficulty.EASY
 
 

@@ -37,6 +37,9 @@ expand_margin_top = 4.0
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 7 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 562.0, 496.0, 560.0 ]
+}
 
 [node name="Board" parent="." instance=ExtResource( 2 )]
 position = Vector2( 288, 50 )
@@ -126,6 +129,59 @@ custom_styles/pressed = SubResource( 83 )
 custom_styles/normal = SubResource( 81 )
 text = "Figure Setup"
 
+[node name="Lose" type="Label" parent="UI"]
+visible = false
+margin_left = 460.0
+margin_top = 223.0
+margin_right = 588.0
+margin_bottom = 266.0
+rect_pivot_offset = Vector2( 34, 10 )
+custom_fonts/font = ExtResource( 12 )
+text = "You lost"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reason" type="Label" parent="UI/Lose"]
+margin_left = -180.0
+margin_top = 25.0
+margin_right = 320.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 500, 0 )
+rect_pivot_offset = Vector2( 34, 10 )
+custom_fonts/font = ExtResource( 12 )
+text = "Your King died!"
+align = 1
+valign = 1
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="UI/Lose"]
+margin_left = 16.0
+margin_top = 73.0
+margin_right = 112.0
+margin_bottom = 99.0
+custom_fonts/font = ExtResource( 12 )
+custom_styles/hover = SubResource( 82 )
+custom_styles/pressed = SubResource( 83 )
+custom_styles/normal = SubResource( 81 )
+text = "Restart"
+
+[node name="Button2" type="Button" parent="UI/Lose"]
+margin_left = -4.0
+margin_top = 114.0
+margin_right = 136.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 140, 30 )
+custom_fonts/font = ExtResource( 12 )
+custom_styles/hover = SubResource( 82 )
+custom_styles/pressed = SubResource( 83 )
+custom_styles/normal = SubResource( 81 )
+text = "Figure Setup"
+
 [node name="KilledEnemies" type="GridContainer" parent="UI"]
 margin_left = 800.0
 margin_right = 953.0
@@ -138,3 +194,5 @@ __meta__ = {
 
 [connection signal="pressed" from="UI/Victory/Button" to="." method="restart"]
 [connection signal="pressed" from="UI/Victory/Button2" to="." method="figure_setup"]
+[connection signal="pressed" from="UI/Lose/Button" to="." method="restart"]
+[connection signal="pressed" from="UI/Lose/Button2" to="." method="figure_setup"]

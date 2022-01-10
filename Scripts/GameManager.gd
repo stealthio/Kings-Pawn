@@ -83,7 +83,6 @@ func append_enemy(enemy):
 	emit_signal("on_enemy_added", enemy)
 
 func end_turn():
-	yield(get_tree().create_timer(.25), "timeout")
 	is_player_turn = false
 	for enemy in enemies:
 		enemy.turn_done = false
@@ -115,6 +114,9 @@ func check_victory():
 	if enemies.empty():
 		$UI/Victory.visible = true
 
+func lose(reason):
+	$UI/Lose.visible = true
+	$UI/Lose/Reason.text = reason
 
 func figure_setup():
 	get_tree().change_scene("res://Scenes/TeamSetup.tscn")
