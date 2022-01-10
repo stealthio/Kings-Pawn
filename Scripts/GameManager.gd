@@ -112,6 +112,7 @@ func restart():
 
 func check_victory(enemy):
 	if enemies.empty():
+		Helper.play_sound(preload("res://Ressources/SFX/winSound.wav"), 1)
 		$UI/Victory.visible = true
 
 func lose(reason):

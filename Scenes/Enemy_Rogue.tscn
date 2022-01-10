@@ -326,7 +326,7 @@ process_material = SubResource( 7 )
 
 [node name="Dialogue" type="Node2D" parent="."]
 script = ExtResource( 2 )
-position_offset = Vector2( -40, -50 )
+position_offset = Vector2( -70, -50 )
 color = Color( 0.94902, 0.0784314, 0.0784314, 1 )
 opening_dialogue_chance = 5
 opening_dialogues = PoolStringArray( "I\'ll go from behind!", "Cover me!", "Fast and deadly!", "This is a robbery!", "They won\'t see it coming." )
