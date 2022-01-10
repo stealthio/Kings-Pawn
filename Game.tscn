@@ -227,7 +227,6 @@ mrpoly - Menu Music
 kheftel - Minimalist Pixel Fonts
 https://sfxr.me/"
 valign = 1
-script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -279,7 +278,6 @@ mrpoly - Menu Music
 kheftel - Minimalist Pixel Fonts
 https://sfxr.me/"
 valign = 1
-script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
