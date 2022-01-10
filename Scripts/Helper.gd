@@ -52,6 +52,7 @@ func get_gamemanager():
 func _ready():
 	game_manager = get_tree().root.get_node_or_null("Game")
 	
+	
 func _remove_duplicates_from_array (array_with_dupes : Array):
 	var array_no_dupes = []
 	var array_dupes =[]
@@ -95,6 +96,31 @@ func _get_positions_single_direction(pos, vec, grid):
 	var p = [pos + vec * grid]
 	return p
 	
+func _get_positions_endless(pos, vec, grid):
+	var counter = 1
+	var movement : Array
+	while counter < 10:
+		movement.append_array(_get_positions_single_direction(pos, Vector2(vec.x*counter, vec.y*counter), grid))
+		if check_position(movement[movement.size()-1]) != 0:
+			break 
+		counter +=1
+	return movement
+	
+func _calculate_positions_endless(origin_pos, movement_vector, grid_size):
+	var possible_positions =[]
+	if movement_vector.x !=0:
+		possible_positions.append_array(_get_positions_endless(origin_pos, Vector2(movement_vector.x, movement_vector.y), grid_size))
+		possible_positions.append_array(_get_positions_endless(origin_pos, Vector2((movement_vector.x*-1), movement_vector.y), grid_size))
+		#Y vector up
+	if movement_vector.y !=0:
+		possible_positions.append_array(_get_positions_endless(origin_pos, Vector2(movement_vector.x, movement_vector.y), grid_size))
+		possible_positions.append_array(_get_positions_endless(origin_pos, Vector2(movement_vector.x, (movement_vector.y*-1)), grid_size))
+	# Doublevector up
+	if movement_vector.y and movement_vector.x !=0:
+		possible_positions.append_array(_get_positions_endless(origin_pos, Vector2(movement_vector.x, movement_vector.y), grid_size))
+		possible_positions.append_array(_get_positions_endless(origin_pos, Vector2(movement_vector.x*-1, movement_vector.y*-1), grid_size))	
+	return possible_positions
+	
 # Expects an actual position (e.g. 420, 69) and a relative movement vector (e.g. 1, 2) for the movable cells
 # It will display a blue overlay at all the possible positions the player may move
 func show_available_cells(origin_pos : Vector2, movement_array : Array, inversion: bool, addition: bool, endless: bool, object_reference, only_on_enemy : bool = false):	
@@ -114,108 +140,12 @@ func show_available_cells(origin_pos : Vector2, movement_array : Array, inversio
 			movement_vector = Vector2(0,tmp_movement.y)
 			possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector, grid_size))
 		# adds infinite movement in the given directions
-		# @TODO endless needs to be broken down into the directions to be able to break in all directions on enemy/friendly contact
 		if endless:
-			var counter = 1
-			var pos_check
-			#X vector right
-			if movement_vector.x !=0:
-				counter = 1
-				while counter < 10:
-					possible_positions.append_array(_get_positions_single_direction(origin_pos, movement_vector*counter, grid_size))
-					if check_position(possible_positions[possible_positions.size()-1]) != 0:
-						break 
-					counter +=1
-			#X vector left
-			if movement_vector.x !=0:
-				counter = 1
-				while counter < 10:
-					possible_positions.append_array(_get_positions_single_direction(origin_pos, Vector2(movement_vector.x*-1*counter, movement_vector.y*counter), grid_size))
-					if check_position(possible_positions[possible_positions.size()-1]) != 0:
-						break 
-					counter +=1
-			#Y vector up
-			if movement_vector.y !=0:
-				counter = 1
-				while counter < 10:
-					possible_positions.append_array(_get_positions_single_direction(origin_pos, movement_vector*counter, grid_size))
-					if check_position(possible_positions[possible_positions.size()-1]) != 0:
-						break 
-					counter +=1
-			#Y vector down
-			if movement_vector.y !=0:
-				counter = 1
-				while counter < 10:
-					possible_positions.append_array(_get_positions_single_direction(origin_pos, Vector2(movement_vector.x*counter, movement_vector.y*-1*counter), grid_size))
-					if check_position(possible_positions[possible_positions.size()-1]) != 0:
-						break 
-					counter +=1
-			# Doublevector up
-			if movement_vector.y and movement_vector.x !=0:
-				counter = 1
-				while counter < 10:
-					possible_positions.append_array(_get_positions_single_direction(origin_pos, Vector2(movement_vector.x*counter, movement_vector.y*counter), grid_size))
-					if check_position(possible_positions[possible_positions.size()-1]) != 0:
-						break 
-					counter +=1
-			# Doublevector down
-			if movement_vector.y and movement_vector.x !=0:
-				counter = 1
-				while counter < 10:
-					possible_positions.append_array(_get_positions_single_direction(origin_pos, Vector2(movement_vector.x*-1*counter, movement_vector.y*-1*counter), grid_size))
-					if check_position(possible_positions[possible_positions.size()-1]) != 0:
-						break 
-					counter +=1
+			possible_positions.append_array(_calculate_positions_endless(origin_pos, movement_vector, grid_size))
 			if inversion:
 				movement_vector =Vector2(movement_vector.y, movement_vector.x)
-				#X vector right
-				if movement_vector.x !=0:
-					counter = 1
-					while counter < 10:
-						possible_positions.append_array(_get_positions_single_direction(origin_pos, movement_vector*counter, grid_size))
-						if check_position(possible_positions[possible_positions.size()-1]) != 0:
-							break 
-						counter +=1
-				#X vector left
-				if movement_vector.x !=0:
-					counter = 1
-					while counter < 10:
-						possible_positions.append_array(_get_positions_single_direction(origin_pos, Vector2((movement_vector.x*-1)*counter, movement_vector.y*counter), grid_size))
-						if check_position(possible_positions[possible_positions.size()-1]) != 0:
-							break 
-						counter +=1
-				#Y vector up
-				if movement_vector.y !=0:
-					counter = 1
-					while counter < 10:
-						possible_positions.append_array(_get_positions_single_direction(origin_pos, movement_vector*counter, grid_size))
-						if check_position(possible_positions[possible_positions.size()-1]) != 0:
-							break 
-						counter +=1
-				#Y vector down
-				if movement_vector.y !=0:
-					counter = 1
-					while counter < 10:
-						possible_positions.append_array(_get_positions_single_direction(origin_pos, Vector2(movement_vector.x*counter, (movement_vector.y*-1)*counter), grid_size))
-						if check_position(possible_positions[possible_positions.size()-1]) != 0:
-							break 
-						counter +=1
-				# Doublevector up
-				if movement_vector.y and movement_vector.x !=0:
-					counter = 1
-					while counter < 10:
-						possible_positions.append_array(_get_positions_single_direction(origin_pos, Vector2(movement_vector.x*counter, movement_vector.y*counter), grid_size))
-						if check_position(possible_positions[possible_positions.size()-1]) != 0:
-							break 
-						counter +=1
-				# Doublevector down
-				if movement_vector.y and movement_vector.x !=0:
-					counter = 1
-					while counter < 10:
-						possible_positions.append_array(_get_positions_single_direction(origin_pos, Vector2(movement_vector.x*-1*counter, movement_vector.y*-1*counter), grid_size))
-						if check_position(possible_positions[possible_positions.size()-1]) != 0:
-							break 
-						counter +=1
+				possible_positions.append_array(_calculate_positions_endless(origin_pos, movement_vector, grid_size))
+			
 		possible_positions= _remove_duplicates_from_array(possible_positions)
 		for pos in possible_positions:
 			var s = preload("res://Scenes/AvailableCell.tscn").instance()
