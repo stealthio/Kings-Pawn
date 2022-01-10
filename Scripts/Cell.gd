@@ -17,6 +17,7 @@ func _ready():
 	connect("mouse_exited", self, "on_mouse_exited")
 
 func on_mouse_entered():
+	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
 	self_modulate = Color.red
 	name_label.text = figure
 
@@ -26,6 +27,7 @@ func on_mouse_exited():
 
 func _on_Available_pressed():
 	if editable:
+		Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
 		get_parent().get_parent().select_cell(self)
 
 func set_figurine(figurine):

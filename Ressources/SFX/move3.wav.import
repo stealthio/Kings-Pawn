@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/move3.wav-47f5ae035db748b510792af6154f5d40.sample"
+
+[deps]
+
+source_file="res://Ressources/SFX/move3.wav"
+dest_files=[ "res://.import/move3.wav-47f5ae035db748b510792af6154f5d40.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

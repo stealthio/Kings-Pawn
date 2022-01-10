@@ -21,8 +21,10 @@ func die(without_animation = false):
 	else:
 		emit_signal("on_death", self)
 		$AnimationPlayer.play("Death")
+		
 
 func move_to_position(pos):
+	Helper.play_sound(Helper.get_random_from_array([preload("res://Ressources/SFX/move1.wav"),preload("res://Ressources/SFX/move2.wav"),preload("res://Ressources/SFX/move3.wav")])  )
 	# check for lose
 	if pos.y > Helper.bottom_of_board:
 		Helper.game_manager.lose("An enemy reached the castle!")
@@ -71,6 +73,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func on_squish():
 	clear_dangerzone()
+	Helper.play_sound(preload("res://Ressources/SFX/enemyDeath.wav"))
 	Helper.shake_screen(10, 0.25, Vector2(1,1))
 
 

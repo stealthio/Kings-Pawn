@@ -23,6 +23,7 @@ func select_cell(cell):
 func _on_Accept_pressed():
 	if current_value > max_value:
 		return
+	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
 	var slots = $Slots.get_children()
 	var figures = {}
 	for slot in slots:

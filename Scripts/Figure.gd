@@ -32,6 +32,7 @@ func setSelected(value):
 	selected = value
 	if selected:
 		Helper.clear_available_cells()
+		Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
 		$AnimationPlayer.play("PickedUp")
 	$Sprite.self_modulate = Color.aqua if selected else Color.white
 	if selected:
@@ -50,6 +51,7 @@ func setSelected(value):
 func move_to_position(pos, end_turn = true):
 	_tpos = pos
 	_opener_used = true
+	Helper.play_sound(Helper.get_random_from_array([preload("res://Ressources/SFX/move1.wav"),preload("res://Ressources/SFX/move2.wav"),preload("res://Ressources/SFX/move3.wav")])  )
 	if end_turn:
 		Helper.game_manager.end_turn()
 
@@ -77,11 +79,16 @@ func _process(delta):
 func _on_Area2D_mouse_entered():
 	if !used:
 		_mouse_inside = true
+		Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
+		modulate = Color.darkgray
 
 func _on_Area2D_mouse_exited():
 	_mouse_inside = false
+	if !used:
+		modulate = Color.white
 
 func die():
+	Helper.play_sound(preload("res://Ressources/SFX/figureDeath.wav"))
 	Helper.game_manager.figures.erase(self)
 	emit_signal("on_death", self)
 	if $Sprite.texture == preload("res://Ressources/Figurines/King.png"):

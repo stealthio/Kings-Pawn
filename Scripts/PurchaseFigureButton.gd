@@ -12,6 +12,7 @@ func _ready():
 	connect("mouse_exited", self, "on_mouse_exited")
 
 func on_mouse_entered():
+	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
 	self_modulate = Color.aqua
 	name_label.text = unit_name
 
@@ -20,6 +21,7 @@ func on_mouse_exited():
 	name_label.text = ""
 
 func _on_pressed():
+	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
 	if teamsetup.selected_cell:
 		teamsetup.selected_cell.set_figurine(unit_name)
 		teamsetup.set_current_value(teamsetup.get_current_value() + cost)

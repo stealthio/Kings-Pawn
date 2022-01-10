@@ -208,3 +208,7 @@ func get_figurine_value(figurine):
 			return 0
 		"":
 			return 0
+
+func play_sound(sfx):
+	$SFX.stream = sfx
+	$SFX.play(0)
