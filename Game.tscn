@@ -39,7 +39,7 @@ expand_margin_top = 4.0
 [node name="Game" type="Node2D"]
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 562.0, 496.0, 560.0 ]
+"_edit_horizontal_guides_": [ 562.0, 656.0, 560.0 ]
 }
 
 [node name="Board" parent="." instance=ExtResource( 2 )]
@@ -69,6 +69,7 @@ script = ExtResource( 11 )
 start_pos = Vector2( 320, 82 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2( 544, 296 )
 current = true
 zoom = Vector2( 0.95, 0.95 )
@@ -89,6 +90,37 @@ text = "Turn: 1
 Player Phase"
 align = 1
 script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="UI"]
+margin_left = 24.0
+margin_top = 528.0
+margin_right = 180.0
+margin_bottom = 594.0
+rect_pivot_offset = Vector2( 34, 10 )
+custom_fonts/font = ExtResource( 12 )
+text = "Objective:
+Clean the board
+from enemies"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="UI"]
+margin_left = 800.0
+margin_top = 504.0
+margin_right = 996.0
+margin_bottom = 593.0
+rect_pivot_offset = Vector2( 34, 10 )
+custom_fonts/font = ExtResource( 12 )
+text = "Don't:
+- Let the King die        
+- Let a Bandit reach
+the Castle"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
