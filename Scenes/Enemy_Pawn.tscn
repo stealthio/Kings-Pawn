@@ -1,0 +1,262 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Dialogue.gd" type="Script" id=2]
+[ext_resource path="res://Ressources/Enemies/Pawn.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "Appear"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 1.2 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Particles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.1 ), Vector2( 1, 0.25 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "on_squish"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.98, 0.95 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Particles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 25 ) ]
+}
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.49467, 0.654545 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+flag_disable_z = true
+direction = Vector3( 1, 2, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 150.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 100.0
+scale = 15.0
+scale_curve = SubResource( 6 )
+color = Color( 0.517647, 0, 0, 1 )
+hue_variation = -0.1
+hue_variation_random = 0.5
+
+[sub_resource type="ParticlesMaterial" id=7]
+flag_disable_z = true
+direction = Vector3( 1, 2, 0 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 300.0
+orbit_velocity = 0.5
+orbit_velocity_random = 0.0
+scale = 15.0
+scale_curve = SubResource( 6 )
+color = Color( 0.517647, 0, 0, 1 )
+hue_variation = -0.1
+hue_variation_random = 0.5
+
+[sub_resource type="OccluderPolygon2D" id=10]
+polygon = PoolVector2Array( -18, 27, -23, 18, -23, 4, -12, -8, -12, -16, -16, -17, -16, -24, 0, -28, 13, -23, 13, -5, 20, 1, 20, 23, 11, 28 )
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 25 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -25 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Appear = SubResource( 8 )
+anims/Death = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 0, 18 )
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.88
+process_material = SubResource( 9 )
+
+[node name="KillParticles" type="Particles2D" parent="."]
+position = Vector2( -38, -15 )
+emitting = false
+amount = 16
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.5
+local_coords = false
+process_material = SubResource( 7 )
+
+[node name="Dialogue" type="Node2D" parent="."]
+script = ExtResource( 2 )
+position_offset = Vector2( -40, -50 )
+color = Color( 0.94902, 0.0784314, 0.0784314, 1 )
+opening_dialogue_chance = 5
+opening_dialogues = PoolStringArray( "Get their treasure!", "Spare no one!", "Hit them in the meow meow!", "1 v 1 me!", "Pillage time!" )
+kill_dialogues = PoolStringArray( "Easy peasy!", "HAHAHA!", "Rekt!", "Ezy", "ff" )
+death_dialogues = PoolStringArray( "Cheater...", "You... can\'t stop us...", "Unfair...", "Help me...", "Spare me..." )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 10 )
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

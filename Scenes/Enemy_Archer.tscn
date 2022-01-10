@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Ressources/Enemies/Pawn.png" type="Texture" id=1]
+[ext_resource path="res://Ressources/Enemies/Archer.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Dialogue.gd" type="Script" id=3]
 
@@ -209,6 +209,8 @@ polygon = PoolVector2Array( -18, 27, -23, 18, -23, 4, -12, -8, -12, -16, -16, -1
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 2 )
+attack = PoolVector2Array( 0, 2, 1, 2, -1, 2, 2, 1, -2, 1 )
+move_can_kill = false
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 25 )

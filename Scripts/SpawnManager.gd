@@ -4,6 +4,8 @@ export var start_pos = Vector2(0,0)
 export var cell_count = 8
 export var spawn_count = [Vector2(0,2), Vector2(1,4), Vector2(3,6)] # a value between x..y
 export var chance_to_spawn_per_round = [60,90,100]
+export var possible_enemies = [[0],[0,1],[0,1]]
+var enemies = [preload("res://Scenes/Enemy_Pawn.tscn"), preload("res://Scenes/Enemy_Archer.tscn")]
 var difficulty = Helper.difficulty.EASY
 
 func _ready():
@@ -14,7 +16,7 @@ func _ready():
 		spawn()
 
 func spawn():
-	var enemy = preload("res://Scenes/Enemy.tscn").instance()
+	var enemy = enemies[Helper.get_random_from_array(possible_enemies[difficulty])].instance()
 	Helper.game_manager.get_node("Board").get_node("YSort").add_child(enemy)
 	var tpos = start_pos + Vector2((int(rand_range(0,8)) * Helper.grid_size),0)
 	if Helper.check_position(tpos) == Helper.cell_content.FREE:

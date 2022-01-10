@@ -1,6 +1,9 @@
 extends Node2D
 
 export var movement = Vector2(0,1)
+export var attack : PoolVector2Array = []
+export var move_on_kill = false
+export var move_can_kill = true
 var turn_done = false
 var _tpos
 var _dangerzone = []
@@ -23,16 +26,24 @@ func die(without_animation = false):
 		$AnimationPlayer.play("Death")
 		
 
+func attack_pos(pos):
+	if Helper.check_position(pos) == Helper.cell_content.ALLY:
+		Helper.get_figure_at_position(pos).die()
+		$KillParticles.emitting = true
+		emit_signal("on_kill", pos)
+		return true
+	return false
+
 func move_to_position(pos):
+	if !move_can_kill:
+		if Helper.check_position(pos) != Helper.cell_content.FREE:
+			return
 	Helper.play_sound(Helper.get_random_from_array([preload("res://Ressources/SFX/move1.wav"),preload("res://Ressources/SFX/move2.wav"),preload("res://Ressources/SFX/move3.wav")])  )
 	# check for lose
 	if pos.y > Helper.bottom_of_board:
 		Helper.game_manager.lose("An enemy reached the castle!")
 	_tpos = pos
-	if Helper.check_position(pos) == Helper.cell_content.ALLY:
-		Helper.get_figure_at_position(pos).die()
-		$KillParticles.emitting = true
-		emit_signal("on_kill", pos)
+	attack_pos(pos)
 
 func _process(delta):
 	if _tpos:
@@ -45,7 +56,17 @@ func _process(delta):
 func execute():
 	modulate = Color.aqua
 	yield(get_tree().create_timer(.5), "timeout")
-	move_to_position(global_position + movement * Helper.grid_size)
+	# attack or move
+	var attacked = false
+	for vec in attack:
+		var tp = global_position + vec * Helper.grid_size
+		if attack_pos(tp):
+			attacked = true
+			if move_on_kill:
+				move_to_position(global_position + movement * Helper.grid_size)
+			break
+	if !attacked:
+		move_to_position(global_position + movement * Helper.grid_size)
 	modulate = Color.white
 	draw_dangerzone()
 	turn_done = true
@@ -55,15 +76,24 @@ func clear_dangerzone():
 		d.call_deferred("free")
 	_dangerzone.clear()
 
-func draw_dangerzone():
-	clear_dangerzone()
-	var t = global_position + movement * Helper.grid_size
+func _create_dz_at_pos(pos):
 	var dz = Sprite.new()
 	dz.texture = preload("res://Ressources/Board/Targeted.png")
 	add_child(dz)
 	_dangerzone.append(dz)
-	dz.global_position = t
+	dz.global_position = pos
 	dz.visible = false
+	return dz
+
+func draw_dangerzone():
+	clear_dangerzone()
+	if move_can_kill:
+		var t = global_position + movement * Helper.grid_size
+		_create_dz_at_pos(t)
+	# attack
+	for vec in attack:
+		var tp = global_position + vec * Helper.grid_size
+		_create_dz_at_pos(tp)
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Appear":
