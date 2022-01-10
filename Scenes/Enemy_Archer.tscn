@@ -1,8 +1,18 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Ressources/Enemies/Archer.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Dialogue.gd" type="Script" id=3]
+[ext_resource path="res://Ressources/Effects/Bow/Bow1.png" type="Texture" id=4]
+[ext_resource path="res://Ressources/Effects/Bow/Bow9.png" type="Texture" id=5]
+[ext_resource path="res://Ressources/Effects/Bow/Bow2.png" type="Texture" id=6]
+[ext_resource path="res://Ressources/Effects/Bow/Bow3.png" type="Texture" id=7]
+[ext_resource path="res://Ressources/Effects/Bow/Bow4.png" type="Texture" id=8]
+[ext_resource path="res://Ressources/Effects/Bow/Bow10.png" type="Texture" id=9]
+[ext_resource path="res://Ressources/Effects/Bow/Bow7.png" type="Texture" id=10]
+[ext_resource path="res://Ressources/Effects/Bow/Bow5.png" type="Texture" id=11]
+[ext_resource path="res://Ressources/Effects/Bow/Bow8.png" type="Texture" id=12]
+[ext_resource path="res://Ressources/Effects/Bow/Bow6.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -45,6 +55,33 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bow:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bow:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 5 ), ExtResource( 9 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -167,6 +204,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 0, 25 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Bow:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Bow:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 4 ) ]
+}
 
 [sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.49467, 0.654545 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -211,6 +272,7 @@ polygon = PoolVector2Array( -18, 27, -23, 18, -23, 4, -12, -8, -12, -16, -16, -1
 script = ExtResource( 2 )
 attack = PoolVector2Array( 0, 2, 1, 2, -1, 2 )
 move_can_kill = false
+ranged = true
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 25 )
@@ -224,6 +286,7 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Appear = SubResource( 8 )
+anims/Attack = SubResource( 11 )
 anims/Death = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/RESET = SubResource( 4 )
@@ -258,6 +321,10 @@ death_dialogues = PoolStringArray( "QwQ", "Ouch...", "Should\'ve stayed in the f
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource( 10 )
+
+[node name="Bow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 4 )
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
