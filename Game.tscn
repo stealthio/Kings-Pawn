@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Ressources/Board/Board.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=2]
@@ -9,11 +9,18 @@
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=7]
 [ext_resource path="res://Ressources/Board/Lantern.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/Flickering.gd" type="Script" id=9]
+[ext_resource path="res://Ressources/Fonts/Minimal5x7.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://Scripts/SpawnManager.gd" type="Script" id=11]
 [ext_resource path="res://Ressources/Fonts/PixelFont.tres" type="DynamicFont" id=12]
 [ext_resource path="res://Ressources/Board/Background.png" type="Texture" id=13]
 [ext_resource path="res://Scripts/KilledEnemiesDisplay.gd" type="Script" id=14]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=15]
+
+[sub_resource type="DynamicFont" id=84]
+size = 64
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 10 )
 
 [sub_resource type="StyleBoxFlat" id=82]
 bg_color = Color( 0.737255, 0.737255, 0.737255, 1 )
@@ -38,6 +45,8 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 expand_margin_top = 4.0
+shadow_size = 2
+shadow_offset = Vector2( 4, 4 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 7 )
@@ -127,11 +136,11 @@ script = ExtResource( 15 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="UI"]
-margin_left = 460.0
+[node name="TurnLabel" type="Label" parent="UI"]
+margin_left = 463.0
 margin_top = 5.0
-margin_right = 528.0
-margin_bottom = 25.0
+margin_right = 591.0
+margin_bottom = 48.0
 rect_pivot_offset = Vector2( 34, 10 )
 custom_fonts/font = ExtResource( 12 )
 text = "Turn: 1
@@ -142,7 +151,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="UI"]
+[node name="Objective" type="Label" parent="UI"]
 margin_left = 24.0
 margin_top = 528.0
 margin_right = 180.0
@@ -157,7 +166,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="UI"]
+[node name="LoseCondition" type="Label" parent="UI"]
 margin_left = 800.0
 margin_top = 504.0
 margin_right = 996.0
@@ -175,46 +184,49 @@ __meta__ = {
 
 [node name="Victory" type="Label" parent="UI"]
 visible = false
-margin_left = 460.0
-margin_top = 223.0
-margin_right = 588.0
-margin_bottom = 266.0
+margin_left = 447.0
+margin_top = 71.0
+margin_right = 607.0
+margin_bottom = 114.0
 rect_pivot_offset = Vector2( 34, 10 )
-custom_fonts/font = ExtResource( 12 )
+custom_fonts/font = SubResource( 84 )
 text = "Victory!"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="UI/Victory"]
-margin_left = 16.0
-margin_top = 32.0
-margin_right = 112.0
-margin_bottom = 58.0
+[node name="Restart" type="Button" parent="UI/Victory"]
+margin_left = -6.0
+margin_top = 60.0
+margin_right = 160.0
+margin_bottom = 110.0
 custom_fonts/font = ExtResource( 12 )
 custom_styles/hover = SubResource( 82 )
 custom_styles/pressed = SubResource( 83 )
 custom_styles/normal = SubResource( 81 )
 text = "Restart"
 
-[node name="Button2" type="Button" parent="UI/Victory"]
-margin_left = -4.0
-margin_top = 73.0
-margin_right = 136.0
-margin_bottom = 103.0
+[node name="Setup" type="Button" parent="UI/Victory"]
+margin_left = -6.0
+margin_top = 136.0
+margin_right = 160.0
+margin_bottom = 189.0
 rect_min_size = Vector2( 140, 30 )
 custom_fonts/font = ExtResource( 12 )
 custom_styles/hover = SubResource( 82 )
 custom_styles/pressed = SubResource( 83 )
 custom_styles/normal = SubResource( 81 )
-text = "Figure Setup"
+text = "Army Creation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Credits" type="Label" parent="UI/Victory"]
-margin_left = -156.0
-margin_top = 153.0
-margin_right = 344.0
-margin_bottom = 334.0
+margin_left = -143.0
+margin_top = 305.0
+margin_right = 357.0
+margin_bottom = 509.0
 rect_min_size = Vector2( 500, 0 )
 rect_pivot_offset = Vector2( 34, 10 )
 custom_fonts/font = ExtResource( 12 )
@@ -234,12 +246,12 @@ __meta__ = {
 
 [node name="Lose" type="Label" parent="UI"]
 visible = false
-margin_left = 460.0
-margin_top = 223.0
-margin_right = 588.0
-margin_bottom = 266.0
+margin_left = 441.0
+margin_top = 59.0
+margin_right = 601.0
+margin_bottom = 102.0
 rect_pivot_offset = Vector2( 34, 10 )
-custom_fonts/font = ExtResource( 12 )
+custom_fonts/font = SubResource( 84 )
 text = "You lost"
 align = 1
 __meta__ = {
@@ -247,10 +259,10 @@ __meta__ = {
 }
 
 [node name="Reason" type="Label" parent="UI/Lose"]
-margin_left = -180.0
-margin_top = 25.0
-margin_right = 320.0
-margin_bottom = 68.0
+margin_left = -167.0
+margin_top = 27.0
+margin_right = 333.0
+margin_bottom = 70.0
 rect_min_size = Vector2( 500, 0 )
 rect_pivot_offset = Vector2( 34, 10 )
 custom_fonts/font = ExtResource( 12 )
@@ -263,10 +275,10 @@ __meta__ = {
 }
 
 [node name="Credits" type="Label" parent="UI/Lose"]
-margin_left = -156.0
-margin_top = 153.0
-margin_right = 344.0
-margin_bottom = 334.0
+margin_left = -137.0
+margin_top = 343.0
+margin_right = 363.0
+margin_bottom = 524.0
 rect_min_size = Vector2( 500, 0 )
 rect_pivot_offset = Vector2( 34, 10 )
 custom_fonts/font = ExtResource( 12 )
@@ -283,28 +295,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="UI/Lose"]
-margin_left = 16.0
-margin_top = 73.0
-margin_right = 112.0
-margin_bottom = 99.0
+[node name="Restart" type="Button" parent="UI/Lose"]
+margin_top = 72.0
+margin_right = 166.0
+margin_bottom = 122.0
 custom_fonts/font = ExtResource( 12 )
 custom_styles/hover = SubResource( 82 )
 custom_styles/pressed = SubResource( 83 )
 custom_styles/normal = SubResource( 81 )
 text = "Restart"
 
-[node name="Button2" type="Button" parent="UI/Lose"]
-margin_left = -4.0
-margin_top = 114.0
-margin_right = 136.0
-margin_bottom = 144.0
+[node name="Setup" type="Button" parent="UI/Lose"]
+margin_top = 148.0
+margin_right = 166.0
+margin_bottom = 201.0
 rect_min_size = Vector2( 140, 30 )
 custom_fonts/font = ExtResource( 12 )
 custom_styles/hover = SubResource( 82 )
 custom_styles/pressed = SubResource( 83 )
 custom_styles/normal = SubResource( 81 )
-text = "Figure Setup"
+text = "Army Creation"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="KilledEnemies" type="GridContainer" parent="UI"]
 margin_left = 800.0
@@ -327,7 +340,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="UI/Victory/Button" to="." method="restart"]
-[connection signal="pressed" from="UI/Victory/Button2" to="." method="figure_setup"]
-[connection signal="pressed" from="UI/Lose/Button" to="." method="restart"]
-[connection signal="pressed" from="UI/Lose/Button2" to="." method="figure_setup"]
+[connection signal="pressed" from="UI/Victory/Restart" to="." method="restart"]
+[connection signal="pressed" from="UI/Victory/Setup" to="." method="figure_setup"]
+[connection signal="pressed" from="UI/Lose/Restart" to="." method="restart"]
+[connection signal="pressed" from="UI/Lose/Setup" to="." method="figure_setup"]

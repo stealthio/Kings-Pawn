@@ -140,6 +140,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 figure = "Pawn"
+active_on_start = true
 
 [node name="Available5" type="TextureButton" parent="Slots"]
 margin_left = 300.0
@@ -534,10 +535,10 @@ align = 1
 valign = 2
 
 [node name="Accept" type="Button" parent="."]
-margin_left = 448.0
-margin_top = 328.0
-margin_right = 573.0
-margin_bottom = 370.0
+margin_left = 485.0
+margin_top = 331.0
+margin_right = 610.0
+margin_bottom = 373.0
 custom_fonts/font = ExtResource( 12 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 3 )
@@ -547,16 +548,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Accept2" type="Button" parent="."]
-margin_left = 448.0
-margin_top = 280.0
-margin_right = 573.0
-margin_bottom = 322.0
+[node name="Clear" type="Button" parent="."]
+margin_left = 419.0
+margin_top = 283.0
+margin_right = 544.0
+margin_bottom = 325.0
 custom_fonts/font = ExtResource( 12 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
 text = "CLEAR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reset" type="Button" parent="."]
+margin_left = 553.0
+margin_top = 283.0
+margin_right = 678.0
+margin_bottom = 325.0
+custom_fonts/font = ExtResource( 12 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "RESET"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -584,4 +599,5 @@ __meta__ = {
 [connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Rook" to="PanelContainer/HBoxContainer/GridContainer/Rook" method="_on_pressed"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Queen" to="PanelContainer/HBoxContainer/GridContainer/Queen" method="_on_pressed"]
 [connection signal="pressed" from="Accept" to="." method="_on_Accept_pressed"]
-[connection signal="pressed" from="Accept2" to="." method="_on_Clear_pressed"]
+[connection signal="pressed" from="Clear" to="." method="_on_Clear_pressed"]
+[connection signal="pressed" from="Reset" to="." method="_on_Reset_pressed"]

@@ -58,7 +58,7 @@ func move_to_position(pos, end_turn = true):
 func kill_at_position(pos):
 	move_to_position(pos, false)
 	used = true
-	modulate = Color.darkblue
+	modulate = Color(.25,.25,.25)
 	emit_signal("on_kill", pos)
 
 func _process(delta):

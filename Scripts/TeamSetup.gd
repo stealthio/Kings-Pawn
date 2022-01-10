@@ -4,7 +4,6 @@ export var max_value = 40
 var current_value = 0 setget set_current_value, get_current_value
 
 var selected_cell
-
 signal on_value_changed
 
 func set_current_value(value):
@@ -36,3 +35,9 @@ func _on_Clear_pressed():
 	for slot in $Slots.get_children():
 		if slot.figure != "King":
 			slot.set_figurine("")
+
+
+func _on_Reset_pressed():
+	for slot in $Slots.get_children():
+		if slot.figure != "King":
+			slot.set_figurine(slot.default)

@@ -114,10 +114,14 @@ func check_victory(enemy):
 	if enemies.empty():
 		Helper.play_sound(preload("res://Ressources/SFX/winSound.wav"), 1)
 		$UI/Victory.visible = true
+		$UI/Objective.visible = false
+		$UI/LoseCondition.visible = false
 
 func lose(reason):
 	$UI/Lose.visible = true
 	$UI/Lose/Reason.text = reason
+	$UI/Objective.visible = false
+	$UI/LoseCondition.visible = false
 
 func figure_setup():
 	get_tree().change_scene("res://Scenes/TeamSetup.tscn")
