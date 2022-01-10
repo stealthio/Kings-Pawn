@@ -118,9 +118,9 @@ script = ExtResource( 11 )
 start_pos = Vector2( 320, 82 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 544, 296 )
+position = Vector2( 542, 299 )
 current = true
-zoom = Vector2( 0.95, 0.95 )
+zoom = Vector2( 0.98, 0.98 )
 script = ExtResource( 15 )
 
 [node name="Timer" type="Timer" parent="Camera2D"]

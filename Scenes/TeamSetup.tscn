@@ -68,11 +68,11 @@ shadow_offset = Vector2( 3, 3 )
 script = ExtResource( 6 )
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 512, 296 )
+position = Vector2( 512, 300 )
 texture = ExtResource( 3 )
 
 [node name="BackgroundOverlay" type="Sprite" parent="."]
-position = Vector2( 512, 296 )
+position = Vector2( 512, 300 )
 texture = ExtResource( 2 )
 
 [node name="Slots" type="Control" parent="."]
@@ -493,9 +493,7 @@ custom_styles/panel = SubResource( 2 )
 script = ExtResource( 13 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/InfoPanel"]
-margin_left = 3.0
-margin_top = 5.0
-margin_right = 120.0
+margin_right = 148.0
 margin_bottom = 310.0
 
 [node name="Info" type="Label" parent="PanelContainer/HBoxContainer/InfoPanel/VBoxContainer"]

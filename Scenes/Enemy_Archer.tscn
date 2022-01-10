@@ -252,9 +252,9 @@ script = ExtResource( 3 )
 position_offset = Vector2( -40, -50 )
 color = Color( 0.94902, 0.0784314, 0.0784314, 1 )
 opening_dialogue_chance = 5
-opening_dialogues = PoolStringArray( "Get their treasure!", "Spare no one!", "Hit them in the meow meow!", "1 v 1 me!", "Pillage time!" )
-kill_dialogues = PoolStringArray( "Easy peasy!", "HAHAHA!", "Rekt!", "Ezy", "ff" )
-death_dialogues = PoolStringArray( "Cheater...", "You... can\'t stop us...", "Unfair...", "Help me...", "Spare me..." )
+opening_dialogues = PoolStringArray( "I\'ll go for the fat one!", "Target in sight!", "Aiming!", "Just a little bit closer...", "Take their coin!" )
+kill_dialogues = PoolStringArray( "Hit him right in the eye!", "Headshot!", "Rekt!", "Pew pew!", "Sniped!" )
+death_dialogues = PoolStringArray( "QwQ", "Ouch...", "Should\'ve stayed in the forest...", "That can\'t be...", "Oof..." )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource( 10 )

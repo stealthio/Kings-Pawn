@@ -26,11 +26,11 @@ func die(without_animation = false):
 		$AnimationPlayer.play("Death")
 		
 
-func attack_pos(pos):
+func attack_pos(pos, ranged = false):
 	if Helper.check_position(pos) == Helper.cell_content.ALLY:
 		Helper.get_figure_at_position(pos).die()
 		$KillParticles.emitting = true
-		emit_signal("on_kill", pos)
+		emit_signal("on_kill", pos, ranged)
 		return true
 	return false
 
@@ -60,7 +60,7 @@ func execute():
 	var attacked = false
 	for vec in attack:
 		var tp = global_position + vec * Helper.grid_size
-		if attack_pos(tp):
+		if attack_pos(tp, !move_on_kill):
 			attacked = true
 			if move_on_kill:
 				move_to_position(tp)

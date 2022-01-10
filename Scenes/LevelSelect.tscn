@@ -50,7 +50,7 @@ position = Vector2( 512, 304 )
 texture = ExtResource( 3 )
 
 [node name="BackgroundOverlay" type="Sprite" parent="."]
-position = Vector2( 512, 308 )
+position = Vector2( 512, 304 )
 texture = ExtResource( 2 )
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -124,7 +124,7 @@ margin_top = 39.0
 margin_right = 227.0
 margin_bottom = 79.0
 custom_fonts/font = SubResource( 5 )
-text = "Medium - A mix of Bandits"
+text = "Medium - Also Archers"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -157,7 +157,7 @@ margin_top = 39.0
 margin_right = 227.0
 margin_bottom = 79.0
 custom_fonts/font = SubResource( 5 )
-text = "Hard - Every... Single... Bandit"
+text = "Hard - Everything they have"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
