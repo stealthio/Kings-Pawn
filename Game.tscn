@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Ressources/Board/Board.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Ressources/Board/Background.png" type="Texture" id=13]
 [ext_resource path="res://Scripts/KilledEnemiesDisplay.gd" type="Script" id=14]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/Obstacle.gd" type="Script" id=16]
 
 [sub_resource type="DynamicFont" id=84]
 size = 64
@@ -61,6 +62,238 @@ script = null
 
 [node name="YSort" type="YSort" parent="Board"]
 z_index = 1
+
+[node name="Obstacle" type="Node2D" parent="Board/YSort"]
+position = Vector2( -32, 352 )
+script = ExtResource( 16 )
+
+[node name="Obstacle24" type="Node2D" parent="Board/YSort"]
+position = Vector2( -32, 288 )
+script = ExtResource( 16 )
+
+[node name="Obstacle25" type="Node2D" parent="Board/YSort"]
+position = Vector2( -32, 224 )
+script = ExtResource( 16 )
+
+[node name="Obstacle26" type="Node2D" parent="Board/YSort"]
+position = Vector2( -32, 160 )
+script = ExtResource( 16 )
+
+[node name="Obstacle27" type="Node2D" parent="Board/YSort"]
+position = Vector2( -32, 96 )
+script = ExtResource( 16 )
+
+[node name="Obstacle28" type="Node2D" parent="Board/YSort"]
+position = Vector2( -32, 32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle2" type="Node2D" parent="Board/YSort"]
+position = Vector2( -32, 416 )
+script = ExtResource( 16 )
+
+[node name="Obstacle3" type="Node2D" parent="Board/YSort"]
+position = Vector2( -32, 480 )
+script = ExtResource( 16 )
+
+[node name="Obstacle4" type="Node2D" parent="Board/YSort"]
+position = Vector2( -32, 544 )
+script = ExtResource( 16 )
+
+[node name="Obstacle5" type="Node2D" parent="Board/YSort"]
+position = Vector2( 32, 544 )
+script = ExtResource( 16 )
+
+[node name="Obstacle6" type="Node2D" parent="Board/YSort"]
+position = Vector2( 96, 544 )
+script = ExtResource( 16 )
+
+[node name="Obstacle7" type="Node2D" parent="Board/YSort"]
+position = Vector2( 160, 544 )
+script = ExtResource( 16 )
+
+[node name="Obstacle8" type="Node2D" parent="Board/YSort"]
+position = Vector2( 224, 544 )
+script = ExtResource( 16 )
+
+[node name="Obstacle9" type="Node2D" parent="Board/YSort"]
+position = Vector2( 288, 544 )
+script = ExtResource( 16 )
+
+[node name="Obstacle10" type="Node2D" parent="Board/YSort"]
+position = Vector2( 352, 544 )
+script = ExtResource( 16 )
+
+[node name="Obstacle11" type="Node2D" parent="Board/YSort"]
+position = Vector2( 416, 544 )
+script = ExtResource( 16 )
+
+[node name="Obstacle12" type="Node2D" parent="Board/YSort"]
+position = Vector2( 480, 544 )
+script = ExtResource( 16 )
+
+[node name="Obstacle13" type="Node2D" parent="Board/YSort"]
+position = Vector2( 544, 544 )
+script = ExtResource( 16 )
+
+[node name="Obstacle14" type="Node2D" parent="Board/YSort"]
+position = Vector2( -32, -32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle49" type="Node2D" parent="Board/YSort"]
+position = Vector2( -96, 352 )
+script = ExtResource( 16 )
+
+[node name="Obstacle50" type="Node2D" parent="Board/YSort"]
+position = Vector2( -96, 288 )
+script = ExtResource( 16 )
+
+[node name="Obstacle51" type="Node2D" parent="Board/YSort"]
+position = Vector2( -96, 224 )
+script = ExtResource( 16 )
+
+[node name="Obstacle52" type="Node2D" parent="Board/YSort"]
+position = Vector2( -96, 160 )
+script = ExtResource( 16 )
+
+[node name="Obstacle53" type="Node2D" parent="Board/YSort"]
+position = Vector2( -96, 96 )
+script = ExtResource( 16 )
+
+[node name="Obstacle54" type="Node2D" parent="Board/YSort"]
+position = Vector2( -96, 32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle55" type="Node2D" parent="Board/YSort"]
+position = Vector2( -96, 416 )
+script = ExtResource( 16 )
+
+[node name="Obstacle56" type="Node2D" parent="Board/YSort"]
+position = Vector2( -96, 480 )
+script = ExtResource( 16 )
+
+[node name="Obstacle57" type="Node2D" parent="Board/YSort"]
+position = Vector2( -96, 544 )
+script = ExtResource( 16 )
+
+[node name="Obstacle58" type="Node2D" parent="Board/YSort"]
+position = Vector2( -96, -32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle29" type="Node2D" parent="Board/YSort"]
+position = Vector2( 544, 352 )
+script = ExtResource( 16 )
+
+[node name="Obstacle30" type="Node2D" parent="Board/YSort"]
+position = Vector2( 544, 288 )
+script = ExtResource( 16 )
+
+[node name="Obstacle31" type="Node2D" parent="Board/YSort"]
+position = Vector2( 544, 224 )
+script = ExtResource( 16 )
+
+[node name="Obstacle32" type="Node2D" parent="Board/YSort"]
+position = Vector2( 544, 160 )
+script = ExtResource( 16 )
+
+[node name="Obstacle33" type="Node2D" parent="Board/YSort"]
+position = Vector2( 544, 96 )
+script = ExtResource( 16 )
+
+[node name="Obstacle34" type="Node2D" parent="Board/YSort"]
+position = Vector2( 544, 32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle35" type="Node2D" parent="Board/YSort"]
+position = Vector2( 544, 416 )
+script = ExtResource( 16 )
+
+[node name="Obstacle36" type="Node2D" parent="Board/YSort"]
+position = Vector2( 544, 480 )
+script = ExtResource( 16 )
+
+[node name="Obstacle37" type="Node2D" parent="Board/YSort"]
+position = Vector2( 544, 544 )
+script = ExtResource( 16 )
+
+[node name="Obstacle38" type="Node2D" parent="Board/YSort"]
+position = Vector2( 544, -32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle39" type="Node2D" parent="Board/YSort"]
+position = Vector2( 608, 352 )
+script = ExtResource( 16 )
+
+[node name="Obstacle40" type="Node2D" parent="Board/YSort"]
+position = Vector2( 608, 288 )
+script = ExtResource( 16 )
+
+[node name="Obstacle41" type="Node2D" parent="Board/YSort"]
+position = Vector2( 608, 224 )
+script = ExtResource( 16 )
+
+[node name="Obstacle42" type="Node2D" parent="Board/YSort"]
+position = Vector2( 608, 160 )
+script = ExtResource( 16 )
+
+[node name="Obstacle43" type="Node2D" parent="Board/YSort"]
+position = Vector2( 608, 96 )
+script = ExtResource( 16 )
+
+[node name="Obstacle44" type="Node2D" parent="Board/YSort"]
+position = Vector2( 608, 32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle45" type="Node2D" parent="Board/YSort"]
+position = Vector2( 608, 416 )
+script = ExtResource( 16 )
+
+[node name="Obstacle46" type="Node2D" parent="Board/YSort"]
+position = Vector2( 608, 480 )
+script = ExtResource( 16 )
+
+[node name="Obstacle47" type="Node2D" parent="Board/YSort"]
+position = Vector2( 608, 544 )
+script = ExtResource( 16 )
+
+[node name="Obstacle48" type="Node2D" parent="Board/YSort"]
+position = Vector2( 608, -32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle15" type="Node2D" parent="Board/YSort"]
+position = Vector2( 32, -32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle16" type="Node2D" parent="Board/YSort"]
+position = Vector2( 96, -32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle17" type="Node2D" parent="Board/YSort"]
+position = Vector2( 160, -32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle18" type="Node2D" parent="Board/YSort"]
+position = Vector2( 224, -32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle19" type="Node2D" parent="Board/YSort"]
+position = Vector2( 288, -32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle20" type="Node2D" parent="Board/YSort"]
+position = Vector2( 352, -32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle21" type="Node2D" parent="Board/YSort"]
+position = Vector2( 416, -32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle22" type="Node2D" parent="Board/YSort"]
+position = Vector2( 480, -32 )
+script = ExtResource( 16 )
+
+[node name="Obstacle23" type="Node2D" parent="Board/YSort"]
+position = Vector2( 544, -32 )
+script = ExtResource( 16 )
 
 [node name="Background" type="Sprite" parent="Board"]
 position = Vector2( 256, 250 )
@@ -269,7 +502,6 @@ custom_fonts/font = ExtResource( 12 )
 text = "Your King died!"
 align = 1
 valign = 1
-script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

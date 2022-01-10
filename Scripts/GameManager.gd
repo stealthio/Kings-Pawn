@@ -4,6 +4,7 @@ var is_player_turn = true
 var turn = 0
 var figures = []
 var enemies = []
+var obstacles = []
 var current_enemy
 
 signal on_turn_end

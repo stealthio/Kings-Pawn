@@ -12,7 +12,8 @@ var temporary_cells = []
 enum cell_content {
 	FREE,
 	ALLY,
-	ENEMY
+	ENEMY,
+	OBSTACLE
 }
 
 enum difficulty {
@@ -158,6 +159,7 @@ func show_available_cells(origin_pos : Vector2, movement_array : Array, inversio
 # returns 0 if free
 # 1 if ally
 # 2 if enemy
+# 3 if obstacles
 func check_position(position) -> int:
 	for figure in get_gamemanager().figures:
 		if is_instance_valid(figure):
@@ -166,6 +168,9 @@ func check_position(position) -> int:
 	for enemy in get_gamemanager().enemies:
 		if enemy.global_position == position:
 			return cell_content.ENEMY
+	for obstacle in get_gamemanager().obstacles:
+		if obstacle.global_position == position:
+			return cell_content.OBSTACLE
 	return cell_content.FREE
 
 func get_figure_at_position(position):

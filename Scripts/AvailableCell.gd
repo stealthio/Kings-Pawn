@@ -16,6 +16,8 @@ func check_position(only_on_enemy = false):
 			self_modulate = Color.red
 		Helper.cell_content.ENEMY:
 			self_modulate = Color.green
+		Helper.cell_content.OBSTACLE:
+			self_modulate = Color.black
 
 func _process(delta):
 	if Input.is_action_just_pressed("select"):
