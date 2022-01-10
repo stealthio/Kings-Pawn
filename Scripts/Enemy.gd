@@ -35,6 +35,8 @@ func attack_pos(pos, ranged = false):
 	return false
 
 func move_to_position(pos):
+	if Helper.check_position(pos) == Helper.cell_content.ENEMY:
+		return
 	if !move_can_kill:
 		if Helper.check_position(pos) != Helper.cell_content.FREE:
 			return
