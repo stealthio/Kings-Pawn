@@ -22,9 +22,6 @@ func _ready():
 	Helper.game_manager.connect("on_turn_end", self, "on_turn_end")
 	$AnimationPlayer.play("Idle")
 
-func _exit_tree():
-	Helper.game_manager.figures.erase(self)
-
 func on_turn_end():
 	used = false
 	modulate = Color.white
@@ -85,7 +82,8 @@ func _on_Area2D_mouse_exited():
 	_mouse_inside = false
 
 func die():
-	emit_signal("on_death")
+	Helper.game_manager.figures.erase(self)
+	emit_signal("on_death", self)
 	if $Sprite.texture == preload("res://Ressources/Figurines/King.png"):
 		Helper.game_manager.lose("The king died!")
 	Helper.shake_screen(10, 0.25, Vector2(1,1))

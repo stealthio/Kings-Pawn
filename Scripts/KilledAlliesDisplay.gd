@@ -2,14 +2,14 @@ extends GridContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Helper.game_manager.connect("on_enemy_added", self, "on_new_enemy")
+	yield(get_tree(), "idle_frame")
+	for figure in Helper.game_manager.figures:
+		figure.connect("on_death", self, "add_killed_ally")
 
-func on_new_enemy(enemy):
-	enemy.connect("on_death", self, "add_killed_enemy")
 
-func add_killed_enemy(enemy):
+func add_killed_ally(ally):
 	var tex = TextureRect.new()
-	tex.texture = enemy.get_node("Sprite").texture
+	tex.texture = ally.get_node("Sprite").texture
 	tex.rect_min_size = Vector2(32,32)
 	tex.expand = true
 	tex.stretch_mode = TextureRect.STRETCH_KEEP

@@ -136,8 +136,9 @@ func show_available_cells(origin_pos : Vector2, movement_array : Array, inversio
 # 2 if enemy
 func check_position(position) -> int:
 	for figure in get_gamemanager().figures:
-		if figure.global_position == position:
-			return cell_content.ALLY
+		if is_instance_valid(figure):
+			if figure.global_position == position:
+				return cell_content.ALLY
 	for enemy in get_gamemanager().enemies:
 		if enemy.global_position == position:
 			return cell_content.ENEMY

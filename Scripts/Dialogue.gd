@@ -15,7 +15,7 @@ func _ready():
 	if rand_range(0, 100) <= opening_dialogue_chance:
 		Helper.show_text_at_position(Helper.get_random_from_array(opening_dialogues), get_parent().global_position + position_offset, 3.0, color)
 
-func on_death():
+func on_death(who):
 	if rand_range(0, 100) <= death_dialogue_chance:
 		Helper.show_text_at_position(Helper.get_random_from_array(death_dialogues), get_parent().global_position + position_offset, 3.0, color)
 

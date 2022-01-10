@@ -19,7 +19,7 @@ func die(without_animation = false):
 	if without_animation:
 		queue_free()
 	else:
-		emit_signal("on_death")
+		emit_signal("on_death", self)
 		$AnimationPlayer.play("Death")
 
 func move_to_position(pos):

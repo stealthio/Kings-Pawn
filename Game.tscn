@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Ressources/Board/Board.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/KilledAlliesDisplay.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/TurnCounter.gd" type="Script" id=4]
 [ext_resource path="res://Ressources/Board/BackgroundOverlay.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/GameManager.gd" type="Script" id=7]
@@ -188,6 +189,17 @@ margin_right = 953.0
 margin_bottom = 434.0
 columns = 3
 script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KilledAllies" type="GridContainer" parent="UI"]
+margin_left = 112.0
+margin_top = 5.0
+margin_right = 265.0
+margin_bottom = 439.0
+columns = 3
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

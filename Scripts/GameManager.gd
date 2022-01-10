@@ -110,7 +110,7 @@ func _process(delta):
 func restart():
 	get_tree().reload_current_scene()
 
-func check_victory():
+func check_victory(enemy):
 	if enemies.empty():
 		$UI/Victory.visible = true
 
