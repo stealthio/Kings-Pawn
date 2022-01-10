@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Ressources/Enemies/Archer.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/Dialogue.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Dialogue.gd" type="Script" id=2]
+[ext_resource path="res://Ressources/Enemies/Rogue.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -208,13 +208,13 @@ hue_variation_random = 0.5
 polygon = PoolVector2Array( -18, 27, -23, 18, -23, 4, -12, -8, -12, -16, -16, -17, -16, -24, 0, -28, 13, -23, 13, -5, 20, 1, 20, 23, 11, 28 )
 
 [node name="Enemy" type="Node2D"]
-script = ExtResource( 2 )
-attack = PoolVector2Array( 0, 2, 1, 2, -1, 2 )
-move_can_kill = false
+script = ExtResource( 1 )
+attack = PoolVector2Array( 1, 0, -1, 0, 0, 1, 0, -1 )
+move_on_kill = true
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 25 )
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 offset = Vector2( 0, -25 )
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -248,7 +248,7 @@ local_coords = false
 process_material = SubResource( 7 )
 
 [node name="Dialogue" type="Node2D" parent="."]
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 position_offset = Vector2( -40, -50 )
 color = Color( 0.94902, 0.0784314, 0.0784314, 1 )
 opening_dialogue_chance = 5

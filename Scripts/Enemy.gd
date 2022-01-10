@@ -63,7 +63,7 @@ func execute():
 		if attack_pos(tp):
 			attacked = true
 			if move_on_kill:
-				move_to_position(global_position + movement * Helper.grid_size)
+				move_to_position(tp)
 			break
 	if !attacked:
 		move_to_position(global_position + movement * Helper.grid_size)
