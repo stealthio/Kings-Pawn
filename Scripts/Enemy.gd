@@ -56,7 +56,8 @@ func _process(delta):
 			_tpos = null
 
 func execute():
-	modulate = Color.aqua
+	$Sprite.modulate = Color.aqua
+	toggle_dangerzone(true)
 	yield(get_tree().create_timer(.5), "timeout")
 	# attack or move
 	var attacked = false
@@ -69,7 +70,7 @@ func execute():
 			break
 	if !attacked:
 		move_to_position(global_position + movement * Helper.grid_size)
-	modulate = Color.white
+	$Sprite.modulate = Color.white
 	draw_dangerzone()
 	turn_done = true
 
@@ -86,6 +87,10 @@ func _create_dz_at_pos(pos):
 	dz.global_position = pos
 	dz.visible = false
 	return dz
+
+func toggle_dangerzone(on):
+	for dz in _dangerzone:
+		dz.visible = on
 
 func draw_dangerzone():
 	clear_dangerzone()
