@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Dialogue.gd" type="Script" id=2]
 [ext_resource path="res://Ressources/Enemies/Pawn.png" type="Texture" id=3]
+[ext_resource path="res://Ressources/Effects/Pitchfork.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -45,6 +46,35 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "Attack"
+length = 0.75
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pitchfork:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.55, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Pitchfork:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.35, 0.45, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, -14 ), Vector2( 0, -14 ), Vector2( 0, 28 ), Vector2( 0, 35 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -167,6 +197,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 0, 25 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Pitchfork:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Pitchfork:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.49467, 0.654545 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -209,6 +263,7 @@ polygon = PoolVector2Array( -18, 27, -23, 18, -23, 4, -12, -8, -12, -16, -16, -1
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 1 )
+move_on_kill = true
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 25 )
@@ -222,6 +277,7 @@ shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Appear = SubResource( 8 )
+anims/Attack = SubResource( 11 )
 anims/Death = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/RESET = SubResource( 4 )
@@ -247,7 +303,7 @@ process_material = SubResource( 7 )
 
 [node name="Dialogue" type="Node2D" parent="."]
 script = ExtResource( 2 )
-position_offset = Vector2( -40, -50 )
+position_offset = Vector2( -70, -50 )
 color = Color( 0.94902, 0.0784314, 0.0784314, 1 )
 opening_dialogue_chance = 5
 opening_dialogues = PoolStringArray( "Get their treasure!", "Spare no one!", "Hit them hard!", "1 v 1 me!", "Pillage time!" )
@@ -256,6 +312,10 @@ death_dialogues = PoolStringArray( "I thought this was a spanish lesson...", "Yo
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource( 10 )
+
+[node name="Pitchfork" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 4 )
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

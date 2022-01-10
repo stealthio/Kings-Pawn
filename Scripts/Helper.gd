@@ -233,6 +233,11 @@ func get_figurine_value(figurine):
 		"":
 			return 0
 
-func play_sound(sfx):
-	$SFX.stream = sfx
-	$SFX.play(0)
+func play_sound(sfx, channel = 0):
+	var target = $SFX
+	match(channel):
+		1:
+			target = $SFX2
+	target.stream = sfx
+	target.play(0)
+		
