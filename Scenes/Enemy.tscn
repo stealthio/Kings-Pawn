@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Ressources/Enemies/Pawn.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=2]
@@ -204,6 +204,9 @@ color = Color( 0.517647, 0, 0, 1 )
 hue_variation = -0.1
 hue_variation_random = 0.5
 
+[sub_resource type="OccluderPolygon2D" id=10]
+polygon = PoolVector2Array( -18, 27, -23, 18, -23, 4, -12, -8, -12, -16, -16, -17, -16, -24, 0, -28, 13, -23, 13, -5, 20, 1, 20, 23, 11, 28 )
+
 [node name="Enemy" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -250,6 +253,9 @@ opening_dialogue_chance = 5
 opening_dialogues = PoolStringArray( "Get their treasure!", "Spare no one!", "Hit them in the meow meow!", "1 v 1 me!", "Pillage time!" )
 kill_dialogues = PoolStringArray( "Easy peasy!", "HAHAHA!", "Rekt!", "Ezy", "ff" )
 death_dialogues = PoolStringArray( "Cheater...", "You... can\'t stop us...", "Unfair...", "Help me...", "Spare me..." )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 10 )
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]

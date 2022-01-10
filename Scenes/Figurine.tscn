@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Figure.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/Figurines/Pawn.png" type="Texture" id=2]
@@ -123,6 +123,9 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
+[sub_resource type="OccluderPolygon2D" id=7]
+polygon = PoolVector2Array( 0, 32, -24, 16, -16, -8, 0, -24, 16, -8, 24, 16 )
+
 [node name="Figure" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -148,6 +151,9 @@ position_offset = Vector2( -40, -35 )
 opening_dialogues = PoolStringArray( "Let\'s do this!", "For the king!", "Kill those bandits!", "Protect the queen!", "RNGesus be with us!" )
 kill_dialogues = PoolStringArray( "Take that!", "Got you!", "For Narnia!", "Rock and Stone!", "Filthy Landlubber!" )
 death_dialogues = PoolStringArray( "Argh!", "For... the... king...", "It\'s just a fleshwound", "Tis\' but a scratch", "Delete my browser history..." )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 7 )
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
