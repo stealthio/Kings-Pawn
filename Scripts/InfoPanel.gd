@@ -8,8 +8,8 @@ func _ready():
 	on_value_changed(teamsetup.current_value)
 
 func on_value_changed(value):
-	$Cost.text = "Total: " + String(value) + "/" + String(teamsetup.max_value)
+	$VBoxContainer/Cost.text = "Total: " + String(value) + "/" + String(teamsetup.max_value)
 	if value > teamsetup.max_value:
-		$Cost.modulate = Color.red
+		$VBoxContainer/Cost.modulate = Color.red
 	else:
-		$Cost.modulate = Color.white
+		$VBoxContainer/Cost.modulate = Color.white

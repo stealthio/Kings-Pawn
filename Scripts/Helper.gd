@@ -1,6 +1,8 @@
 extends Node2D
 
 var grid_size = 64
+var current_difficulty = difficulty.EASY
+
 
 var game_manager = null setget set_gamemanager, get_gamemanager
 
@@ -10,6 +12,12 @@ enum cell_content {
 	FREE,
 	ALLY,
 	ENEMY
+}
+
+enum difficulty {
+	EASY,
+	NORMAL,
+	HARD,
 }
 
 var figure_setup = {

@@ -1,0 +1,182 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Ressources/Figurines/Rook.png" type="Texture" id=1]
+[ext_resource path="res://Ressources/Board/BackgroundOverlay.png" type="Texture" id=2]
+[ext_resource path="res://Ressources/Board/Background.png" type="Texture" id=3]
+[ext_resource path="res://Ressources/Figurines/Knight.png" type="Texture" id=4]
+[ext_resource path="res://Ressources/Fonts/Minimal5x7.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Scripts/LevelSelect.gd" type="Script" id=6]
+[ext_resource path="res://Ressources/Figurines/Pawn.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.419608, 0.333333, 0.333333, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.156863, 0.156863, 0.156863, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.247059, 0.164706, 0.164706, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 1
+shadow_offset = Vector2( 3, 3 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 64
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[node name="LevelSelect" type="Node2D"]
+position = Vector2( 0, -4 )
+script = ExtResource( 6 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 512, 304 )
+texture = ExtResource( 3 )
+
+[node name="BackgroundOverlay" type="Sprite" parent="."]
+position = Vector2( 512, 308 )
+texture = ExtResource( 2 )
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 104.0
+margin_top = 84.0
+margin_right = 920.0
+margin_bottom = 564.0
+rect_pivot_offset = Vector2( -184, -56 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Easy" type="Button" parent="."]
+margin_left = 168.0
+margin_top = 188.0
+margin_right = 868.0
+margin_bottom = 288.0
+rect_min_size = Vector2( 250, 96 )
+custom_styles/normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Easy"]
+margin_left = 19.0
+margin_top = 15.0
+margin_right = 83.0
+margin_bottom = 79.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="Label" parent="Easy"]
+margin_left = 99.0
+margin_top = 39.0
+margin_right = 227.0
+margin_bottom = 79.0
+custom_fonts/font = SubResource( 5 )
+text = "Easy - Peasants only"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Normal" type="Button" parent="."]
+margin_left = 168.0
+margin_top = 308.0
+margin_right = 868.0
+margin_bottom = 408.0
+rect_min_size = Vector2( 250, 96 )
+custom_styles/normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Normal"]
+margin_left = 19.0
+margin_top = 15.0
+margin_right = 83.0
+margin_bottom = 79.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="Label" parent="Normal"]
+margin_left = 99.0
+margin_top = 39.0
+margin_right = 227.0
+margin_bottom = 79.0
+custom_fonts/font = SubResource( 5 )
+text = "Medium - A mix of Bandits"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hard" type="Button" parent="."]
+margin_left = 168.0
+margin_top = 428.0
+margin_right = 868.0
+margin_bottom = 528.0
+rect_min_size = Vector2( 250, 96 )
+custom_styles/normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Hard"]
+margin_left = 19.0
+margin_top = 15.0
+margin_right = 83.0
+margin_bottom = 79.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="Label" parent="Hard"]
+margin_left = 99.0
+margin_top = 39.0
+margin_right = 227.0
+margin_bottom = 79.0
+custom_fonts/font = SubResource( 5 )
+text = "Hard - Every... Single... Bandit"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DifficultySelect" type="Label" parent="."]
+margin_left = 104.0
+margin_top = 124.0
+margin_right = 910.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = SubResource( 6 )
+text = "Difficulty Select"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Easy" to="." method="_on_Easy_pressed"]
+[connection signal="pressed" from="Normal" to="." method="_on_Normal_pressed"]
+[connection signal="pressed" from="Hard" to="." method="_on_Hard_pressed"]

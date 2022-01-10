@@ -28,4 +28,4 @@ func _on_Accept_pressed():
 	for slot in slots:
 		figures[slot.number + 1] = slot.figure
 	Helper.figure_setup = figures
-	get_tree().change_scene("res://Game.tscn")
+	get_tree().change_scene("res://Scenes/LevelSelect.tscn")

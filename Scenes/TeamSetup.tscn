@@ -337,7 +337,7 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
 margin_left = 5.0
 margin_top = 5.0
-margin_right = 711.0
+margin_right = 753.0
 margin_bottom = 315.0
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer/HBoxContainer"]
@@ -485,17 +485,37 @@ __meta__ = {
 
 [node name="InfoPanel" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
 margin_left = 600.0
-margin_right = 706.0
+margin_right = 748.0
 margin_bottom = 310.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 2 )
 script = ExtResource( 13 )
 
-[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/InfoPanel"]
-margin_top = 145.0
-margin_right = 106.0
-margin_bottom = 165.0
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/InfoPanel"]
+margin_right = 148.0
+margin_bottom = 310.0
+
+[node name="Info" type="Label" parent="PanelContainer/HBoxContainer/InfoPanel/VBoxContainer"]
+margin_right = 148.0
+margin_bottom = 112.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 12 )
+text = "You can use up
+to 40 points to
+set up your
+board side
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/InfoPanel/VBoxContainer"]
+margin_top = 116.0
+margin_right = 148.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 0, 20 )
 custom_fonts/font = ExtResource( 12 )
 text = "Total: 0/40"
 align = 1
@@ -506,7 +526,7 @@ __meta__ = {
 [node name="Name" type="Label" parent="PanelContainer"]
 margin_left = 5.0
 margin_top = 130.0
-margin_right = 711.0
+margin_right = 753.0
 margin_bottom = 190.0
 rect_min_size = Vector2( 60, 60 )
 custom_fonts/font = SubResource( 6 )
