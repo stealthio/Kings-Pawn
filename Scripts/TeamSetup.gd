@@ -30,3 +30,9 @@ func _on_Accept_pressed():
 		figures[slot.number + 1] = slot.figure
 	Helper.figure_setup = figures
 	get_tree().change_scene("res://Scenes/LevelSelect.tscn")
+
+
+func _on_Clear_pressed():
+	for slot in $Slots.get_children():
+		if slot.figure != "King":
+			slot.set_figurine("")

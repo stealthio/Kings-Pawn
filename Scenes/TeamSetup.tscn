@@ -83,9 +83,9 @@ __meta__ = {
 }
 
 [node name="Available" type="TextureButton" parent="Slots"]
-margin_left = 232.0
+margin_left = 228.0
 margin_top = 480.0
-margin_right = 296.0
+margin_right = 292.0
 margin_bottom = 544.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -98,9 +98,9 @@ figure = "Rook"
 number = 8
 
 [node name="Available2" type="TextureButton" parent="Slots"]
-margin_left = 304.0
+margin_left = 300.0
 margin_top = 480.0
-margin_right = 368.0
+margin_right = 364.0
 margin_bottom = 544.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -113,9 +113,9 @@ figure = "Knight"
 number = 9
 
 [node name="Available3" type="TextureButton" parent="Slots"]
-margin_left = 376.0
+margin_left = 372.0
 margin_top = 480.0
-margin_right = 440.0
+margin_right = 436.0
 margin_bottom = 544.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -128,9 +128,9 @@ figure = "Bishop"
 number = 10
 
 [node name="Available4" type="TextureButton" parent="Slots"]
-margin_left = 232.0
+margin_left = 228.0
 margin_top = 408.0
-margin_right = 296.0
+margin_right = 292.0
 margin_bottom = 472.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -142,9 +142,9 @@ __meta__ = {
 figure = "Pawn"
 
 [node name="Available5" type="TextureButton" parent="Slots"]
-margin_left = 304.0
+margin_left = 300.0
 margin_top = 408.0
-margin_right = 368.0
+margin_right = 364.0
 margin_bottom = 472.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -157,9 +157,9 @@ figure = "Pawn"
 number = 1
 
 [node name="Available6" type="TextureButton" parent="Slots"]
-margin_left = 376.0
+margin_left = 372.0
 margin_top = 408.0
-margin_right = 440.0
+margin_right = 436.0
 margin_bottom = 472.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -172,9 +172,9 @@ figure = "Pawn"
 number = 2
 
 [node name="Available7" type="TextureButton" parent="Slots"]
-margin_left = 448.0
+margin_left = 444.0
 margin_top = 408.0
-margin_right = 512.0
+margin_right = 508.0
 margin_bottom = 472.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -187,9 +187,9 @@ figure = "Pawn"
 number = 3
 
 [node name="Available8" type="TextureButton" parent="Slots"]
-margin_left = 448.0
+margin_left = 444.0
 margin_top = 480.0
-margin_right = 512.0
+margin_right = 508.0
 margin_bottom = 544.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -203,9 +203,9 @@ editable = false
 number = 11
 
 [node name="Available9" type="TextureButton" parent="Slots"]
-margin_left = 520.0
+margin_left = 516.0
 margin_top = 408.0
-margin_right = 584.0
+margin_right = 580.0
 margin_bottom = 472.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -218,9 +218,9 @@ figure = "Pawn"
 number = 4
 
 [node name="Available10" type="TextureButton" parent="Slots"]
-margin_left = 520.0
+margin_left = 516.0
 margin_top = 480.0
-margin_right = 584.0
+margin_right = 580.0
 margin_bottom = 544.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -233,9 +233,9 @@ figure = "Queen"
 number = 12
 
 [node name="Available11" type="TextureButton" parent="Slots"]
-margin_left = 592.0
+margin_left = 588.0
 margin_top = 408.0
-margin_right = 656.0
+margin_right = 652.0
 margin_bottom = 472.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -248,9 +248,9 @@ figure = "Pawn"
 number = 5
 
 [node name="Available12" type="TextureButton" parent="Slots"]
-margin_left = 592.0
+margin_left = 588.0
 margin_top = 480.0
-margin_right = 656.0
+margin_right = 652.0
 margin_bottom = 544.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -263,9 +263,9 @@ figure = "Bishop"
 number = 13
 
 [node name="Available13" type="TextureButton" parent="Slots"]
-margin_left = 664.0
+margin_left = 660.0
 margin_top = 408.0
-margin_right = 728.0
+margin_right = 724.0
 margin_bottom = 472.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -278,9 +278,9 @@ figure = "Pawn"
 number = 6
 
 [node name="Available14" type="TextureButton" parent="Slots"]
-margin_left = 664.0
+margin_left = 660.0
 margin_top = 480.0
-margin_right = 728.0
+margin_right = 724.0
 margin_bottom = 544.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 5 )
@@ -293,9 +293,9 @@ figure = "Knight"
 number = 14
 
 [node name="Available15" type="TextureButton" parent="Slots"]
-margin_left = 736.0
+margin_left = 732.0
 margin_top = 480.0
-margin_right = 800.0
+margin_right = 796.0
 margin_bottom = 544.0
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 0, 56 )
@@ -309,9 +309,9 @@ figure = "Rook"
 number = 15
 
 [node name="Available16" type="TextureButton" parent="Slots"]
-margin_left = 736.0
+margin_left = 732.0
 margin_top = 408.0
-margin_right = 800.0
+margin_right = 796.0
 margin_bottom = 472.0
 rect_min_size = Vector2( 64, 64 )
 rect_pivot_offset = Vector2( 0, 56 )
@@ -547,6 +547,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Accept2" type="Button" parent="."]
+margin_left = 448.0
+margin_top = 280.0
+margin_right = 573.0
+margin_bottom = 322.0
+custom_fonts/font = ExtResource( 12 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+text = "CLEAR"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="Slots/Available" to="Slots/Available" method="_on_Available_pressed"]
 [connection signal="pressed" from="Slots/Available2" to="Slots/Available2" method="_on_Available_pressed"]
 [connection signal="pressed" from="Slots/Available3" to="Slots/Available3" method="_on_Available_pressed"]
@@ -570,3 +584,4 @@ __meta__ = {
 [connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Rook" to="PanelContainer/HBoxContainer/GridContainer/Rook" method="_on_pressed"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Queen" to="PanelContainer/HBoxContainer/GridContainer/Queen" method="_on_pressed"]
 [connection signal="pressed" from="Accept" to="." method="_on_Accept_pressed"]
+[connection signal="pressed" from="Accept2" to="." method="_on_Clear_pressed"]
