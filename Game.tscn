@@ -59,6 +59,7 @@ z_index = -1
 texture = ExtResource( 13 )
 
 [node name="BackgroundOverlay" type="Sprite" parent="Board"]
+light_mask = 0
 position = Vector2( 256, 250 )
 z_index = 10
 texture = ExtResource( 6 )
@@ -83,6 +84,7 @@ position = Vector2( -32, -62 )
 texture = ExtResource( 5 )
 texture_scale = 1.25
 color = Color( 0.87451, 0.886275, 0.45098, 1 )
+energy = 0.8
 shadow_enabled = true
 shadow_buffer_size = 256
 shadow_gradient_length = 7.0
@@ -99,6 +101,7 @@ scale = Vector2( 1, -1 )
 texture = ExtResource( 5 )
 texture_scale = 1.25
 color = Color( 0.87451, 0.886275, 0.45098, 1 )
+energy = 0.8
 shadow_enabled = true
 shadow_buffer_size = 256
 shadow_gradient_length = 7.0
@@ -107,8 +110,7 @@ script = ExtResource( 9 )
 [node name="Light2D" type="Light2D" parent="Board/Environment"]
 position = Vector2( 280, 376 )
 texture = ExtResource( 5 )
-texture_scale = 2.0
-energy = 0.5
+energy = 0.7
 shadow_gradient_length = 10.0
 
 [node name="EnemySpawnManager" type="Node2D" parent="."]

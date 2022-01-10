@@ -2,12 +2,15 @@
 
 [ext_resource path="res://Ressources/Board/Available0.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/AvailableCell.gd" type="Script" id=2]
-[ext_resource path="res://Ressources/Effects/Light.png" type="Texture" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
 
 [node name="AvailableCell" type="Sprite"]
+material = SubResource( 2 )
 z_index = -10
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
@@ -16,12 +19,6 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
-
-[node name="Light2D" type="Light2D" parent="."]
-texture = ExtResource( 3 )
-texture_scale = 0.5
-color = Color( 0.333333, 0.623529, 1, 1 )
-energy = 0.3
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
