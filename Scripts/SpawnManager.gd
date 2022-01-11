@@ -22,12 +22,6 @@ func spawn():
 		if Helper.check_position(prepared.global_position) == Helper.cell_content.FREE:
 			prepared.replace()
 	prepared_spawns.clear()
-	return
-	var tpos = start_pos + Vector2((int(rand_range(0,8)) * Helper.grid_size),0)
-	if Helper.check_position(tpos) == Helper.cell_content.FREE:
-		var enemy = enemies[Helper.get_random_from_array(possible_enemies[difficulty])].instance()
-		Helper.game_manager.get_node("Board").get_node("YSort").add_child(enemy)
-		enemy.global_position = tpos
 
 func prepare_spawn():
 	var tpos = start_pos + Vector2((int(rand_range(0,8)) * Helper.grid_size),0)
