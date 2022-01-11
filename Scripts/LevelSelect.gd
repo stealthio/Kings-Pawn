@@ -44,3 +44,7 @@ func _on_Normal_pressed():
 func _on_Accept_pressed():
 	if selected_difficulty != 0:
 		get_tree().change_scene("res://Game.tscn")
+
+
+func _on_Back_pressed():
+	get_tree().change_scene("res://Scenes/TeamSetup.tscn")

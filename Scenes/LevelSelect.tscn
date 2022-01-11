@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Ressources/Figurines/Rook.png" type="Texture" id=1]
 [ext_resource path="res://Ressources/Board/BackgroundOverlay.png" type="Texture" id=2]
@@ -90,6 +90,15 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id=11]
 bg_color = Color( 0.419608, 0.333333, 0.333333, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 1
+shadow_offset = Vector2( 3, 3 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.247059, 0.164706, 0.164706, 1 )
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -305,6 +314,20 @@ custom_styles/hover = SubResource( 9 )
 custom_styles/pressed = SubResource( 10 )
 custom_styles/normal = SubResource( 11 )
 text = "ACCEPT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="."]
+margin_left = 123.0
+margin_top = 112.0
+margin_right = 248.0
+margin_bottom = 154.0
+custom_fonts/font = ExtResource( 13 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 13 )
+text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -578,3 +601,4 @@ __meta__ = {
 [connection signal="pressed" from="Normal" to="." method="_on_Normal_pressed"]
 [connection signal="pressed" from="Hard" to="." method="_on_Hard_pressed"]
 [connection signal="pressed" from="Accept" to="." method="_on_Accept_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

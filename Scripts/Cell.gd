@@ -34,6 +34,7 @@ func _on_Available_pressed():
 	if editable:
 		Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
 		get_parent().get_parent().select_cell(self)
+		teamsetup.pointer.move_to(rect_global_position + Vector2(10, -40))
 
 func set_figurine(figurine):
 	teamsetup.current_value = teamsetup.current_value - Helper.get_figurine_value(figure) # substract previous used points

@@ -2,7 +2,7 @@ extends Node2D
 
 export var max_value = 40
 var current_value = 0 setget set_current_value, get_current_value
-
+onready var pointer = $Pointer
 var selected_cell
 signal on_value_changed
 
@@ -17,7 +17,7 @@ func select_cell(cell):
 	if selected_cell:
 		selected_cell.modulate = Color.white
 	selected_cell = cell
-	selected_cell.modulate = Color.red
+	selected_cell.modulate = Color.green
 
 func draw_preview(figure):
 	$Preview/Name.text = figure

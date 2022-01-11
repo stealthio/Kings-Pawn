@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scripts/PurchaseFigureButton.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/Board/BackgroundOverlay.png" type="Texture" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Ressources/Figurines/None.png" type="Texture" id=14]
 [ext_resource path="res://Ressources/Fonts/Minimal5x7.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://Ressources/Board/Preview_Big.png" type="Texture" id=16]
+[ext_resource path="res://Scripts/Pointer.gd" type="Script" id=17]
+[ext_resource path="res://Ressources/Effects/Pointer.png" type="Texture" id=18]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.419608, 0.333333, 0.333333, 1 )
@@ -1198,6 +1200,17 @@ custom_fonts/font = SubResource( 8 )
 text = "The Queen can move in cardinal directions as
 well as diagonally for any amount of fields."
 valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pointer" type="TextureRect" parent="."]
+margin_left = 242.0
+margin_top = 367.0
+margin_right = 282.0
+margin_bottom = 407.0
+texture = ExtResource( 18 )
+script = ExtResource( 17 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

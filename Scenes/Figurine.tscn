@@ -154,7 +154,6 @@ kill_dialogues = PoolStringArray( "Take that!", "Got you!", "For Narnia!", "Rock
 death_dialogues = PoolStringArray( "Argh!", "For... the... king...", "It\'s just a fleshwound", "Tis\' but a scratch", "Delete my browser history..." )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
 occluder = SubResource( 7 )
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
