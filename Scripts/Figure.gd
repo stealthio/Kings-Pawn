@@ -38,6 +38,8 @@ func setSelected(value):
 	if selected:
 		if !_opener_used and opener_movement != Vector2(0,0):
 			Helper.show_available_cells(global_position, [opener_movement], inversion, addition, endless, self)
+			Helper.show_available_cells(global_position, movement, inversion, addition, endless, self)
+			_opener_used = true
 		else:
 			Helper.show_available_cells(global_position, movement, inversion, addition, endless, self)
 		
