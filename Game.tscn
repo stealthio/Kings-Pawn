@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Ressources/Board/Board.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Scripts/KilledEnemiesDisplay.gd" type="Script" id=14]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=15]
 [ext_resource path="res://Scripts/Obstacle.gd" type="Script" id=16]
+[ext_resource path="res://Scripts/ObstacleSpawnManager.gd" type="Script" id=17]
 
 [sub_resource type="DynamicFont" id=84]
 size = 64
@@ -360,6 +361,8 @@ script = ExtResource( 11 )
 start_pos = Vector2( 320, 82 )
 
 [node name="ObstacleSpawnManager" type="Node2D" parent="."]
+script = ExtResource( 17 )
+possible_positions = PoolVector2Array( 32, 160, 160, 160, 288, 160, 32, 288, 480, 288, 352, 288 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 542, 299 )

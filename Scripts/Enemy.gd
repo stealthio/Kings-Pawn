@@ -35,7 +35,18 @@ func attack_pos(pos):
 	return false
 
 func move_to_position(pos):
-	if Helper.check_position(pos) == Helper.cell_content.ENEMY:
+	# Position blocked
+	if Helper.check_position(pos) == Helper.cell_content.ENEMY or Helper.check_position(pos) == Helper.cell_content.OBSTACLE:
+		# check left
+		var left = global_position + Vector2(-Helper.grid_size,0)
+		if Helper.check_position(left) == Helper.cell_content.FREE:
+			move_to_position(left)
+			return
+		var right = global_position + Vector2(Helper.grid_size,0)
+		if Helper.check_position(right) == Helper.cell_content.FREE:
+			move_to_position(right)
+			return	
+		# check right
 		turn_done = true
 		return
 	if !move_can_kill:
