@@ -41,7 +41,16 @@ var figure_setup = {
 	16 : "Rook",
 }
 
-
+func clear_available_cell_duplicates():
+	for cell in temporary_cells:
+		if cell.freeing:
+			continue
+		for cell2 in temporary_cells:
+			if cell2.global_position == cell.global_position and cell2 != cell:
+				temporary_cells.erase(cell2)
+				cell2.freeing = true
+				cell2.queue_free()
+	
 func set_gamemanager(value):
 	game_manager = value
 

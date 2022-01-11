@@ -44,6 +44,7 @@ func setSelected(value):
 		# killer moves check
 		if killer_movement != Vector2(0,0):
 			Helper.show_available_cells(global_position, [killer_movement], inversion, addition, endless, self, true)
+		Helper.clear_available_cell_duplicates()
 	elif _mouse_inside:
 		$AnimationPlayer.play("PutDown")
 		Helper.clear_available_cells()

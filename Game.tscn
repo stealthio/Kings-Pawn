@@ -609,7 +609,6 @@ __meta__ = {
 }
 
 [node name="Objectives" type="Label" parent="UI"]
-visible = false
 margin_left = 288.0
 margin_top = 181.0
 margin_right = 784.0

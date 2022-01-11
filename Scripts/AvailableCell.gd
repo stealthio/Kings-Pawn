@@ -6,16 +6,6 @@ var type = Helper.cell_content.FREE
 
 var freeing = false
 
-func _ready():
-	yield(get_tree(), "idle_frame")
-	if freeing:
-		return
-	for cell in Helper.temporary_cells:
-		if cell.global_position == global_position and cell != self:
-			Helper.temporary_cells.erase(cell)
-			cell.freeing = true
-			cell.queue_free()
-
 # parameter only_on_enemy erases the cell if its not put onto an enemy
 func check_position(only_on_enemy = false):
 	type = Helper.check_position(global_position)
