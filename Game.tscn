@@ -359,6 +359,8 @@ shadow_gradient_length = 10.0
 script = ExtResource( 11 )
 start_pos = Vector2( 320, 82 )
 
+[node name="ObstacleSpawnManager" type="Node2D" parent="."]
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 542, 299 )
 current = true
