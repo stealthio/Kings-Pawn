@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Ressources/Figurines/Rook.png" type="Texture" id=1]
 [ext_resource path="res://Ressources/Board/BackgroundOverlay.png" type="Texture" id=2]
@@ -7,6 +7,13 @@
 [ext_resource path="res://Ressources/Fonts/Minimal5x7.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://Scripts/LevelSelect.gd" type="Script" id=6]
 [ext_resource path="res://Ressources/Figurines/Pawn.png" type="Texture" id=7]
+[ext_resource path="res://Ressources/Board/Targeted.png" type="Texture" id=8]
+[ext_resource path="res://Ressources/Enemies/Rogue.png" type="Texture" id=9]
+[ext_resource path="res://Ressources/Enemies/Pawn.png" type="Texture" id=10]
+[ext_resource path="res://Ressources/Enemies/Archer.png" type="Texture" id=11]
+[ext_resource path="res://Ressources/Board/Preview.png" type="Texture" id=12]
+[ext_resource path="res://Ressources/Fonts/PixelFont.tres" type="DynamicFont" id=13]
+[ext_resource path="res://Scripts/Toggleable.gd" type="Script" id=14]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.419608, 0.333333, 0.333333, 1 )
@@ -15,6 +22,30 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color( 0.156863, 0.156863, 0.156863, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.247059, 0.164706, 0.164706, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.168627, 0.133333, 0.133333, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.419608, 0.333333, 0.333333, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.168627, 0.133333, 0.133333, 1 )
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -37,6 +68,37 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 64
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.701961, 0.615686, 0.615686, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 1
+shadow_offset = Vector2( 3, 3 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.701961, 0.615686, 0.615686, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.419608, 0.333333, 0.333333, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_size = 1
+shadow_offset = Vector2( 3, 3 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 32
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 5 )
@@ -64,10 +126,69 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Easy" type="Button" parent="."]
-margin_left = 168.0
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+margin_left = 400.0
 margin_top = 188.0
-margin_right = 868.0
+margin_right = 896.0
+margin_bottom = 532.0
+rect_pivot_offset = Vector2( -184, -56 )
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer3" type="PanelContainer" parent="."]
+margin_left = 426.0
+margin_top = 227.0
+margin_right = 882.0
+margin_bottom = 307.0
+rect_pivot_offset = Vector2( -184, -56 )
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer3"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 451.0
+margin_bottom = 75.0
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer3/ScrollContainer"]
+margin_right = 200.0
+margin_bottom = 64.0
+
+[node name="Pawn" type="TextureButton" parent="PanelContainer3/ScrollContainer/HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 10 )
+script = ExtResource( 14 )
+enabled = false
+
+[node name="Archer" type="TextureButton" parent="PanelContainer3/ScrollContainer/HBoxContainer"]
+margin_left = 68.0
+margin_right = 132.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 11 )
+script = ExtResource( 14 )
+enabled = false
+
+[node name="Rogue" type="TextureButton" parent="PanelContainer3/ScrollContainer/HBoxContainer"]
+margin_left = 136.0
+margin_right = 200.0
+margin_bottom = 64.0
+texture_normal = ExtResource( 9 )
+script = ExtResource( 14 )
+enabled = false
+
+[node name="Easy" type="Button" parent="."]
+margin_left = 123.0
+margin_top = 188.0
+margin_right = 383.0
 margin_bottom = 288.0
 rect_min_size = Vector2( 250, 96 )
 custom_styles/normal = SubResource( 4 )
@@ -91,16 +212,15 @@ margin_top = 39.0
 margin_right = 227.0
 margin_bottom = 79.0
 custom_fonts/font = SubResource( 5 )
-text = "Easy - Peasants only"
-align = 1
+text = "Easy"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Normal" type="Button" parent="."]
-margin_left = 168.0
+margin_left = 123.0
 margin_top = 308.0
-margin_right = 868.0
+margin_right = 383.0
 margin_bottom = 408.0
 rect_min_size = Vector2( 250, 96 )
 custom_styles/normal = SubResource( 4 )
@@ -124,16 +244,15 @@ margin_top = 39.0
 margin_right = 227.0
 margin_bottom = 79.0
 custom_fonts/font = SubResource( 5 )
-text = "Medium - Also Archers"
-align = 1
+text = "Medium"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Hard" type="Button" parent="."]
-margin_left = 168.0
+margin_left = 123.0
 margin_top = 428.0
-margin_right = 868.0
+margin_right = 383.0
 margin_bottom = 528.0
 rect_min_size = Vector2( 250, 96 )
 custom_styles/normal = SubResource( 4 )
@@ -157,8 +276,7 @@ margin_top = 39.0
 margin_right = 227.0
 margin_bottom = 79.0
 custom_fonts/font = SubResource( 5 )
-text = "Hard - Everything they have"
-align = 1
+text = "Hard"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -177,6 +295,286 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Accept" type="Button" parent="."]
+margin_left = 754.0
+margin_top = 479.0
+margin_right = 879.0
+margin_bottom = 521.0
+custom_fonts/font = ExtResource( 13 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+text = "ACCEPT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemiesLabel" type="Label" parent="."]
+margin_left = 431.0
+margin_top = 179.0
+margin_right = 583.0
+margin_bottom = 219.0
+custom_fonts/font = SubResource( 5 )
+text = "Enemies"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Difficulty" type="Label" parent="."]
+margin_left = 730.0
+margin_top = 179.0
+margin_right = 882.0
+margin_bottom = 219.0
+custom_fonts/font = SubResource( 5 )
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviewPeasant" type="Control" parent="."]
+visible = false
+margin_left = 482.0
+margin_top = 363.0
+margin_right = 522.0
+margin_bottom = 403.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyName" type="Label" parent="PreviewPeasant"]
+margin_left = 149.0
+margin_top = -36.0
+margin_right = 277.0
+margin_bottom = 4.0
+custom_fonts/font = SubResource( 12 )
+text = "Peasant"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="PreviewPeasant"]
+margin_left = 149.0
+margin_right = 277.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 12 )
+text = "A basic bandit that only
+moves forward and beats
+a figure in front of it"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="PreviewPeasant"]
+margin_left = -64.0
+margin_top = -40.0
+margin_right = 128.0
+margin_bottom = 152.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Danger" type="TextureRect" parent="PreviewPeasant"]
+margin_top = 88.0
+margin_right = 64.0
+margin_bottom = 152.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyPicture" type="TextureRect" parent="PreviewPeasant"]
+margin_top = 24.0
+margin_right = 64.0
+margin_bottom = 88.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviewArcher" type="Control" parent="."]
+visible = false
+margin_left = 482.0
+margin_top = 363.0
+margin_right = 522.0
+margin_bottom = 403.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyName" type="Label" parent="PreviewArcher"]
+margin_left = 149.0
+margin_top = -36.0
+margin_right = 277.0
+margin_bottom = 4.0
+custom_fonts/font = SubResource( 12 )
+text = "Archer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="PreviewArcher"]
+margin_left = 149.0
+margin_right = 277.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 12 )
+text = "Shoots from further
+away. Can't beat figures
+in front of him."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="PreviewArcher"]
+margin_left = -64.0
+margin_top = -40.0
+margin_right = 128.0
+margin_bottom = 152.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Danger" type="TextureRect" parent="PreviewArcher"]
+margin_left = -64.0
+margin_top = 88.0
+margin_bottom = 152.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Danger2" type="TextureRect" parent="PreviewArcher"]
+margin_top = 88.0
+margin_right = 64.0
+margin_bottom = 152.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Danger3" type="TextureRect" parent="PreviewArcher"]
+margin_left = 64.0
+margin_top = 88.0
+margin_right = 128.0
+margin_bottom = 152.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyPicture" type="TextureRect" parent="PreviewArcher"]
+margin_top = -40.0
+margin_right = 64.0
+margin_bottom = 24.0
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviewRogue" type="Control" parent="."]
+visible = false
+margin_left = 482.0
+margin_top = 363.0
+margin_right = 522.0
+margin_bottom = 403.0
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyName" type="Label" parent="PreviewRogue"]
+margin_left = 149.0
+margin_top = -36.0
+margin_right = 277.0
+margin_bottom = 4.0
+custom_fonts/font = SubResource( 12 )
+text = "Rogue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="PreviewRogue"]
+margin_left = 149.0
+margin_right = 277.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 12 )
+text = "Has great perception so
+he can't be surprised.
+Attacks in every
+direction."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="TextureRect" parent="PreviewRogue"]
+margin_left = -64.0
+margin_top = -40.0
+margin_right = 128.0
+margin_bottom = 152.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Danger" type="TextureRect" parent="PreviewRogue"]
+margin_left = -64.0
+margin_top = 24.0
+margin_bottom = 88.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Danger2" type="TextureRect" parent="PreviewRogue"]
+margin_top = 88.0
+margin_right = 64.0
+margin_bottom = 152.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Danger3" type="TextureRect" parent="PreviewRogue"]
+margin_left = 64.0
+margin_top = 24.0
+margin_right = 128.0
+margin_bottom = 88.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Danger4" type="TextureRect" parent="PreviewRogue"]
+margin_top = -40.0
+margin_right = 64.0
+margin_bottom = 24.0
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyPicture" type="TextureRect" parent="PreviewRogue"]
+margin_top = 24.0
+margin_right = 64.0
+margin_bottom = 88.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="on_mouse_entered_enabled" from="PanelContainer3/ScrollContainer/HBoxContainer/Pawn" to="PreviewPeasant" method="vis"]
+[connection signal="on_mouse_entered_enabled" from="PanelContainer3/ScrollContainer/HBoxContainer/Pawn" to="PreviewArcher" method="invis"]
+[connection signal="on_mouse_entered_enabled" from="PanelContainer3/ScrollContainer/HBoxContainer/Pawn" to="PreviewRogue" method="invis"]
+[connection signal="on_mouse_entered_enabled" from="PanelContainer3/ScrollContainer/HBoxContainer/Archer" to="PreviewPeasant" method="invis"]
+[connection signal="on_mouse_entered_enabled" from="PanelContainer3/ScrollContainer/HBoxContainer/Archer" to="PreviewArcher" method="vis"]
+[connection signal="on_mouse_entered_enabled" from="PanelContainer3/ScrollContainer/HBoxContainer/Archer" to="PreviewRogue" method="invis"]
+[connection signal="on_mouse_entered_enabled" from="PanelContainer3/ScrollContainer/HBoxContainer/Rogue" to="PreviewPeasant" method="invis"]
+[connection signal="on_mouse_entered_enabled" from="PanelContainer3/ScrollContainer/HBoxContainer/Rogue" to="PreviewArcher" method="invis"]
+[connection signal="on_mouse_entered_enabled" from="PanelContainer3/ScrollContainer/HBoxContainer/Rogue" to="PreviewRogue" method="vis"]
 [connection signal="pressed" from="Easy" to="." method="_on_Easy_pressed"]
 [connection signal="pressed" from="Normal" to="." method="_on_Normal_pressed"]
 [connection signal="pressed" from="Hard" to="." method="_on_Hard_pressed"]
+[connection signal="pressed" from="Accept" to="." method="_on_Accept_pressed"]
