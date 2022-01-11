@@ -124,11 +124,12 @@ func _calculate_positions_endless(origin_pos, movement_vector, grid_size):
 	
 # Expects an actual position (e.g. 420, 69) and a relative movement vector (e.g. 1, 2) for the movable cells
 # It will display a blue overlay at all the possible positions the player may move
-func show_available_cells(origin_pos : Vector2, movement_array : Array, inversion: bool, addition: bool, endless: bool, object_reference, only_on_enemy : bool = false):	
+func show_available_cells(origin_pos : Vector2, movement_array : Array, inversion: bool, addition: bool, endless: bool, object_reference, only_on_enemy : bool = false, move_can_kill : bool = true):	
 	# Repeats the loop of every entry of the movement_array
+	var possible_positions =[]
 	for movement_vector in movement_array:
+		possible_positions.append_array(_get_positions_from_vec(origin_pos, movement_vector, grid_size))
 		# Calculate all normal possible positions
-		var possible_positions = _get_positions_from_vec(origin_pos, movement_vector, grid_size)
 		# Calculate all inverted possible positions
 		if inversion:
 			movement_vector = Vector2(movement_vector.y, movement_vector.x)
@@ -146,15 +147,21 @@ func show_available_cells(origin_pos : Vector2, movement_array : Array, inversio
 			if inversion:
 				movement_vector =Vector2(movement_vector.y, movement_vector.x)
 				possible_positions.append_array(_calculate_positions_endless(origin_pos, movement_vector, grid_size))
-			
-		possible_positions= _remove_duplicates_from_array(possible_positions)
-		for pos in possible_positions:
-			var s = preload("res://Scenes/AvailableCell.tscn").instance()
-			temporary_cells.append(s)
-			s.connected_figure = object_reference
-			get_gamemanager().add_child(s)
-			s.global_position = pos
-			s.check_position(only_on_enemy)
+		if !move_can_kill:
+			var arr = []
+			for pos in possible_positions:
+				if check_position(pos) == cell_content.ENEMY:
+					arr.append(pos)
+			for pos in arr:
+				possible_positions.erase(pos)
+	possible_positions= _remove_duplicates_from_array(possible_positions)
+	for pos in possible_positions:
+		var s = preload("res://Scenes/AvailableCell.tscn").instance()
+		temporary_cells.append(s)
+		s.connected_figure = object_reference
+		get_gamemanager().add_child(s)
+		s.global_position = pos
+		s.check_position(only_on_enemy)
 # check if a position is free
 # returns 0 if free
 # 1 if ally

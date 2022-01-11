@@ -7,6 +7,7 @@ export var killer_movement = Vector2(0,0)
 export var inversion = true # Allow the axis to be exchanged?
 export var addition = false # Allow the axis to be added to each other
 export var endless = false # Allow the axis to be endless
+export var move_can_kill = true #Allow for the normal movement to kill
 var selected = false setget setSelected
 var _mouse_inside = false
 var _tpos = null
@@ -37,11 +38,8 @@ func setSelected(value):
 	$Sprite.self_modulate = Color.aqua if selected else Color.white
 	if selected:
 		if !_opener_used and opener_movement != Vector2(0,0):
-			Helper.show_available_cells(global_position, [opener_movement], inversion, addition, endless, self)
-			Helper.show_available_cells(global_position, movement, inversion, addition, endless, self)
-			_opener_used = true
-		else:
-			Helper.show_available_cells(global_position, movement, inversion, addition, endless, self)
+			Helper.show_available_cells(global_position, [opener_movement], inversion, addition, endless, self, false, move_can_kill)
+		Helper.show_available_cells(global_position, movement, inversion, addition, endless, self, false, move_can_kill)
 		
 		# killer moves check
 		if killer_movement != Vector2(0,0):

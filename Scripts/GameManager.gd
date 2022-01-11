@@ -26,6 +26,7 @@ func spawn_figures():
 				figure.inversion = false
 				figure.addition = false
 				figure.endless = false
+				figure.move_can_kill = false
 			"Bishop":
 				figure.movement = [Vector2(1,1)]
 				figure.opener_movement = Vector2(1,1)
@@ -116,14 +117,10 @@ func check_victory(enemy):
 	if enemies.empty():
 		Helper.play_sound(preload("res://Ressources/SFX/winSound.wav"), 1)
 		$UI/Victory.visible = true
-		$UI/Objective.visible = false
-		$UI/LoseCondition.visible = false
 
 func lose(reason):
 	$UI/Lose.visible = true
 	$UI/Lose/Reason.text = reason
-	$UI/Objective.visible = false
-	$UI/LoseCondition.visible = false
 
 func figure_setup():
 	get_tree().change_scene("res://Scenes/TeamSetup.tscn")
