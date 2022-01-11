@@ -19,6 +19,15 @@ func select_cell(cell):
 	selected_cell = cell
 	selected_cell.modulate = Color.red
 
+func draw_preview(figure):
+	$Preview/Name.text = figure
+	var figure_container = $Preview/Figures
+	for child in figure_container.get_children():
+		child.visible = false
+	var n = figure_container.get_node_or_null(figure)
+	if n:
+		n.visible = true
+
 func _on_Accept_pressed():
 	if current_value > max_value:
 		return

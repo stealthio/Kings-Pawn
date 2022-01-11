@@ -14,7 +14,7 @@ func _ready():
 	_create_figurine(figure)
 	if !editable:
 		modulate = Color.darkgray
-	name_label = get_parent().get_parent().get_node("PanelContainer/Name")
+	name_label = get_parent().get_parent().get_node("Preview/Name")
 	connect("mouse_entered", self, "on_mouse_entered")
 	connect("mouse_exited", self, "on_mouse_exited")
 	if active_on_start:
@@ -24,11 +24,11 @@ func _ready():
 func on_mouse_entered():
 	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
 	self_modulate = Color.red
-	name_label.text = figure
+	teamsetup.draw_preview(figure)
 
 func on_mouse_exited():
 	self_modulate = Color.white
-	name_label.text = ""
+	teamsetup.draw_preview("")
 
 func _on_Available_pressed():
 	if editable:

@@ -1,7 +1,7 @@
 extends Label
 
 var text_to_show = ""
-var time_per_letter = 0.1
+var time_per_letter = 0.05
 var fade_speed = .01
 
 var timer

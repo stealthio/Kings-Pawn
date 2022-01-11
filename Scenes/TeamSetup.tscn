@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scripts/PurchaseFigureButton.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/Board/BackgroundOverlay.png" type="Texture" id=2]
@@ -12,9 +12,10 @@
 [ext_resource path="res://Ressources/Figurines/Queen.png" type="Texture" id=10]
 [ext_resource path="res://Ressources/Figurines/Knight.png" type="Texture" id=11]
 [ext_resource path="res://Ressources/Fonts/PixelFont.tres" type="DynamicFont" id=12]
-[ext_resource path="res://Scripts/InfoPanel.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/Cost.gd" type="Script" id=13]
 [ext_resource path="res://Ressources/Figurines/None.png" type="Texture" id=14]
 [ext_resource path="res://Ressources/Fonts/Minimal5x7.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://Ressources/Board/Preview_Big.png" type="Texture" id=16]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.419608, 0.333333, 0.333333, 1 )
@@ -27,17 +28,6 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.6, 0.494118, 0.494118, 1 )
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-
-[sub_resource type="DynamicFont" id=6]
-size = 63
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 15 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.701961, 0.615686, 0.615686, 1 )
@@ -63,6 +53,24 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 shadow_size = 1
 shadow_offset = Vector2( 3, 3 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.247059, 0.164706, 0.164706, 1 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.168627, 0.133333, 0.133333, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=8]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 15 )
 
 [node name="TeamSetup" type="Node2D"]
 script = ExtResource( 6 )
@@ -327,7 +335,7 @@ number = 7
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 margin_left = 168.0
-margin_top = 64.0
+margin_top = 19.0
 margin_right = 848.0
 margin_bottom = 384.0
 custom_styles/panel = SubResource( 1 )
@@ -335,210 +343,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 753.0
-margin_bottom = 315.0
-
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/HBoxContainer"]
-margin_right = 596.0
-margin_bottom = 310.0
-rect_min_size = Vector2( 500, 250 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
-columns = 6
-
-[node name="None" type="TextureButton" parent="PanelContainer/HBoxContainer/GridContainer"]
-margin_right = 96.0
-margin_bottom = 96.0
-rect_min_size = Vector2( 96, 96 )
-texture_normal = ExtResource( 14 )
-expand = true
-script = ExtResource( 1 )
-cost = 0
-unit_name = ""
-
-[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/GridContainer/None"]
-margin_left = 27.0
-margin_top = 107.0
-margin_right = 67.0
-margin_bottom = 121.0
-custom_fonts/font = ExtResource( 12 )
-text = "1"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Pawn" type="TextureButton" parent="PanelContainer/HBoxContainer/GridContainer"]
-margin_left = 100.0
-margin_right = 196.0
-margin_bottom = 96.0
-rect_min_size = Vector2( 96, 96 )
-texture_normal = ExtResource( 4 )
-expand = true
-script = ExtResource( 1 )
-
-[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/GridContainer/Pawn"]
-margin_left = 27.0
-margin_top = 107.0
-margin_right = 67.0
-margin_bottom = 121.0
-custom_fonts/font = ExtResource( 12 )
-text = "1"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Knight" type="TextureButton" parent="PanelContainer/HBoxContainer/GridContainer"]
-margin_left = 200.0
-margin_right = 296.0
-margin_bottom = 96.0
-rect_min_size = Vector2( 96, 96 )
-texture_normal = ExtResource( 11 )
-expand = true
-script = ExtResource( 1 )
-cost = 3
-unit_name = "Knight"
-
-[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/GridContainer/Knight"]
-margin_left = 27.0
-margin_top = 107.0
-margin_right = 67.0
-margin_bottom = 121.0
-custom_fonts/font = ExtResource( 12 )
-text = "1"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bishop" type="TextureButton" parent="PanelContainer/HBoxContainer/GridContainer"]
-margin_left = 300.0
-margin_right = 396.0
-margin_bottom = 96.0
-rect_min_size = Vector2( 96, 96 )
-texture_normal = ExtResource( 9 )
-expand = true
-script = ExtResource( 1 )
-cost = 3
-unit_name = "Bishop"
-
-[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/GridContainer/Bishop"]
-margin_left = 27.0
-margin_top = 107.0
-margin_right = 67.0
-margin_bottom = 121.0
-custom_fonts/font = ExtResource( 12 )
-text = "1"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Rook" type="TextureButton" parent="PanelContainer/HBoxContainer/GridContainer"]
-margin_left = 400.0
-margin_right = 496.0
-margin_bottom = 96.0
-rect_min_size = Vector2( 96, 96 )
-texture_normal = ExtResource( 8 )
-expand = true
-script = ExtResource( 1 )
-cost = 5
-unit_name = "Rook"
-
-[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/GridContainer/Rook"]
-margin_left = 27.0
-margin_top = 107.0
-margin_right = 67.0
-margin_bottom = 121.0
-custom_fonts/font = ExtResource( 12 )
-text = "1"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Queen" type="TextureButton" parent="PanelContainer/HBoxContainer/GridContainer"]
-margin_left = 500.0
-margin_right = 596.0
-margin_bottom = 96.0
-rect_min_size = Vector2( 96, 96 )
-texture_normal = ExtResource( 10 )
-expand = true
-script = ExtResource( 1 )
-cost = 10
-unit_name = "Queen"
-
-[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/GridContainer/Queen"]
-margin_left = 27.0
-margin_top = 107.0
-margin_right = 67.0
-margin_bottom = 121.0
-custom_fonts/font = ExtResource( 12 )
-text = "1"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="InfoPanel" type="PanelContainer" parent="PanelContainer/HBoxContainer"]
-margin_left = 600.0
-margin_right = 748.0
-margin_bottom = 310.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_styles/panel = SubResource( 2 )
-script = ExtResource( 13 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/InfoPanel"]
-margin_right = 148.0
-margin_bottom = 310.0
-
-[node name="Info" type="Label" parent="PanelContainer/HBoxContainer/InfoPanel/VBoxContainer"]
-margin_right = 148.0
-margin_bottom = 112.0
-rect_min_size = Vector2( 0, 20 )
-custom_fonts/font = ExtResource( 12 )
-text = "You can use up
-to 40 points to
-set up your
-board side
-"
-align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Cost" type="Label" parent="PanelContainer/HBoxContainer/InfoPanel/VBoxContainer"]
-margin_top = 116.0
-margin_right = 148.0
-margin_bottom = 136.0
+[node name="Cost" type="Label" parent="."]
+margin_left = 688.0
+margin_top = 302.0
+margin_right = 836.0
+margin_bottom = 322.0
 rect_min_size = Vector2( 0, 20 )
 custom_fonts/font = ExtResource( 12 )
 text = "Total: 0/40"
 align = 1
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="PanelContainer"]
-margin_left = 5.0
-margin_top = 130.0
-margin_right = 753.0
-margin_bottom = 190.0
-rect_min_size = Vector2( 60, 60 )
-custom_fonts/font = SubResource( 6 )
-align = 1
-valign = 2
-
 [node name="Accept" type="Button" parent="."]
-margin_left = 485.0
-margin_top = 331.0
-margin_right = 610.0
-margin_bottom = 373.0
+margin_left = 703.0
+margin_top = 325.0
+margin_right = 828.0
+margin_bottom = 367.0
 custom_fonts/font = ExtResource( 12 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 3 )
@@ -549,10 +372,10 @@ __meta__ = {
 }
 
 [node name="Clear" type="Button" parent="."]
-margin_left = 419.0
-margin_top = 283.0
-margin_right = 544.0
-margin_bottom = 325.0
+margin_left = 90.0
+margin_top = 408.0
+margin_right = 215.0
+margin_bottom = 450.0
 custom_fonts/font = ExtResource( 12 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 3 )
@@ -563,15 +386,818 @@ __meta__ = {
 }
 
 [node name="Reset" type="Button" parent="."]
-margin_left = 553.0
-margin_top = 283.0
-margin_right = 678.0
-margin_bottom = 325.0
+margin_left = 90.0
+margin_top = 459.0
+margin_right = 215.0
+margin_bottom = 501.0
 custom_fonts/font = ExtResource( 12 )
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/normal = SubResource( 4 )
-text = "RESET"
+text = "DEFAULT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+margin_left = 186.0
+margin_top = 40.0
+margin_right = 832.0
+margin_bottom = 154.0
+rect_pivot_offset = Vector2( -184, -56 )
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_left = 203.0
+margin_top = 55.0
+margin_right = 817.0
+margin_bottom = 154.0
+scroll_vertical_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="HBoxContainer" parent="ScrollContainer"]
+margin_right = 614.0
+margin_bottom = 99.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="None" type="TextureButton" parent="ScrollContainer/GridContainer"]
+margin_right = 64.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 14 )
+script = ExtResource( 1 )
+cost = 0
+unit_name = ""
+
+[node name="Cost" type="Label" parent="ScrollContainer/GridContainer/None"]
+margin_left = 12.0
+margin_top = 73.0
+margin_right = 52.0
+margin_bottom = 93.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pawn" type="TextureButton" parent="ScrollContainer/GridContainer"]
+margin_left = 68.0
+margin_right = 132.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 4 )
+script = ExtResource( 1 )
+
+[node name="Cost" type="Label" parent="ScrollContainer/GridContainer/Pawn"]
+margin_left = 12.0
+margin_top = 73.0
+margin_right = 52.0
+margin_bottom = 93.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knight" type="TextureButton" parent="ScrollContainer/GridContainer"]
+margin_left = 136.0
+margin_right = 200.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 11 )
+script = ExtResource( 1 )
+cost = 3
+unit_name = "Knight"
+
+[node name="Cost" type="Label" parent="ScrollContainer/GridContainer/Knight"]
+margin_left = 12.0
+margin_top = 73.0
+margin_right = 52.0
+margin_bottom = 93.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bishop" type="TextureButton" parent="ScrollContainer/GridContainer"]
+margin_left = 204.0
+margin_right = 268.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 9 )
+script = ExtResource( 1 )
+cost = 3
+unit_name = "Bishop"
+
+[node name="Cost" type="Label" parent="ScrollContainer/GridContainer/Bishop"]
+margin_left = 12.0
+margin_top = 73.0
+margin_right = 52.0
+margin_bottom = 93.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rook" type="TextureButton" parent="ScrollContainer/GridContainer"]
+margin_left = 272.0
+margin_right = 336.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 8 )
+script = ExtResource( 1 )
+cost = 5
+unit_name = "Rook"
+
+[node name="Cost" type="Label" parent="ScrollContainer/GridContainer/Rook"]
+margin_left = 12.0
+margin_top = 73.0
+margin_right = 52.0
+margin_bottom = 93.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Queen" type="TextureButton" parent="ScrollContainer/GridContainer"]
+margin_left = 340.0
+margin_right = 404.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 10 )
+script = ExtResource( 1 )
+cost = 10
+unit_name = "Queen"
+
+[node name="Cost" type="Label" parent="ScrollContainer/GridContainer/Queen"]
+margin_left = 12.0
+margin_top = 73.0
+margin_right = 52.0
+margin_bottom = 93.0
+custom_fonts/font = ExtResource( 12 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Preview" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Board" type="TextureRect" parent="Preview"]
+margin_left = 186.0
+margin_top = 203.0
+margin_right = 351.0
+margin_bottom = 368.0
+texture = ExtResource( 16 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Preview"]
+margin_left = 186.0
+margin_top = 176.0
+margin_right = 186.0
+margin_bottom = 196.0
+custom_fonts/font = SubResource( 8 )
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Figures" type="Control" parent="Preview"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pawn" type="Control" parent="Preview/Figures"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Figure" type="TextureRect" parent="Preview/Figures/Pawn"]
+margin_left = 252.0
+margin_top = 302.0
+margin_right = 285.0
+margin_bottom = 335.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="Move" type="TextureRect" parent="Preview/Figures/Pawn"]
+margin_left = 252.0
+margin_top = 269.0
+margin_right = 285.0
+margin_bottom = 302.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Opener" type="TextureRect" parent="Preview/Figures/Pawn"]
+modulate = Color( 1, 0.984375, 0, 1 )
+margin_left = 252.0
+margin_top = 236.0
+margin_right = 285.0
+margin_bottom = 269.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Attack" type="TextureRect" parent="Preview/Figures/Pawn"]
+modulate = Color( 9.25, 0, 0, 1 )
+margin_left = 285.0
+margin_top = 269.0
+margin_right = 318.0
+margin_bottom = 302.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Attack2" type="TextureRect" parent="Preview/Figures/Pawn"]
+modulate = Color( 9.25, 0, 0, 1 )
+margin_left = 218.0
+margin_top = 269.0
+margin_right = 251.0
+margin_bottom = 302.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="Description" type="Label" parent="Preview/Figures/Pawn"]
+margin_left = 364.0
+margin_top = 203.0
+margin_right = 364.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 8 )
+text = "The Pawn can move 1 up or beat an enemy
+diagonally. As an opener he may move 2 up."
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Knight" type="Control" parent="Preview/Figures"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Figure" type="TextureRect" parent="Preview/Figures/Knight"]
+margin_left = 251.0
+margin_top = 269.0
+margin_right = 284.0
+margin_bottom = 302.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="Move" type="TextureRect" parent="Preview/Figures/Knight"]
+margin_left = 285.0
+margin_top = 203.0
+margin_right = 318.0
+margin_bottom = 236.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move2" type="TextureRect" parent="Preview/Figures/Knight"]
+margin_left = 318.0
+margin_top = 236.0
+margin_right = 351.0
+margin_bottom = 269.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move3" type="TextureRect" parent="Preview/Figures/Knight"]
+margin_left = 219.0
+margin_top = 203.0
+margin_right = 252.0
+margin_bottom = 236.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move4" type="TextureRect" parent="Preview/Figures/Knight"]
+margin_left = 186.0
+margin_top = 236.0
+margin_right = 219.0
+margin_bottom = 269.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move5" type="TextureRect" parent="Preview/Figures/Knight"]
+margin_left = 186.0
+margin_top = 302.0
+margin_right = 219.0
+margin_bottom = 335.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move6" type="TextureRect" parent="Preview/Figures/Knight"]
+margin_left = 219.0
+margin_top = 335.0
+margin_right = 252.0
+margin_bottom = 368.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move7" type="TextureRect" parent="Preview/Figures/Knight"]
+margin_left = 285.0
+margin_top = 335.0
+margin_right = 318.0
+margin_bottom = 368.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move8" type="TextureRect" parent="Preview/Figures/Knight"]
+margin_left = 318.0
+margin_top = 302.0
+margin_right = 351.0
+margin_bottom = 335.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="Preview/Figures/Knight"]
+margin_left = 364.0
+margin_top = 203.0
+margin_right = 364.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 8 )
+text = "The Knight can move asymmetrically on both axis. 
+He can move 2 on a coordinate and 1 on the
+other."
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bishop" type="Control" parent="Preview/Figures"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Figure" type="TextureRect" parent="Preview/Figures/Bishop"]
+margin_left = 251.0
+margin_top = 269.0
+margin_right = 284.0
+margin_bottom = 302.0
+texture = ExtResource( 9 )
+expand = true
+
+[node name="Move" type="TextureRect" parent="Preview/Figures/Bishop"]
+margin_left = 285.0
+margin_top = 236.0
+margin_right = 318.0
+margin_bottom = 269.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move2" type="TextureRect" parent="Preview/Figures/Bishop"]
+margin_left = 318.0
+margin_top = 203.0
+margin_right = 351.0
+margin_bottom = 236.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move3" type="TextureRect" parent="Preview/Figures/Bishop"]
+margin_left = 219.0
+margin_top = 236.0
+margin_right = 252.0
+margin_bottom = 269.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move4" type="TextureRect" parent="Preview/Figures/Bishop"]
+margin_left = 186.0
+margin_top = 203.0
+margin_right = 219.0
+margin_bottom = 236.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move5" type="TextureRect" parent="Preview/Figures/Bishop"]
+margin_left = 219.0
+margin_top = 302.0
+margin_right = 252.0
+margin_bottom = 335.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move6" type="TextureRect" parent="Preview/Figures/Bishop"]
+margin_left = 186.0
+margin_top = 335.0
+margin_right = 219.0
+margin_bottom = 368.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move7" type="TextureRect" parent="Preview/Figures/Bishop"]
+margin_left = 285.0
+margin_top = 302.0
+margin_right = 318.0
+margin_bottom = 335.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move8" type="TextureRect" parent="Preview/Figures/Bishop"]
+margin_left = 318.0
+margin_top = 335.0
+margin_right = 351.0
+margin_bottom = 368.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="Preview/Figures/Bishop"]
+margin_left = 364.0
+margin_top = 203.0
+margin_right = 364.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 8 )
+text = "The Bishop can move diagonally for any amount
+of fields."
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Rook" type="Control" parent="Preview/Figures"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Figure" type="TextureRect" parent="Preview/Figures/Rook"]
+margin_left = 251.0
+margin_top = 269.0
+margin_right = 284.0
+margin_bottom = 302.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="Move" type="TextureRect" parent="Preview/Figures/Rook"]
+margin_left = 285.0
+margin_top = 269.0
+margin_right = 318.0
+margin_bottom = 302.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move2" type="TextureRect" parent="Preview/Figures/Rook"]
+margin_left = 318.0
+margin_top = 269.0
+margin_right = 351.0
+margin_bottom = 302.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move3" type="TextureRect" parent="Preview/Figures/Rook"]
+margin_left = 252.0
+margin_top = 236.0
+margin_right = 285.0
+margin_bottom = 269.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move4" type="TextureRect" parent="Preview/Figures/Rook"]
+margin_left = 252.0
+margin_top = 203.0
+margin_right = 285.0
+margin_bottom = 236.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move5" type="TextureRect" parent="Preview/Figures/Rook"]
+margin_left = 252.0
+margin_top = 302.0
+margin_right = 285.0
+margin_bottom = 335.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move6" type="TextureRect" parent="Preview/Figures/Rook"]
+margin_left = 252.0
+margin_top = 335.0
+margin_right = 285.0
+margin_bottom = 368.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move7" type="TextureRect" parent="Preview/Figures/Rook"]
+margin_left = 219.0
+margin_top = 269.0
+margin_right = 252.0
+margin_bottom = 302.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move8" type="TextureRect" parent="Preview/Figures/Rook"]
+margin_left = 186.0
+margin_top = 269.0
+margin_right = 219.0
+margin_bottom = 302.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="Preview/Figures/Rook"]
+margin_left = 364.0
+margin_top = 203.0
+margin_right = 364.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 8 )
+text = "The Rook can move in any cardinal
+direction for any amount of fields"
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Queen" type="Control" parent="Preview/Figures"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Figure" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 251.0
+margin_top = 269.0
+margin_right = 284.0
+margin_bottom = 302.0
+texture = ExtResource( 10 )
+expand = true
+
+[node name="Move" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 285.0
+margin_top = 269.0
+margin_right = 318.0
+margin_bottom = 302.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move2" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 318.0
+margin_top = 269.0
+margin_right = 351.0
+margin_bottom = 302.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move3" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 252.0
+margin_top = 236.0
+margin_right = 285.0
+margin_bottom = 269.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move4" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 252.0
+margin_top = 203.0
+margin_right = 285.0
+margin_bottom = 236.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move5" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 252.0
+margin_top = 302.0
+margin_right = 285.0
+margin_bottom = 335.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move6" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 252.0
+margin_top = 335.0
+margin_right = 285.0
+margin_bottom = 368.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move7" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 219.0
+margin_top = 269.0
+margin_right = 252.0
+margin_bottom = 302.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move8" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 186.0
+margin_top = 269.0
+margin_right = 219.0
+margin_bottom = 302.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move9" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 219.0
+margin_top = 236.0
+margin_right = 252.0
+margin_bottom = 269.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move10" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 186.0
+margin_top = 203.0
+margin_right = 219.0
+margin_bottom = 236.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move11" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 285.0
+margin_top = 236.0
+margin_right = 318.0
+margin_bottom = 269.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move12" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 318.0
+margin_top = 203.0
+margin_right = 351.0
+margin_bottom = 236.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move13" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 219.0
+margin_top = 302.0
+margin_right = 252.0
+margin_bottom = 335.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move14" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 186.0
+margin_top = 335.0
+margin_right = 219.0
+margin_bottom = 368.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move15" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 285.0
+margin_top = 302.0
+margin_right = 318.0
+margin_bottom = 335.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move16" type="TextureRect" parent="Preview/Figures/Queen"]
+margin_left = 318.0
+margin_top = 335.0
+margin_right = 351.0
+margin_bottom = 368.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="Preview/Figures/Queen"]
+margin_left = 364.0
+margin_top = 203.0
+margin_right = 364.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 8 )
+text = "The Queen can move in cardinal directions as
+well as diagonally for any amount of fields."
+valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -592,12 +1218,12 @@ __meta__ = {
 [connection signal="pressed" from="Slots/Available14" to="Slots/Available14" method="_on_Available_pressed"]
 [connection signal="pressed" from="Slots/Available15" to="Slots/Available15" method="_on_Available_pressed"]
 [connection signal="pressed" from="Slots/Available16" to="Slots/Available16" method="_on_Available_pressed"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/None" to="PanelContainer/HBoxContainer/GridContainer/None" method="_on_pressed"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Pawn" to="PanelContainer/HBoxContainer/GridContainer/Pawn" method="_on_pressed"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Knight" to="PanelContainer/HBoxContainer/GridContainer/Knight" method="_on_pressed"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Bishop" to="PanelContainer/HBoxContainer/GridContainer/Bishop" method="_on_pressed"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Rook" to="PanelContainer/HBoxContainer/GridContainer/Rook" method="_on_pressed"]
-[connection signal="pressed" from="PanelContainer/HBoxContainer/GridContainer/Queen" to="PanelContainer/HBoxContainer/GridContainer/Queen" method="_on_pressed"]
 [connection signal="pressed" from="Accept" to="." method="_on_Accept_pressed"]
 [connection signal="pressed" from="Clear" to="." method="_on_Clear_pressed"]
 [connection signal="pressed" from="Reset" to="." method="_on_Reset_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/None" to="ScrollContainer/GridContainer/None" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/Pawn" to="ScrollContainer/GridContainer/Pawn" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/Knight" to="ScrollContainer/GridContainer/Knight" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/Bishop" to="ScrollContainer/GridContainer/Bishop" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/Rook" to="ScrollContainer/GridContainer/Rook" method="_on_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/Queen" to="ScrollContainer/GridContainer/Queen" method="_on_pressed"]
