@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scripts/PurchaseFigureButton.gd" type="Script" id=1]
 [ext_resource path="res://Ressources/Board/BackgroundOverlay.png" type="Texture" id=2]
@@ -71,6 +71,12 @@ corner_radius_bottom_left = 20
 [sub_resource type="DynamicFont" id=8]
 size = 32
 outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 64
+outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 15 )
 
@@ -403,9 +409,9 @@ __meta__ = {
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]
 margin_left = 186.0
-margin_top = 40.0
+margin_top = 83.0
 margin_right = 832.0
-margin_bottom = 154.0
+margin_bottom = 197.0
 rect_pivot_offset = Vector2( -184, -56 )
 custom_styles/panel = SubResource( 7 )
 __meta__ = {
@@ -414,9 +420,9 @@ __meta__ = {
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 margin_left = 203.0
-margin_top = 55.0
+margin_top = 98.0
 margin_right = 817.0
-margin_bottom = 154.0
+margin_bottom = 197.0
 scroll_vertical_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -579,10 +585,10 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="Preview"]
-margin_left = 186.0
-margin_top = 176.0
-margin_right = 186.0
-margin_bottom = 196.0
+margin_left = 364.0
+margin_top = 203.0
+margin_right = 364.0
+margin_bottom = 223.0
 custom_fonts/font = SubResource( 8 )
 valign = 2
 __meta__ = {
@@ -597,6 +603,7 @@ __meta__ = {
 }
 
 [node name="Pawn" type="Control" parent="Preview/Figures"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -648,9 +655,9 @@ expand = true
 
 [node name="Description" type="Label" parent="Preview/Figures/Pawn"]
 margin_left = 364.0
-margin_top = 203.0
-margin_right = 364.0
-margin_bottom = 223.0
+margin_top = 236.0
+margin_right = 764.0
+margin_bottom = 279.0
 custom_fonts/font = SubResource( 8 )
 text = "The Pawn can move 1 up or beat an enemy
 diagonally. As an opener he may move 2 up."
@@ -762,9 +769,9 @@ __meta__ = {
 
 [node name="Description" type="Label" parent="Preview/Figures/Knight"]
 margin_left = 364.0
-margin_top = 203.0
-margin_right = 364.0
-margin_bottom = 223.0
+margin_top = 236.0
+margin_right = 840.0
+margin_bottom = 302.0
 custom_fonts/font = SubResource( 8 )
 text = "The Knight can move asymmetrically on both axis. 
 He can move 2 on a coordinate and 1 on the
@@ -877,9 +884,9 @@ __meta__ = {
 
 [node name="Description" type="Label" parent="Preview/Figures/Bishop"]
 margin_left = 364.0
-margin_top = 203.0
-margin_right = 364.0
-margin_bottom = 223.0
+margin_top = 236.0
+margin_right = 812.0
+margin_bottom = 279.0
 custom_fonts/font = SubResource( 8 )
 text = "The Bishop can move diagonally for any amount
 of fields."
@@ -991,9 +998,9 @@ __meta__ = {
 
 [node name="Description" type="Label" parent="Preview/Figures/Rook"]
 margin_left = 364.0
-margin_top = 203.0
-margin_right = 364.0
-margin_bottom = 223.0
+margin_top = 236.0
+margin_right = 688.0
+margin_bottom = 279.0
 custom_fonts/font = SubResource( 8 )
 text = "The Rook can move in any cardinal
 direction for any amount of fields"
@@ -1193,9 +1200,9 @@ __meta__ = {
 
 [node name="Description" type="Label" parent="Preview/Figures/Queen"]
 margin_left = 364.0
-margin_top = 203.0
-margin_right = 364.0
-margin_bottom = 223.0
+margin_top = 236.0
+margin_right = 796.0
+margin_bottom = 279.0
 custom_fonts/font = SubResource( 8 )
 text = "The Queen can move in cardinal directions as
 well as diagonally for any amount of fields."
@@ -1211,6 +1218,19 @@ margin_right = 282.0
 margin_bottom = 407.0
 texture = ExtResource( 18 )
 script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="."]
+margin_left = 186.0
+margin_top = 33.0
+margin_right = 832.0
+margin_bottom = 73.0
+custom_fonts/font = SubResource( 9 )
+text = "Army Creation"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

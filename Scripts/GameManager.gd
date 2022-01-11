@@ -12,7 +12,6 @@ signal on_turn_begin
 signal on_enemy_pre_execute
 signal on_enemy_added
 
-
 func spawn_figures():
 	var figure_setup = Helper.figure_setup
 	for key in figure_setup:
@@ -107,6 +106,8 @@ func _process(delta):
 				emit_signal("on_turn_begin")
 				is_player_turn = true
 				current_enemy = null
+	if Input.is_action_just_pressed("pause"):
+		$UI/Menu.visible = !$UI/Menu.visible
 
 func restart():
 	get_tree().reload_current_scene()
@@ -126,3 +127,6 @@ func lose(reason):
 
 func figure_setup():
 	get_tree().change_scene("res://Scenes/TeamSetup.tscn")
+
+func on_cancel_pressed():
+	$UI/Menu.visible = false
