@@ -305,7 +305,7 @@ script = ExtResource( 16 )
 
 [node name="Background" type="Sprite" parent="Board"]
 position = Vector2( 256, 250 )
-z_index = -1
+z_index = -10
 texture = ExtResource( 13 )
 
 [node name="BackgroundOverlay" type="Sprite" parent="Board"]
@@ -316,6 +316,7 @@ texture = ExtResource( 6 )
 
 [node name="Board" type="Sprite" parent="Board"]
 position = Vector2( 256, 256 )
+z_index = -5
 texture = ExtResource( 1 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Board"]

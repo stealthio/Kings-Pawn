@@ -14,18 +14,20 @@ func _ready():
 	Helper.game_manager.connect("on_turn_begin", self, "spawn_logic")
 	yield(get_tree(), "idle_frame")
 	for i in spawn_count[difficulty].y:
-		prepare_spawn()
+		prepare_spawn(false)
 	spawn()
 
 func spawn():
 	for prepared in prepared_spawns:
-		if Helper.check_position(prepared.global_position) == Helper.cell_content.FREE:
+		if Helper.check_position(prepared.global_position) != Helper.cell_content.ENEMY:
 			prepared.replace()
+		if Helper.check_position(prepared.global_position) == Helper.cell_content.ALLY:
+			Helper.get_figure_at_position(prepared.global_position).die()
 	prepared_spawns.clear()
 
-func prepare_spawn():
+func prepare_spawn(with_warning = true):
 	var tpos = start_pos + Vector2((int(rand_range(0,8)) * Helper.grid_size),0)
-	if Helper.check_position(tpos) == Helper.cell_content.FREE:
+	if Helper.check_position(tpos) != Helper.cell_content.ENEMY:
 		for n in prepared_spawns:
 			if n.global_position == tpos:
 				return
@@ -37,7 +39,17 @@ func prepare_spawn():
 		ps.with = enemy
 		Helper.game_manager.get_node("Board").get_node("YSort").add_child(ps)
 		ps.global_position = tpos
+		ps.z_index = -1
 		prepared_spawns.append(ps)
+		if !with_warning:
+			return
+		var warning = Sprite.new()
+		warning.set_script(preload("res://Scripts/DeleteAfterTurns.gd"))
+		warning.texture = preload("res://Ressources/Board/RedCell.png")
+		Helper.game_manager.get_node("Board").get_node("YSort").add_child(warning)
+		warning.global_position = tpos
+		warning.z_index = -2
+		
 
 func spawn_logic():
 	spawn()
