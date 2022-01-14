@@ -88,6 +88,7 @@ func end_turn():
 	for enemy in enemies:
 		enemy.turn_done = false
 	emit_signal("on_turn_end")
+	$UI/EndTurn.disabled = true
 
 func _process(delta):
 	if !is_player_turn:
@@ -105,6 +106,7 @@ func _process(delta):
 					break
 			if current_enemy.turn_done:
 				emit_signal("on_turn_begin")
+				$UI/EndTurn.disabled = false
 				is_player_turn = true
 				current_enemy = null
 	if Input.is_action_just_pressed("pause"):
@@ -127,3 +129,7 @@ func figure_setup():
 
 func on_cancel_pressed():
 	$UI/Menu.visible = false
+
+
+func _on_EndTurn_pressed():
+	end_turn()

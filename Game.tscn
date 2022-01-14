@@ -382,9 +382,9 @@ script = ExtResource( 15 )
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="TurnLabel" type="Label" parent="UI"]
-margin_left = 463.0
+margin_left = 384.0
 margin_top = 5.0
-margin_right = 591.0
+margin_right = 512.0
 margin_bottom = 48.0
 rect_pivot_offset = Vector2( 34, 10 )
 custom_fonts/font = ExtResource( 12 )
@@ -626,6 +626,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="EndTurn" type="Button" parent="UI"]
+margin_left = 526.0
+margin_top = 12.0
+margin_right = 666.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 140, 30 )
+custom_fonts/font = ExtResource( 12 )
+custom_styles/hover = SubResource( 82 )
+custom_styles/pressed = SubResource( 83 )
+custom_styles/normal = SubResource( 81 )
+text = "End Turn"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="UI/Menu/Restart" to="." method="restart"]
 [connection signal="pressed" from="UI/Menu/Setup" to="." method="figure_setup"]
 [connection signal="pressed" from="UI/Menu/Cancel" to="." method="on_cancel_pressed"]
@@ -633,3 +648,4 @@ __meta__ = {
 [connection signal="pressed" from="UI/Victory/Setup" to="." method="figure_setup"]
 [connection signal="pressed" from="UI/Lose/Restart" to="." method="restart"]
 [connection signal="pressed" from="UI/Lose/Setup" to="." method="figure_setup"]
+[connection signal="pressed" from="UI/EndTurn" to="." method="_on_EndTurn_pressed"]
