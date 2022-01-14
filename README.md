@@ -1,4 +1,4 @@
-# Queens-Protection
+# Castle Chess
 A game of chess with a twist of wave survival. Developed using [Godot](https://godotengine.org/)
 
 You can play it in your Browser here on [Itch.io](https://scarred95.itch.io/castle-chess)
