@@ -3,7 +3,7 @@ extends Node2D
 signal on_turn_begin
 signal on_turn_end
 signal victory
-signal lose
+signal lose(reason)
 
 var _player_turn = true # Prevents user interaction if not player turn
 
@@ -21,7 +21,6 @@ func execute_enemy_turn():
 		enemy.execute()
 		yield(enemy, "turn_finished")
 	_player_turn = true
-	$UI/EndTurn.disabled = false
 	emit_signal("on_turn_begin")
 
 func is_player_turn():
@@ -29,20 +28,16 @@ func is_player_turn():
 
 func end_turn():
 	_player_turn = false
-	$UI/EndTurn.disabled = true
 	emit_signal("on_turn_end")
 	execute_enemy_turn()
 
 func check_victory():
 	if BoardEntities.get_enemies().size() <= 1: # check is with 1 as the enemy that has just been killed is still "Living" at this moment
 		Helper.play_sound(preload("res://Ressources/SFX/winSound.wav"), 1)
-		$UI/Victory.visible = true
 		emit_signal("victory")
 
 func lose(reason):
-	$UI/Lose.visible = true
-	$UI/Lose/Reason.text = reason
-	emit_signal("lose")
+	emit_signal("lose", reason)
 
 # Takes all figures from Helper.figure_setup and places them in order on the board
 func spawn_figures():
