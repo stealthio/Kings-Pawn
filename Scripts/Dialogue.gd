@@ -20,7 +20,7 @@ func on_death(who):
 	if rand_range(0, 100) <= death_dialogue_chance:
 		Helper.show_text_at_position(Helper.get_random_from_array(death_dialogues), get_parent().global_position + position_offset, 3.0, color)
 
-func on_kill(pos, ranged = false):
+func on_kill(enemy, ranged = false, pos = Vector2(0,0)):
 	if rand_range(0, 100) <= kill_dialogue_chance:
 		var p = pos + position_offset
 		if ranged:

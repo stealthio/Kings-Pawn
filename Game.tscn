@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Ressources/Board/Board.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Scripts/Obstacle.gd" type="Script" id=16]
 [ext_resource path="res://Scripts/ObstacleSpawnManager.gd" type="Script" id=17]
 [ext_resource path="res://Scripts/Fadeout.gd" type="Script" id=18]
+[ext_resource path="res://Scripts/IngameUI.gd" type="Script" id=19]
 
 [sub_resource type="DynamicFont" id=84]
 size = 64
@@ -381,6 +382,7 @@ script = ExtResource( 15 )
 [node name="Timer" type="Timer" parent="Camera2D"]
 
 [node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 19 )
 
 [node name="TurnLabel" type="Label" parent="UI"]
 margin_left = 384.0
@@ -642,11 +644,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="UI/Menu/Restart" to="." method="restart"]
-[connection signal="pressed" from="UI/Menu/Setup" to="." method="figure_setup"]
-[connection signal="pressed" from="UI/Menu/Cancel" to="." method="on_cancel_pressed"]
-[connection signal="pressed" from="UI/Victory/Restart" to="." method="restart"]
-[connection signal="pressed" from="UI/Victory/Setup" to="." method="figure_setup"]
-[connection signal="pressed" from="UI/Lose/Restart" to="." method="restart"]
-[connection signal="pressed" from="UI/Lose/Setup" to="." method="figure_setup"]
-[connection signal="pressed" from="UI/EndTurn" to="." method="_on_EndTurn_pressed"]
+[connection signal="pressed" from="UI/Menu/Restart" to="UI" method="_on_Restart_pressed"]
+[connection signal="pressed" from="UI/Menu/Setup" to="UI" method="_on_Setup_pressed"]
+[connection signal="pressed" from="UI/Menu/Cancel" to="UI" method="_on_Cancel_pressed"]
+[connection signal="pressed" from="UI/Victory/Restart" to="UI" method="_on_Restart_pressed"]
+[connection signal="pressed" from="UI/Victory/Setup" to="UI" method="_on_Setup_pressed"]
+[connection signal="pressed" from="UI/Lose/Restart" to="UI" method="_on_Restart_pressed"]
+[connection signal="pressed" from="UI/Lose/Setup" to="UI" method="_on_Setup_pressed"]
+[connection signal="pressed" from="UI/EndTurn" to="." method="end_turn"]

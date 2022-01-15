@@ -10,22 +10,21 @@ var _tpos
 var _dangerzone = []
 var _mpos
 
-signal on_kill
+signal on_kill(enemy, ranged, pos)
 signal on_death
+signal turn_finished
 
 func _ready():
-	Helper.game_manager.append_enemy(self)
+	BoardEntities.append_enemy(self)
 	$AnimationPlayer.play("Appear")
 	draw_dangerzone()
 	
 func die(without_animation = false):
-	Helper.game_manager.enemies.erase(self)
 	if without_animation:
 		queue_free()
 	else:
 		emit_signal("on_death", self)
 		$AnimationPlayer.play("Death")
-		
 
 func attack_pos(pos):
 	if Helper.check_position(pos) == Helper.cell_content.ALLY:
@@ -46,19 +45,16 @@ func move_to_position(pos):
 		if Helper.check_position(right) == Helper.cell_content.FREE:
 			move_to_position(right)
 			return	
-		# check right
-		turn_done = true
 		return
 	if !move_can_kill:
 		if Helper.check_position(pos) != Helper.cell_content.FREE:
-			turn_done = true
 			return
 	Helper.play_sound(Helper.get_random_from_array([preload("res://Ressources/SFX/move1.wav"),preload("res://Ressources/SFX/move2.wav"),preload("res://Ressources/SFX/move3.wav")])  )
 	# check for lose
 	if pos.y > Helper.bottom_of_board:
 		Helper.game_manager.lose("An enemy reached the castle!")
 	_tpos = pos
-	turn_done = true
+	emit_signal("turn_finished")
 
 func _process(delta):
 	if _tpos:
@@ -75,6 +71,7 @@ func execute():
 	var attacked = false
 	for vec in attack:
 		if attack_pos(global_position + vec * Helper.grid_size):
+			emit_signal("turn_finished")
 			return
 	if move_can_kill:
 		if !attack_pos(global_position + movement * Helper.grid_size):
@@ -82,6 +79,7 @@ func execute():
 	else:
 		move_to_position(global_position + movement * Helper.grid_size)
 	draw_dangerzone()
+	emit_signal("turn_finished")
 
 func clear_dangerzone():
 	for d in _dangerzone:
@@ -121,7 +119,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		if move_on_kill:
 			move_to_position(_mpos)
 		draw_dangerzone()
-		emit_signal("on_kill", _mpos, ranged)
+		emit_signal("on_kill", self, ranged, _mpos)
 		turn_done = true
 
 func on_squish():

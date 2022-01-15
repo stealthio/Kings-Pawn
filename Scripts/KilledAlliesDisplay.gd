@@ -1,11 +1,8 @@
 extends GridContainer
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	yield(get_tree(), "idle_frame")
-	for figure in Helper.game_manager.figures:
-		figure.connect("on_death", self, "add_killed_ally")
-
+	BoardEntities.connect("on_figure_death", self, "add_killed_ally")
 
 func add_killed_ally(ally):
 	var tex = TextureRect.new()

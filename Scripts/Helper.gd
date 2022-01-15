@@ -177,25 +177,25 @@ func show_available_cells(origin_pos : Vector2, movement_array : Array, inversio
 # 2 if enemy
 # 3 if obstacles
 func check_position(position) -> int:
-	for figure in get_gamemanager().figures:
+	for figure in BoardEntities.get_figures():
 		if is_instance_valid(figure):
 			if figure.global_position == position:
 				return cell_content.ALLY
-	for enemy in get_gamemanager().enemies:
+	for enemy in BoardEntities.get_enemies():
 		if enemy.global_position == position:
 			return cell_content.ENEMY
-	for obstacle in get_gamemanager().obstacles:
+	for obstacle in BoardEntities.get_obstacles():
 		if obstacle.global_position == position:
 			return cell_content.OBSTACLE
 	return cell_content.FREE
 
 func get_figure_at_position(position):
-	for figure in get_gamemanager().figures:
+	for figure in BoardEntities.get_figures():
 		if figure.global_position == position:
 			return figure
 
 func get_enemy_at_position(position):
-	for enemy in get_gamemanager().enemies:
+	for enemy in BoardEntities.get_enemies():
 		if enemy.global_position == position:
 			return enemy
 

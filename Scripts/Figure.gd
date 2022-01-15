@@ -19,7 +19,7 @@ signal on_kill
 signal on_death
 
 func _ready():
-	Helper.game_manager.figures.append(self)
+	BoardEntities.append_figure(self)
 	Helper.game_manager.connect("on_turn_end", self, "on_turn_end")
 	$AnimationPlayer.play("Idle")
 
@@ -63,7 +63,7 @@ func kill_at_position(pos):
 	emit_signal("on_kill", pos)
 
 func _process(delta):
-	if Input.is_action_just_pressed("select") and Helper.game_manager.is_player_turn:
+	if Input.is_action_just_pressed("select") and Helper.game_manager.is_player_turn():
 		if _mouse_inside:
 			setSelected(!selected)
 		else:
@@ -90,7 +90,6 @@ func _on_Area2D_mouse_exited():
 
 func die():
 	Helper.play_sound(preload("res://Ressources/SFX/figureDeath.wav"))
-	Helper.game_manager.figures.erase(self)
 	emit_signal("on_death", self)
 	if $Sprite.texture == preload("res://Ressources/Figurines/King.png"):
 		Helper.game_manager.lose("The king died!")
