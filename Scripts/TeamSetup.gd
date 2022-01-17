@@ -44,7 +44,7 @@ func _on_Accept_pressed():
 
 func _on_Clear_pressed():
 	for slot in $Slots.get_children():
-		if slot.figure != "King":
+		if slot.editable:
 			slot.set_figurine("")
 
 

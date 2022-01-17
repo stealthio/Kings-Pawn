@@ -156,7 +156,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 figure = "Pawn"
-active_on_start = true
+editable = false
 
 [node name="Available5" type="TextureButton" parent="Slots"]
 margin_left = 300.0
@@ -172,6 +172,7 @@ __meta__ = {
 }
 figure = "Pawn"
 number = 1
+active_on_start = true
 
 [node name="Available6" type="TextureButton" parent="Slots"]
 margin_left = 372.0
@@ -201,6 +202,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 figure = "Pawn"
+editable = false
 number = 3
 
 [node name="Available8" type="TextureButton" parent="Slots"]
@@ -232,6 +234,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 figure = "Pawn"
+editable = false
 number = 4
 
 [node name="Available10" type="TextureButton" parent="Slots"]
@@ -339,6 +342,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 figure = "Pawn"
+editable = false
 number = 7
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
