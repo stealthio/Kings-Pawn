@@ -458,7 +458,6 @@ __meta__ = {
 }
 
 [node name="Victory" type="Label" parent="UI"]
-visible = false
 margin_left = 447.0
 margin_top = 71.0
 margin_right = 607.0
@@ -498,16 +497,17 @@ __meta__ = {
 }
 
 [node name="Credits" type="Label" parent="UI/Victory"]
-margin_left = -143.0
-margin_top = 305.0
-margin_right = 357.0
-margin_bottom = 509.0
+margin_left = -136.0
+margin_top = 290.0
+margin_right = 364.0
+margin_bottom = 517.0
 rect_min_size = Vector2( 500, 0 )
 rect_pivot_offset = Vector2( 34, 10 )
 custom_fonts/font = ExtResource( 12 )
 text = "Credits:
 Lars Appelt - Programming/Game Design
 Paul Toepfer - Programming/Art/Game Design
+Marco Kaiser - Music and SFX
 
 Resources:
 mrpoly - Menu Music
@@ -550,18 +550,20 @@ __meta__ = {
 
 [node name="Credits" type="Label" parent="UI/Lose"]
 margin_left = -137.0
-margin_top = 343.0
+margin_top = 291.0
 margin_right = 363.0
-margin_bottom = 524.0
+margin_bottom = 472.0
 rect_min_size = Vector2( 500, 0 )
 rect_pivot_offset = Vector2( 34, 10 )
 custom_fonts/font = ExtResource( 12 )
 text = "Credits:
 Lars Appelt - Programming/Game Design
 Paul Toepfer - Programming/Art/Game Design
+Marco Kaiser - Music and SFX
 
 Resources:
 mrpoly - Menu Music
+Listener - Win Sound Effect
 kheftel - Minimalist Pixel Fonts
 https://sfxr.me/"
 valign = 1
