@@ -39,6 +39,8 @@ func _on_Accept_pressed():
 	Helper.figure_setup = figures
 	get_tree().change_scene("res://Scenes/LevelSelect.tscn")
 
+func _ready():
+	Helper.play_BGM(preload("res://Ressources/Music/BGM.wav"))
 
 func _on_Clear_pressed():
 	for slot in $Slots.get_children():

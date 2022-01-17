@@ -261,4 +261,7 @@ func play_sound(sfx, channel = 0):
 			target = $SFX2
 	target.stream = sfx
 	target.play(0)
-		
+
+func play_BGM(bgm):
+	$BGM.stream = bgm
+	$BGM.play(0)
