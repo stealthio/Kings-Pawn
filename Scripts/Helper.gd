@@ -20,6 +20,7 @@ enum difficulty {
 	EASY,
 	NORMAL,
 	HARD,
+	INFINITE
 }
 
 var figure_setup = {

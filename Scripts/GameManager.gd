@@ -32,6 +32,8 @@ func end_turn():
 	execute_enemy_turn()
 
 func check_victory():
+	if Helper.current_difficulty == Helper.difficulty.INFINITE: # You can't win in infinite mode
+		return
 	if BoardEntities.get_enemies().size() <= 1: # check is with 1 as the enemy that has just been killed is still "Living" at this moment
 		Helper.play_sound(preload("res://Ressources/SFX/winSound.wav"), 1)
 		emit_signal("victory")

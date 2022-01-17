@@ -28,18 +28,23 @@ func _on_Easy_pressed():
 	Helper.current_difficulty = Helper.difficulty.EASY
 	$Difficulty.text = "Easy"
 
+func _on_Normal_pressed():
+	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
+	change_difficulty(2)
+	Helper.current_difficulty = Helper.difficulty.NORMAL
+	$Difficulty.text = "Normal"
+
 func _on_Hard_pressed():
 	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
 	change_difficulty(3)
 	Helper.current_difficulty = Helper.difficulty.HARD
 	$Difficulty.text = "Hard"
 
-
-func _on_Normal_pressed():
+func _on_Infinite_pressed():
 	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
-	change_difficulty(2)
-	Helper.current_difficulty = Helper.difficulty.NORMAL
-	$Difficulty.text = "Normal"
+	change_difficulty(4)
+	Helper.current_difficulty = Helper.difficulty.INFINITE
+	$Difficulty.text = "Infinite"
 
 func _on_Accept_pressed():
 	if selected_difficulty != 0:
@@ -48,3 +53,4 @@ func _on_Accept_pressed():
 
 func _on_Back_pressed():
 	get_tree().change_scene("res://Scenes/TeamSetup.tscn")
+

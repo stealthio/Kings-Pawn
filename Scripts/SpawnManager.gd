@@ -2,9 +2,9 @@ extends Node2D
 
 export var start_pos = Vector2(0,0)
 export var cell_count = 8
-export var spawn_count = [Vector2(0,2), Vector2(1,3), Vector2(2,4)] # a value between x..y
-export var chance_to_spawn_per_round = [60,90,100]
-export var possible_enemies = [[0],[0,1],[0,1,2]]
+export var spawn_count : PoolVector2Array = [Vector2(1,2), Vector2(2,3), Vector2(3,4), Vector2(1,5)] # a value between x..y
+export var chance_to_spawn_per_round : PoolIntArray = [80,90,100, 100]
+export var possible_enemies = [[0],[0,1],[0,1,2], [0,1,2]]
 var enemies = [preload("res://Scenes/Enemy_Pawn.tscn"), preload("res://Scenes/Enemy_Archer.tscn"), preload("res://Scenes/Enemy_Rogue.tscn")]
 var difficulty = Helper.difficulty.EASY
 var prepared_spawns = []

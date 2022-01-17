@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Ressources/Figurines/Rook.png" type="Texture" id=1]
 [ext_resource path="res://Ressources/Board/BackgroundOverlay.png" type="Texture" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Ressources/Board/Preview.png" type="Texture" id=12]
 [ext_resource path="res://Ressources/Fonts/PixelFont.tres" type="DynamicFont" id=13]
 [ext_resource path="res://Scripts/Toggleable.gd" type="Script" id=14]
+[ext_resource path="res://Ressources/Figurines/Queen.png" type="Texture" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.419608, 0.333333, 0.333333, 1 )
@@ -198,8 +199,8 @@ enabled = false
 margin_left = 123.0
 margin_top = 188.0
 margin_right = 383.0
-margin_bottom = 288.0
-rect_min_size = Vector2( 250, 96 )
+margin_bottom = 268.0
+rect_min_size = Vector2( 250, 80 )
 custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -207,9 +208,9 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="Easy"]
 margin_left = 19.0
-margin_top = 15.0
+margin_top = 8.0
 margin_right = 83.0
-margin_bottom = 79.0
+margin_bottom = 72.0
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -217,9 +218,9 @@ __meta__ = {
 
 [node name="Info" type="Label" parent="Easy"]
 margin_left = 99.0
-margin_top = 39.0
+margin_top = 32.0
 margin_right = 227.0
-margin_bottom = 79.0
+margin_bottom = 72.0
 custom_fonts/font = SubResource( 5 )
 text = "Easy"
 __meta__ = {
@@ -228,10 +229,10 @@ __meta__ = {
 
 [node name="Normal" type="Button" parent="."]
 margin_left = 123.0
-margin_top = 308.0
+margin_top = 275.0
 margin_right = 383.0
-margin_bottom = 408.0
-rect_min_size = Vector2( 250, 96 )
+margin_bottom = 355.0
+rect_min_size = Vector2( 250, 80 )
 custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -239,9 +240,9 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="Normal"]
 margin_left = 19.0
-margin_top = 15.0
+margin_top = 8.0
 margin_right = 83.0
-margin_bottom = 79.0
+margin_bottom = 72.0
 texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -249,9 +250,9 @@ __meta__ = {
 
 [node name="Info" type="Label" parent="Normal"]
 margin_left = 99.0
-margin_top = 39.0
+margin_top = 32.0
 margin_right = 227.0
-margin_bottom = 79.0
+margin_bottom = 72.0
 custom_fonts/font = SubResource( 5 )
 text = "Medium"
 __meta__ = {
@@ -260,10 +261,10 @@ __meta__ = {
 
 [node name="Hard" type="Button" parent="."]
 margin_left = 123.0
-margin_top = 428.0
+margin_top = 362.0
 margin_right = 383.0
-margin_bottom = 528.0
-rect_min_size = Vector2( 250, 96 )
+margin_bottom = 442.0
+rect_min_size = Vector2( 250, 80 )
 custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -271,9 +272,9 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="Hard"]
 margin_left = 19.0
-margin_top = 15.0
+margin_top = 8.0
 margin_right = 83.0
-margin_bottom = 79.0
+margin_bottom = 72.0
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -281,11 +282,43 @@ __meta__ = {
 
 [node name="Info" type="Label" parent="Hard"]
 margin_left = 99.0
-margin_top = 39.0
+margin_top = 32.0
 margin_right = 227.0
-margin_bottom = 79.0
+margin_bottom = 72.0
 custom_fonts/font = SubResource( 5 )
 text = "Hard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Infinite" type="Button" parent="."]
+margin_left = 123.0
+margin_top = 449.0
+margin_right = 383.0
+margin_bottom = 529.0
+rect_min_size = Vector2( 250, 80 )
+custom_styles/normal = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Infinite"]
+margin_left = 19.0
+margin_top = 8.0
+margin_right = 83.0
+margin_bottom = 72.0
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Info" type="Label" parent="Infinite"]
+margin_left = 99.0
+margin_top = 32.0
+margin_right = 227.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 5 )
+text = "Infinite"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -355,7 +388,6 @@ __meta__ = {
 }
 
 [node name="PreviewPeasant" type="Control" parent="."]
-visible = false
 margin_left = 482.0
 margin_top = 363.0
 margin_right = 522.0
@@ -600,5 +632,6 @@ __meta__ = {
 [connection signal="pressed" from="Easy" to="." method="_on_Easy_pressed"]
 [connection signal="pressed" from="Normal" to="." method="_on_Normal_pressed"]
 [connection signal="pressed" from="Hard" to="." method="_on_Hard_pressed"]
+[connection signal="pressed" from="Infinite" to="." method="_on_Infinite_pressed"]
 [connection signal="pressed" from="Accept" to="." method="_on_Accept_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
