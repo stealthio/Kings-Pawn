@@ -4,16 +4,18 @@ export var movement = Array ([(Vector2(0,0)),])
 export var opener_movement = Vector2(0,0)
 export var killer_movement = Vector2(0,0)
 
-export var inversion = true # Allow the axis to be exchanged?
-export var addition = false # Allow the axis to be added to each other
 export var endless = false # Allow the axis to be endless
+export var endless_length = 8
 export var move_can_kill = true #Allow for the normal movement to kill
 var selected = false setget setSelected
 var _mouse_inside = false
 var _tpos = null
 var _ppos = null
 var _opener_used = false
+var _cells = []
+
 var used = false
+
 
 signal on_kill
 signal on_death
@@ -37,17 +39,10 @@ func setSelected(value):
 		$AnimationPlayer.play("PickedUp")
 	$Sprite.self_modulate = Color.aqua if selected else Color.white
 	if selected:
-		if !_opener_used and opener_movement != Vector2(0,0):
-			Helper.show_available_cells(global_position, [opener_movement], inversion, addition, endless, self, false, move_can_kill)
-		Helper.show_available_cells(global_position, movement, inversion, addition, endless, self, false, move_can_kill)
-		
-		# killer moves check
-		if killer_movement != Vector2(0,0):
-			Helper.show_available_cells(global_position, [killer_movement], inversion, addition, endless, self, true)
-		Helper.clear_available_cell_duplicates()
+		show_available_cells()
 	elif _mouse_inside:
 		$AnimationPlayer.play("PutDown")
-		Helper.clear_available_cells()
+		clear_available_cells()
 
 func move_to_position(pos, end_turn = true):
 	_tpos = pos
@@ -68,6 +63,7 @@ func _process(delta):
 			setSelected(!selected)
 		else:
 			if selected:
+				clear_available_cells()
 				$AnimationPlayer.play("PutDown")
 			setSelected(false)
 	if _tpos:
@@ -103,3 +99,38 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$AnimationPlayer.play("RESET")
 	if anim_name == "RESET":
 		$AnimationPlayer.play("Idle")
+
+func clear_available_cells():
+	for cell in _cells:
+		cell.queue_free()
+	_cells.clear()
+
+func _append_pos_if_free(arr, pos):
+	if Helper.check_position(global_position + pos) == Helper.cell_content.FREE:
+		arr.append(pos)
+
+func show_available_cells():
+	var positions = []
+	for vector_to_show in movement:
+		var base_direction = vector_to_show * Helper.grid_size
+		var directions = []
+		_append_pos_if_free(directions, base_direction)
+		_append_pos_if_free(directions, -base_direction)
+		
+		if endless:
+			var endless_positions = []
+			for dir in directions:
+				for x in endless_length:
+					var t = dir * (x + 2) # Skip first 2 loops to avoid duplicates
+					if Helper.check_position(global_position + t) != Helper.cell_content.FREE:
+						break
+					endless_positions.append(t)
+			positions.append_array(endless_positions)
+		
+		positions.append_array(directions)
+
+	for pos in positions:
+		var cell = preload("res://Scenes/AvailableCell.tscn").instance()
+		add_child(cell)
+		cell.global_position = global_position + pos
+		_cells.append(cell)
