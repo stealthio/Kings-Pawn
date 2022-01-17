@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Ressources/Board/Board.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Board.tscn" type="PackedScene" id=2]
@@ -19,6 +19,9 @@
 [ext_resource path="res://Scripts/ObstacleSpawnManager.gd" type="Script" id=17]
 [ext_resource path="res://Scripts/Fadeout.gd" type="Script" id=18]
 [ext_resource path="res://Scripts/IngameUI.gd" type="Script" id=19]
+[ext_resource path="res://Ressources/Icons/Pause.png" type="Texture" id=20]
+[ext_resource path="res://Ressources/Icons/Volume.png" type="Texture" id=21]
+[ext_resource path="res://Ressources/Icons/Music.png" type="Texture" id=22]
 
 [sub_resource type="DynamicFont" id=84]
 size = 64
@@ -644,6 +647,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Pause" type="TextureButton" parent="UI"]
+margin_left = 977.0
+margin_top = 12.0
+margin_right = 1009.0
+margin_bottom = 44.0
+texture_normal = ExtResource( 20 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFX" type="TextureButton" parent="UI"]
+margin_left = 977.0
+margin_top = 50.0
+margin_right = 1009.0
+margin_bottom = 82.0
+texture_normal = ExtResource( 21 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGM" type="TextureButton" parent="UI"]
+margin_left = 977.0
+margin_top = 82.0
+margin_right = 1009.0
+margin_bottom = 114.0
+texture_normal = ExtResource( 22 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="UI/Menu/Restart" to="UI" method="_on_Restart_pressed"]
 [connection signal="pressed" from="UI/Menu/Setup" to="UI" method="_on_Setup_pressed"]
 [connection signal="pressed" from="UI/Menu/Cancel" to="UI" method="_on_Cancel_pressed"]
@@ -652,3 +688,6 @@ __meta__ = {
 [connection signal="pressed" from="UI/Lose/Restart" to="UI" method="_on_Restart_pressed"]
 [connection signal="pressed" from="UI/Lose/Setup" to="UI" method="_on_Setup_pressed"]
 [connection signal="pressed" from="UI/EndTurn" to="." method="end_turn"]
+[connection signal="pressed" from="UI/Pause" to="UI" method="_on_Pause_pressed"]
+[connection signal="pressed" from="UI/SFX" to="UI" method="_on_SFX_pressed"]
+[connection signal="pressed" from="UI/BGM" to="UI" method="_on_BGM_pressed"]

@@ -265,3 +265,17 @@ func play_sound(sfx, channel = 0):
 func play_BGM(bgm):
 	$BGM.stream = bgm
 	$BGM.play(0)
+
+func toggle_BGM(value):
+	if value:
+		$BGM.volume_db = -10
+	else:
+		$BGM.volume_db = -999
+
+func toggle_SFX(value):
+	if value:
+		$SFX.volume_db = -10
+		$SFX2.volume_db = 0
+	else:
+		$SFX.volume_db = -999
+		$SFX2.volume_db = -999

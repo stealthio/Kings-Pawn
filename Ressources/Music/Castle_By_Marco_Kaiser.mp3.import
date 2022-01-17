@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Castle_By_Marco_Kaiser.mp3-beb7fea44346878bf94251731e8c46c5.mp3str"
+
+[deps]
+
+source_file="res://Ressources/Music/Castle_By_Marco_Kaiser.mp3"
+dest_files=[ "res://.import/Castle_By_Marco_Kaiser.mp3-beb7fea44346878bf94251731e8c46c5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

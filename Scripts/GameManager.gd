@@ -54,3 +54,4 @@ func spawn_figures():
 
 func _on_enemy_death(enemy):
 	check_victory()
+
