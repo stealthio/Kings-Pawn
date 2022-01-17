@@ -1,7 +1,12 @@
 # Castle Chess
+<a href=https://scarred95.itch.io/castle-chess><img src="https://static.itch.io/images/badge.svg" width="150px"></a>
+
 A game of chess with a twist of wave survival. Developed using [Godot](https://godotengine.org/)
 
-You can play it in your Browser here on [Itch.io](https://scarred95.itch.io/castle-chess)
+
+If you have any questions or want to contribute, feel free to ask on our Discord!
+
+<a href=https://discord.gg/X5cEhz9yPf><img src="https://discord.com/assets/3437c10597c1526c3dbd98c737c2bcae.svg" width="100px"></a>
 
 ## Credits
 
