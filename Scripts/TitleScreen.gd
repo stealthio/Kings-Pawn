@@ -34,3 +34,11 @@ func _on_Start_Game_pressed():
 
 func _on_Exit_pressed():
 	get_tree().quit()
+
+
+func _on_Discord_pressed():
+	OS.shell_open("https://discord.gg/X5cEhz9yPf")
+
+
+func _on_Itch_pressed():
+	OS.shell_open("https://scarred95.itch.io/castle-chess")

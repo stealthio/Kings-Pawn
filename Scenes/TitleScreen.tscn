@@ -1,9 +1,12 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Ressources/Title/Background.png" type="Texture" id=1]
 [ext_resource path="res://Ressources/Title/Title.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/TitleScreen.gd" type="Script" id=3]
 [ext_resource path="res://Ressources/Fonts/Minimal5x7.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Ressources/Icons/Discord-Logo-Black.png" type="Texture" id=5]
+[ext_resource path="res://Ressources/Icons/badge-color.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/VersionLabel.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=5]
 resource_name = "ButtonPressed"
@@ -64,6 +67,30 @@ tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0, 1.6, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Discord:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Itch:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.6, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -172,6 +199,30 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Discord:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Itch:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "Startup"
@@ -219,6 +270,12 @@ outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=12]
+size = 32
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
 [sub_resource type="DynamicFont" id=6]
 size = 64
 outline_size = 4
@@ -261,6 +318,19 @@ margin_right = 706.0
 margin_bottom = 506.0
 custom_fonts/font = SubResource( 4 )
 text = "Press Any Button"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Version" type="Label" parent="."]
+margin_left = 652.0
+margin_top = 559.0
+margin_right = 1004.0
+margin_bottom = 599.0
+custom_fonts/font = SubResource( 12 )
+text = "Version 0.8.220117"
+align = 2
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -324,6 +394,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Discord" type="TextureButton" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 87.0
+margin_top = 517.0
+margin_right = 157.0
+margin_bottom = 596.0
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Itch" type="TextureButton" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 181.0
+margin_top = 529.0
+margin_right = 348.0
+margin_bottom = 579.0
+texture_normal = ExtResource( 6 )
+expand = true
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="Start Game" to="." method="_on_Start_Game_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Discord" to="." method="_on_Discord_pressed"]
+[connection signal="pressed" from="Itch" to="." method="_on_Itch_pressed"]
