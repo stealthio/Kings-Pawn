@@ -371,6 +371,7 @@ shadow_gradient_length = 10.0
 [node name="EnemySpawnManager" type="Node2D" parent="."]
 script = ExtResource( 11 )
 start_pos = Vector2( 320, 82 )
+spawn_count = [ Vector2( 1, 2 ), Vector2( 2, 4 ), Vector2( 3, 5 ) ]
 
 [node name="ObstacleSpawnManager" type="Node2D" parent="."]
 script = ExtResource( 17 )
@@ -458,6 +459,7 @@ __meta__ = {
 }
 
 [node name="Victory" type="Label" parent="UI"]
+visible = false
 margin_left = 447.0
 margin_top = 71.0
 margin_right = 607.0
