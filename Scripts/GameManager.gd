@@ -12,6 +12,7 @@ func _init():
 
 # Spawn figures and set up winning condition (currently - all enemies dead)
 func _ready():
+	Helper.play_BGM(preload("res://Ressources/Music/BGM.wav"))
 	spawn_figures()
 	BoardEntities.connect("on_enemy_death", self, "_on_enemy_death")
 

@@ -265,8 +265,11 @@ func play_sound(sfx, channel = 0, db_mod = -10):
 	target.play(0)
 
 func play_BGM(bgm):
-	$BGM.stream = bgm
-	$BGM.play(0)
+	if $BGM.stream != bgm:
+		$BGM.stream = bgm
+		$BGM.play(0)
+	elif !$BGM.playing:
+		$BGM.play(0)
 
 func toggle_BGM(value):
 	if value:

@@ -6,6 +6,9 @@ onready var pointer = $Pointer
 var selected_cell
 signal on_value_changed
 
+func _ready():
+	Helper.play_BGM(preload("res://Ressources/Music/Castle_By_Marco_Kaiser.mp3"))
+
 func set_current_value(value):
 	current_value = value
 	emit_signal("on_value_changed", value)
@@ -38,9 +41,6 @@ func _on_Accept_pressed():
 		figures[slot.number + 1] = slot.figure
 	Helper.figure_setup = figures
 	get_tree().change_scene("res://Scenes/LevelSelect.tscn")
-
-func _ready():
-	Helper.play_BGM(preload("res://Ressources/Music/BGM.wav"))
 
 func _on_Clear_pressed():
 	for slot in $Slots.get_children():
