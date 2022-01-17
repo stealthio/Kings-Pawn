@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/winSound.mp3-d96e7aed52df802f3f823f1db8a35283.mp3str"
+
+[deps]
+
+source_file="res://Ressources/SFX/winSound.mp3"
+dest_files=[ "res://.import/winSound.mp3-d96e7aed52df802f3f823f1db8a35283.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

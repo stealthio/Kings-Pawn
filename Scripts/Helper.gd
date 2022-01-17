@@ -255,12 +255,13 @@ func get_figurine_value(figurine):
 		"":
 			return 0
 
-func play_sound(sfx, channel = 0):
+func play_sound(sfx, channel = 0, db_mod = -10):
 	var target = $SFX
 	match(channel):
 		1:
 			target = $SFX2
 	target.stream = sfx
+	target.volume_db = db_mod
 	target.play(0)
 
 func play_BGM(bgm):

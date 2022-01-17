@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/loseSound.mp3-a792adcd2aef5ae2613fbd4c29a3c8a7.mp3str"
+
+[deps]
+
+source_file="res://Ressources/SFX/loseSound.mp3"
+dest_files=[ "res://.import/loseSound.mp3-a792adcd2aef5ae2613fbd4c29a3c8a7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

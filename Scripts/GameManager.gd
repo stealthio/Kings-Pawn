@@ -35,11 +35,12 @@ func check_victory():
 	if Helper.current_difficulty == Helper.difficulty.INFINITE: # You can't win in infinite mode
 		return
 	if BoardEntities.get_enemies().size() <= 1: # check is with 1 as the enemy that has just been killed is still "Living" at this moment
-		Helper.play_sound(preload("res://Ressources/SFX/winSound.wav"), 1)
+		Helper.play_sound(preload("res://Ressources/SFX/winSound.mp3"), 1)
 		emit_signal("victory")
 
 func lose(reason):
 	emit_signal("lose", reason)
+	Helper.play_sound(preload("res://Ressources/SFX/loseSound.mp3"), 1)
 
 # Takes all figures from Helper.figure_setup and places them in order on the board
 func spawn_figures():
