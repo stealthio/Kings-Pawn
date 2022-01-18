@@ -8,6 +8,11 @@ signal on_value_changed
 
 func _ready():
 	Helper.play_BGM(preload("res://Ressources/Music/Castle_By_Marco_Kaiser.mp3"))
+	var figure_setup = Helper.figure_setup
+	var i = 1
+	for child in $Slots.get_children():
+		child.set_figurine(figure_setup[i])
+		i += 1
 
 func set_current_value(value):
 	current_value = value
