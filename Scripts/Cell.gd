@@ -13,7 +13,7 @@ func _ready():
 	teamsetup = get_tree().root.get_node("TeamSetup")
 	_create_figurine(figure)
 	if !editable:
-		modulate = Color.darkgray
+		modulate = Color("#222")
 	name_label = get_parent().get_parent().get_node("Preview/Name")
 	connect("mouse_entered", self, "on_mouse_entered")
 	connect("mouse_exited", self, "on_mouse_exited")
