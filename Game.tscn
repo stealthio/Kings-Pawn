@@ -320,6 +320,7 @@ texture = ExtResource( 6 )
 
 [node name="Board" type="Sprite" parent="Board"]
 position = Vector2( 256, 256 )
+scale = Vector2( -1, 1 )
 z_index = -5
 texture = ExtResource( 1 )
 

@@ -284,8 +284,7 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-figure = "King"
-editable = false
+figure = "Queen"
 number = 11
 
 [node name="Available12" type="TextureButton" parent="Slots"]
@@ -300,7 +299,8 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-figure = "Queen"
+figure = "King"
+editable = false
 number = 12
 
 [node name="Available13" type="TextureButton" parent="Slots"]
