@@ -241,7 +241,7 @@ func get_figurine_sprite(figurine):
 func get_figurine_value(figurine):
 	match(figurine):
 		"Pawn":
-			return 1
+			return 0
 		"Knight":
 			return 3
 		"Bishop":

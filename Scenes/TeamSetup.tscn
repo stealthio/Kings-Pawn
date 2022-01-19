@@ -473,6 +473,7 @@ margin_bottom = 99.0
 rect_min_size = Vector2( 64, 64 )
 texture_normal = ExtResource( 4 )
 script = ExtResource( 1 )
+cost = 0
 
 [node name="Cost" type="Label" parent="ScrollContainer/GridContainer/Pawn"]
 margin_left = 12.0

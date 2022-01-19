@@ -1,6 +1,6 @@
 extends Node2D
 
-export var max_value = 40
+export var max_value = 32
 var current_value = 0 setget set_current_value, get_current_value
 onready var pointer = $Pointer
 var selected_cell
