@@ -5,6 +5,9 @@ export var cell_count = 8
 export var spawn_count : PoolVector2Array = [Vector2(1,2), Vector2(2,3), Vector2(3,4), Vector2(1,5)] # a value between x..y
 export var chance_to_spawn_per_round : PoolIntArray = [80,90,100, 100]
 export var possible_enemies = [[0],[0,1],[0,1,2], [0,1,2]]
+export var difficulty_modifier_per_round = [1, 1, 1, 1.2] # every value above 1 makes the game harder every round
+
+var _current_difficulty_mod = 1
 var enemies = [preload("res://Scenes/Enemy_Pawn.tscn"), preload("res://Scenes/Enemy_Archer.tscn"), preload("res://Scenes/Enemy_Rogue.tscn")]
 var difficulty = Helper.difficulty.EASY
 var prepared_spawns = []
@@ -12,10 +15,14 @@ var prepared_spawns = []
 func _ready():
 	difficulty = Helper.current_difficulty
 	Helper.game_manager.connect("on_turn_begin", self, "spawn_logic")
+	Helper.game_manager.connect("on_turn_begin", self, "increase_difficulty")
 	yield(get_tree(), "idle_frame")
 	for i in spawn_count[difficulty].y:
 		prepare_spawn(false)
 	spawn()
+
+func increase_difficulty():
+	_current_difficulty_mod *= difficulty_modifier_per_round[difficulty]
 
 func spawn():
 	for prepared in prepared_spawns:
@@ -53,6 +60,6 @@ func prepare_spawn(with_warning = true):
 
 func spawn_logic():
 	spawn()
-	if rand_range(0, 100) < chance_to_spawn_per_round[difficulty]:
-		for i in rand_range(spawn_count[difficulty].x, spawn_count[difficulty].y):
+	if rand_range(0, 100) < (chance_to_spawn_per_round[difficulty] * _current_difficulty_mod):
+		for i in rand_range(int(spawn_count[difficulty].x * _current_difficulty_mod), int(spawn_count[difficulty].y * _current_difficulty_mod)):
 			prepare_spawn()
