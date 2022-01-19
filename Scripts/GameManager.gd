@@ -18,6 +18,7 @@ func _ready():
 
 # Iterates through all enemies to execute their "execute" function one after another. 
 func execute_enemy_turn():
+	yield(get_tree(), "idle_frame")
 	for enemy in BoardEntities.get_enemies():
 		enemy.execute()
 		yield(enemy, "turn_finished")
