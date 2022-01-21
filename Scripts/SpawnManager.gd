@@ -2,10 +2,10 @@ extends Node2D
 
 export var start_pos = Vector2(0,0)
 export var cell_count = 8
-export var spawn_count : PoolVector2Array = [Vector2(1,2), Vector2(2,3), Vector2(3,4), Vector2(1,5)] # a value between x..y
-export var chance_to_spawn_per_round : PoolIntArray = [80,90,100, 100]
+export var spawn_count : PoolVector2Array = [Vector2(1,3), Vector2(2,3), Vector2(3,4), Vector2(1,5)] # a value between x..y
+export var chance_to_spawn_per_round : PoolIntArray = [50,70,80,100]
 export var possible_enemies = [[0],[0,1],[0,1,2], [0,1,2]]
-export var difficulty_modifier_per_round = [1, 1, 1, 1.2] # every value above 1 makes the game harder every round
+export var difficulty_modifier_per_round = [1, 1, 1, 1.2]
 
 var _current_difficulty_mod = 1
 var enemies = [preload("res://Scenes/Enemy_Pawn.tscn"), preload("res://Scenes/Enemy_Archer.tscn"), preload("res://Scenes/Enemy_Rogue.tscn")]
