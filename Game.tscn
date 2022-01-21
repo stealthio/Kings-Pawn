@@ -64,7 +64,7 @@ font_data = ExtResource( 10 )
 [node name="Game" type="Node2D"]
 script = ExtResource( 7 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 562.0, 656.0, 560.0 ]
+"_edit_horizontal_guides_": [ 562.0, 656.0, 530.0 ]
 }
 
 [node name="Board" parent="." instance=ExtResource( 2 )]
@@ -339,7 +339,7 @@ texture = ExtResource( 8 )
 position = Vector2( -32, -62 )
 texture = ExtResource( 5 )
 texture_scale = 1.25
-color = Color( 0.87451, 0.886275, 0.45098, 1 )
+color = Color( 1, 1, 0, 1 )
 energy = 0.8
 shadow_enabled = true
 shadow_buffer_size = 256
@@ -356,7 +356,7 @@ rotation = 3.14159
 scale = Vector2( 1, -1 )
 texture = ExtResource( 5 )
 texture_scale = 1.25
-color = Color( 0.87451, 0.886275, 0.45098, 1 )
+color = Color( 1, 1, 0, 1 )
 energy = 0.8
 shadow_enabled = true
 shadow_buffer_size = 256
