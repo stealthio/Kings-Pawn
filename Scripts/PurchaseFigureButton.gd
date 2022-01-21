@@ -12,7 +12,7 @@ func _ready():
 	connect("mouse_exited", self, "on_mouse_exited")
 
 func on_mouse_entered():
-	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
+	Helper.play_sound(preload("res://Ressources/SFX/click.wav"), 0, -20)
 	self_modulate = Color.aqua
 	teamsetup.draw_preview(unit_name)
 
@@ -21,6 +21,6 @@ func on_mouse_exited():
 	teamsetup.draw_preview("")
 
 func _on_pressed():
-	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
+	Helper.play_sound(preload("res://Ressources/SFX/click.wav"), 0, -20)
 	if teamsetup.selected_cell:
 		teamsetup.selected_cell.set_figurine(unit_name)

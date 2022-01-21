@@ -23,25 +23,25 @@ func change_difficulty(value):
 		$PanelContainer3/ScrollContainer/HBoxContainer/Rogue.disable()
 
 func _on_Easy_pressed():
-	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
+	Helper.play_sound(preload("res://Ressources/SFX/click.wav"), 0, -20)
 	change_difficulty(1)
 	Helper.current_difficulty = Helper.difficulty.EASY
 	$Difficulty.text = "Easy"
 
 func _on_Normal_pressed():
-	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
+	Helper.play_sound(preload("res://Ressources/SFX/click.wav"), 0, -20)
 	change_difficulty(2)
 	Helper.current_difficulty = Helper.difficulty.NORMAL
 	$Difficulty.text = "Normal"
 
 func _on_Hard_pressed():
-	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
+	Helper.play_sound(preload("res://Ressources/SFX/click.wav"), 0, -20)
 	change_difficulty(3)
 	Helper.current_difficulty = Helper.difficulty.HARD
 	$Difficulty.text = "Hard"
 
 func _on_Infinite_pressed():
-	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
+	Helper.play_sound(preload("res://Ressources/SFX/click.wav"), 0, -20)
 	change_difficulty(4)
 	Helper.current_difficulty = Helper.difficulty.INFINITE
 	$Difficulty.text = "Infinite"

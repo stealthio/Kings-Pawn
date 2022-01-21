@@ -22,7 +22,7 @@ func _ready():
 	default = figure
 
 func on_mouse_entered():
-	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
+	Helper.play_sound(preload("res://Ressources/SFX/click.wav"), 0, -20)
 	self_modulate = Color.red
 	teamsetup.draw_preview(figure)
 
@@ -32,7 +32,7 @@ func on_mouse_exited():
 
 func _on_Available_pressed():
 	if editable:
-		Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
+		Helper.play_sound(preload("res://Ressources/SFX/click.wav"), 0, -20)
 		get_parent().get_parent().select_cell(self)
 		teamsetup.pointer.move_to(rect_global_position + Vector2(10, -40))
 

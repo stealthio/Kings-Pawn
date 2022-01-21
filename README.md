@@ -1,5 +1,5 @@
-# Castle Chess
-<a href=https://scarred95.itch.io/castle-chess><img src="https://static.itch.io/images/badge.svg" width="150px"></a>
+# Kings Pawn
+<a href=https://scarred95.itch.io/kings-pawn><img src="https://static.itch.io/images/badge.svg" width="150px"></a>
 
 A game of chess with a twist of wave survival. Developed using [Godot](https://godotengine.org/)
 
@@ -15,6 +15,5 @@ If you have any questions or want to contribute, feel free to ask on our Discord
 [Marco Kaiser](https://soundcloud.com/user-128146600) - Music and SFX
 
 ### Resources
-[mrpoly - Menu Music](https://opengameart.org/content/menu-music)  
 [kheftel - Minimalist Pixel Fonts](https://opengameart.org/content/minimalist-pixel-fonts)  
 [https://sfxr.me](https://sfxr.me/)  

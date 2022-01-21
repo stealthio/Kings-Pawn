@@ -7,7 +7,7 @@ var selected_cell
 signal on_value_changed
 
 func _ready():
-	Helper.play_BGM(preload("res://Ressources/Music/Castle_By_Marco_Kaiser.mp3"))
+	Helper.play_BGM(preload("res://Ressources/Music/Castle_Theme.mp3"))
 	var figure_setup = Helper.figure_setup
 	var i = 1
 	for child in $Slots.get_children():
@@ -39,7 +39,7 @@ func draw_preview(figure):
 func _on_Accept_pressed():
 	if current_value > max_value:
 		return
-	Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
+	Helper.play_sound(preload("res://Ressources/SFX/click.wav"), 0, -20)
 	var slots = $Slots.get_children()
 	var figures = {}
 	for slot in slots:

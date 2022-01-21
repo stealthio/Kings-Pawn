@@ -3,7 +3,7 @@ extends Node2D
 var grid_size = 64
 var bottom_of_board = 560
 var current_difficulty = difficulty.EASY
-var game_version = "0.8.220119"
+var game_version = "0.9.220121"
 
 var game_manager = null setget set_gamemanager, get_gamemanager
 
@@ -270,6 +270,9 @@ func play_BGM(bgm):
 		$BGM.play(0)
 	elif !$BGM.playing:
 		$BGM.play(0)
+
+func stop_BGM():
+	$BGM.stop()
 
 func toggle_BGM(value):
 	if value:

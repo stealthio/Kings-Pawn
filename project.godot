@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="Castle Chess"
+config/name="Kings Pawn"
 run/main_scene="res://Scenes/TitleScreen.tscn"
 config/icon="res://icon.png"
 

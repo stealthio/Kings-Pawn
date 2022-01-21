@@ -33,7 +33,7 @@ func setSelected(value):
 	selected = value
 	if selected:
 		Helper.clear_available_cells()
-		Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
+		Helper.play_sound(preload("res://Ressources/SFX/click.wav"), 0, -20)
 		$AnimationPlayer.play("PickedUp")
 	$Sprite.self_modulate = Color.aqua if selected else Color.white
 	if selected:
@@ -80,7 +80,7 @@ func _process(delta):
 func _on_Area2D_mouse_entered():
 	if !used:
 		_mouse_inside = true
-		Helper.play_sound(preload("res://Ressources/SFX/click.wav"))
+		Helper.play_sound(preload("res://Ressources/SFX/click.wav"), 0, -20)
 		modulate = Color.darkgray
 
 func _on_Area2D_mouse_exited():
