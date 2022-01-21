@@ -271,6 +271,9 @@ func play_BGM(bgm):
 	elif !$BGM.playing:
 		$BGM.play(0)
 
+func stop_BGM():
+	$BGM.stop()
+
 func toggle_BGM(value):
 	if value:
 		$BGM.volume_db = -10

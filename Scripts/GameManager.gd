@@ -12,7 +12,7 @@ func _init():
 
 # Spawn figures and set up winning condition (currently - all enemies dead)
 func _ready():
-	Helper.play_BGM(preload("res://Ressources/Music/BGM.wav"))
+	Helper.play_BGM(preload("res://Ressources/Music/In_The_Hall.mp3"))
 	spawn_figures()
 	BoardEntities.connect("on_enemy_death", self, "_on_enemy_death")
 
@@ -42,6 +42,7 @@ func check_victory():
 
 func lose(reason):
 	emit_signal("lose", reason)
+	Helper.stop_BGM()
 	Helper.play_sound(preload("res://Ressources/SFX/loseSound.mp3"), 1)
 
 # Takes all figures from Helper.figure_setup and places them in order on the board

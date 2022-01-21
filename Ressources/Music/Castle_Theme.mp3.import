@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Castle_Theme.mp3-0fc8b9645dc597b21f9d1ed09d09d069.mp3str"
+
+[deps]
+
+source_file="res://Ressources/Music/Castle_Theme.mp3"
+dest_files=[ "res://.import/Castle_Theme.mp3-0fc8b9645dc597b21f9d1ed09d09d069.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
