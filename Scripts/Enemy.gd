@@ -36,6 +36,9 @@ func attack_pos(pos):
 func move_to_position(pos):
 	# Position blocked
 	if Helper.check_position(pos) == Helper.cell_content.ENEMY or Helper.check_position(pos) == Helper.cell_content.OBSTACLE:
+		# check for lose
+		if pos.y > Helper.bottom_of_board:
+			Helper.game_manager.lose("An enemy reached the castle!")
 		# check left
 		var left = global_position + Vector2(-Helper.grid_size,0)
 		if Helper.check_position(left) == Helper.cell_content.FREE:
@@ -50,9 +53,7 @@ func move_to_position(pos):
 		if Helper.check_position(pos) != Helper.cell_content.FREE:
 			return
 	Helper.play_sound(Helper.get_random_from_array([preload("res://Ressources/SFX/move1.wav"),preload("res://Ressources/SFX/move2.wav"),preload("res://Ressources/SFX/move3.wav")])  )
-	# check for lose
-	if pos.y > Helper.bottom_of_board:
-		Helper.game_manager.lose("An enemy reached the castle!")
+
 	_tpos = pos
 	emit_signal("turn_finished")
 
