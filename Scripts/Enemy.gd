@@ -79,6 +79,8 @@ func execute():
 		if !attack_pos(global_position + movement * Helper.grid_size):
 			move_to_position(global_position + movement * Helper.grid_size)
 			return
+		else:
+			return
 	else:
 		move_to_position(global_position + movement * Helper.grid_size)
 	emit_signal("turn_finished")

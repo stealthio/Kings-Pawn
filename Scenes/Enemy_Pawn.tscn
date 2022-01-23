@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Dialogue.gd" type="Script" id=2]
 [ext_resource path="res://Ressources/Enemies/Pawn.png" type="Texture" id=3]
-[ext_resource path="res://Ressources/Effects/Pitchfork.png" type="Texture" id=4]
+[ext_resource path="res://Ressources/Enemies/Weapons/Spear.png" type="Texture" id=5]
+[ext_resource path="res://Ressources/Enemies/Parts/Hand.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -50,31 +51,55 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=11]
 resource_name = "Attack"
-length = 0.75
+length = 1.45
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("Pitchfork:modulate")
+tracks/0/path = NodePath("Sprite/Hand2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.55, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.6, 0.7, 0.8, 1.05, 1.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Vector2( 14, -13 ), Vector2( 6, -21 ), Vector2( -2, -21 ), Vector2( -2, -21 ), Vector2( 21, -21 ), Vector2( 24, -21 ), Vector2( 14, -13 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Pitchfork:position")
+tracks/1/path = NodePath("Sprite/Hand2:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.35, 0.45, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 1.05, 1.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, -14 ), Vector2( 0, -14 ), Vector2( 0, 28 ), Vector2( 0, 35 ) ]
+"values": [ 0.0, 90.0, 90.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.75, 0.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 25 ), Vector2( 0, 18 ), Vector2( 0, 18 ), Vector2( 0, 25 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite/Hand:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.7, 0.95, 1.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -25, -13 ), Vector2( -16, -15 ), Vector2( -16, -15 ), Vector2( -32, -19 ), Vector2( -25, -13 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -135,8 +160,8 @@ tracks/3/keys = {
 resource_name = "Idle"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:scale")
-tracks/0/interp = 1
+tracks/0/path = NodePath("Sprite/Hand:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -144,7 +169,19 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 0.98, 0.95 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( -25, -13 ), Vector2( -25, -14 ), Vector2( -25, -13 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Hand2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14, -13 ), Vector2( 14, -14 ), Vector2( 14, -13 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -198,7 +235,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 25 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Pitchfork:modulate")
+tracks/4/path = NodePath("Sprite/Hand:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -207,10 +244,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
+"values": [ Vector2( -25, -13 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Pitchfork:position")
+tracks/5/path = NodePath("Sprite/Hand2:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -219,7 +256,19 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 14, -13 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite/Hand2:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 
 [sub_resource type="Curve" id=5]
@@ -262,6 +311,7 @@ hue_variation_random = 0.5
 polygon = PoolVector2Array( -18, 27, -23, 18, -23, 4, -12, -8, -12, -16, -16, -17, -16, -24, 0, -28, 13, -23, 13, -5, 20, 1, 20, 23, 11, 28 )
 
 [node name="Enemy" type="Node2D"]
+position = Vector2( 0, -9 )
 script = ExtResource( 1 )
 move_on_kill = true
 
@@ -269,6 +319,19 @@ move_on_kill = true
 position = Vector2( 0, 25 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -25 )
+
+[node name="Hand" type="Sprite" parent="Sprite"]
+position = Vector2( -25, -13 )
+texture = ExtResource( 6 )
+
+[node name="Hand2" type="Sprite" parent="Sprite"]
+position = Vector2( 14, -13 )
+z_index = -1
+texture = ExtResource( 6 )
+
+[node name="Spear" type="Sprite" parent="Sprite/Hand2"]
+position = Vector2( -10, -12 )
+texture = ExtResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -312,10 +375,6 @@ death_dialogues = PoolStringArray( "I thought this was a spanish lesson...", "Yo
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource( 10 )
-
-[node name="Pitchfork" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-texture = ExtResource( 4 )
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
