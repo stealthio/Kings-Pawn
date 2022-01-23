@@ -90,7 +90,8 @@ func _remove_duplicates_from_array (array_with_dupes : Array):
 
 func clear_available_cells():
 	for cell in temporary_cells:
-		cell.call_deferred("free")
+		if is_instance_valid(cell):
+			cell.call_deferred("free")
 	temporary_cells.clear()
 
 func _get_positions_from_vec(pos, vec, grid):

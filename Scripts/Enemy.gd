@@ -17,6 +17,8 @@ signal turn_finished
 func _ready():
 	BoardEntities.append_enemy(self)
 	$AnimationPlayer.play("Appear")
+	connect("turn_finished", self, "toggle_dangerzone", [false])
+	connect("turn_finished", self, "draw_dangerzone")
 	draw_dangerzone()
 	
 func die(without_animation = false):
@@ -72,14 +74,13 @@ func execute():
 	var attacked = false
 	for vec in attack:
 		if attack_pos(global_position + vec * Helper.grid_size):
-			emit_signal("turn_finished")
 			return
 	if move_can_kill:
 		if !attack_pos(global_position + movement * Helper.grid_size):
 			move_to_position(global_position + movement * Helper.grid_size)
+			return
 	else:
 		move_to_position(global_position + movement * Helper.grid_size)
-	draw_dangerzone()
 	emit_signal("turn_finished")
 
 func clear_dangerzone():
@@ -121,7 +122,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			move_to_position(_mpos)
 		draw_dangerzone()
 		emit_signal("on_kill", self, ranged, _mpos)
-		turn_done = true
+		emit_signal("turn_finished")
 
 func on_squish():
 	clear_dangerzone()
