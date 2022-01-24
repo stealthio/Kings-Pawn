@@ -12,9 +12,13 @@ func _init():
 
 # Spawn figures and set up winning condition (currently - all enemies dead)
 func _ready():
-	Helper.play_BGM(preload("res://Ressources/Music/In_The_Hall.mp3"))
 	spawn_figures()
+	Helper.stop_BGM()
 	BoardEntities.connect("on_enemy_death", self, "_on_enemy_death")
+	yield(get_tree().create_timer(1), "timeout")
+	Helper.play_sound(preload("res://Ressources/SFX/fanfaren.mp3"))
+	yield(get_tree().create_timer(3), "timeout")
+	Helper.play_BGM(preload("res://Ressources/Music/In_The_Hall.mp3"))
 
 # Iterates through all enemies to execute their "execute" function one after another. 
 func execute_enemy_turn():

@@ -5,7 +5,6 @@ export var attack : PoolVector2Array = []
 export var move_on_kill = false
 export var move_can_kill = true
 export var ranged = false
-var turn_done = false
 var _tpos
 var _dangerzone = []
 var _mpos
@@ -49,7 +48,8 @@ func move_to_position(pos):
 		var right = global_position + Vector2(Helper.grid_size,0)
 		if Helper.check_position(right) == Helper.cell_content.FREE:
 			move_to_position(right)
-			return	
+			return
+		emit_signal("turn_finished") # When the unit can neither move left or right
 		return
 	if !move_can_kill:
 		if Helper.check_position(pos) != Helper.cell_content.FREE:
@@ -67,9 +67,21 @@ func _process(delta):
 			global_position = _tpos
 			_tpos = null
 
+func end_turn():
+	emit_signal("turn_finished")
+
 func execute():
 	toggle_dangerzone(true)
 	yield(get_tree().create_timer(.5), "timeout")
+	
+	# Create a timeout that will end turn after 10 seconds
+	var timeout_timer = Timer.new()
+	timeout_timer.connect("timeout", self, "end_turn")
+	timeout_timer.connect("timeout", timeout_timer, "free")
+	connect("turn_finished", timeout_timer, "free")
+	add_child(timeout_timer)
+	timeout_timer.start(10)
+
 	# attack or move
 	var attacked = false
 	for vec in attack:
