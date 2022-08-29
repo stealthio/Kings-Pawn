@@ -15,5 +15,4 @@ If you have any questions or want to contribute, feel free to ask on our Discord
 [Marco Kaiser](https://soundcloud.com/user-128146600) - Music and SFX
 
 ### Resources
-[kheftel - Minimalist Pixel Fonts](https://opengameart.org/content/minimalist-pixel-fonts)  
-[https://sfxr.me](https://sfxr.me/)  
+[REN'PY Programming Language and Enviroment](https://renpy.org/)  
